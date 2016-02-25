@@ -1,5 +1,14 @@
 # react-workshop
 
+## pré-requis
+
+* installer node (v 4.x ou 5.x) et npm 3 (npm upgrade -g npm)
+* installer git
+* installer atom + package linter eslint et language-javascript-jsx
+* installer un navigateur digne de ce nom avec les react-devtools
+
+## agenda
+
 * step 0
   * mise en place des outils de build (webpack, dev-server, babel, eslint)
   * creation du premier composant
