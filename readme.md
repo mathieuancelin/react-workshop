@@ -4,7 +4,7 @@
 
 * installer node (v 4.x ou 5.x) et npm 3 (npm upgrade -g npm)
 * installer git
-* installer atom + package linter eslint et language-javascript-jsx
+* installer atom + packages linter-eslint et language-javascript-jsx
 * installer un navigateur digne de ce nom avec les react-devtools
 
 ## agenda
