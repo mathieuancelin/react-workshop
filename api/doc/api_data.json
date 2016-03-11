@@ -2,8 +2,8 @@
   {
     "type": "get",
     "url": "/regions",
-    "title": "All Wine Regions",
-    "name": "All_Wine_Regions",
+    "title": "All",
+    "name": "All",
     "group": "Regions",
     "sampleRequest": [
       {
@@ -37,8 +37,8 @@
   {
     "type": "get",
     "url": "/wines?region=:region",
-    "title": "All Wines",
-    "name": "All_Wines",
+    "title": "By Region",
+    "name": "By_Region",
     "group": "Wines",
     "parameter": {
       "fields": {
@@ -136,6 +136,29 @@
             "optional": false,
             "field": "400",
             "description": "<p>Bad request - 'region' query parameter is missing.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/server.js",
+    "groupTitle": "Wines"
+  },
+  {
+    "type": "get",
+    "url": "/wines/:id/image",
+    "title": "Image",
+    "name": "Image",
+    "group": "Wines",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>the id of the wine</p>"
           }
         ]
       }

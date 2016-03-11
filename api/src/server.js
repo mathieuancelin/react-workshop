@@ -16,8 +16,8 @@ var Wines = {
 app.use(express.static('doc'));
 
 /**
- * @api {get} /wines?region=:region All Wines
- * @apiName All Wines
+ * @api {get} /wines?region=:region By Region
+ * @apiName By Region
  * @apiGroup Wines
  *
  * @apiParam {String} region the region to get wines from
@@ -66,8 +66,20 @@ app.get('/api/wines', function (req, res) {
 });
 
 /**
- * @api {get} /regions All Wine Regions
- * @apiName All Wine Regions
+ * @api {get} /wines/:id/image Image
+ * @apiName Image
+ * @apiGroup Wines
+ *
+ * @apiParam {String} id the id of the wine
+ */
+app.get('/api/wines/:id/image', function (req, res) {
+  // TODO what if image does not exists ?
+  res.sendFile(__dirname + '/data/images/' + req.params.id + '.png');
+});
+
+/**
+ * @api {get} /regions All
+ * @apiName All
  * @apiGroup Regions
  *
  * @apiSampleRequest http://localhost:3000/api/regions
