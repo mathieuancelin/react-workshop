@@ -1,20 +1,20 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-var Todo = require('./components/todo');
+import Wine from './components/wine';
+
+const ChevrolBelAir = {
+  "id": "chevrol-bel-air",
+  "name": "Château Chevrol Bel Air",
+  "type": "Rouge",
+  "appellation": {
+    "name": "Lalande-de-Pomerol",
+    "region": "Bordeaux"
+  },
+  "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+};
 
 ReactDOM.render(
-    <Todo text="Ceci est une tâche à réaliser."/>,
+    <Wine wine={ChevrolBelAir}/>,
     document.getElementById('main')
 );
-
-// Version utilisant directement la fonction createElement() de React
-/*
-ReactDOM.render(
-    React.createElement(
-        Todo,
-        {text:'Ceci est une tâche à réaliser.'}
-    ),
-    document.getElementById('main')
-);
-*/
