@@ -1,0 +1,177 @@
+[
+  {
+    "id": "chevrol-bel-air",
+    "name": "Château Chevrol Bel Air",
+    "type": "Rouge",
+    "appellation": {"name": "Lalande-de-Pomerol", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "clarendelle",
+    "name": "Clarendelle \"Inspiré par Haut Brion\"",
+    "type": "Blanc",
+    "appellation": {"name": "Bordeaux", "region": "Bordeaux"},
+    "grapes": ["Sauvignon", "Sémillon", "Muscadelle"]
+  },
+  {
+    "id": "cheval-noir",
+    "name": "Cheval Noir",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Emilion", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "les-hauts-de-tour-prignac",
+    "name": "Les Hauts de Tour Prignac",
+    "type": "Rouge",
+    "appellation": {"name": "Médoc", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot"]
+  },
+  {
+    "id": "bel-air",
+    "name": "Château Bel-Air",
+    "type": "Rouge",
+    "appellation": {"name": "Lussac-Saint-Emilion", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "lestage",
+    "name": "Château Lestage",
+    "type": "Rouge",
+    "appellation": {"name": "Listrac", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Petit Verdot"]
+  },
+  {
+    "id": "tour-des-termes",
+    "name": "Château Tour des Termes",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Estèphe", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Petit Verdot", "Merlot"]
+  },
+  {
+    "id": "oratoire-chasse-spleen",
+    "name": "L'Oratoire de Chasse Spleen",
+    "type": "Rouge",
+    "appellation": {"name": "Moulis", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Petit Verdot"]
+  },
+  {
+    "id": "laniote",
+    "name": "Château Laniote",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Emilion", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "patache-d-aux",
+    "name": "Château Patache d'Aux",
+    "type": "Rouge",
+    "appellation": {"name": "Médoc", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Petit Verdot", "Cabernet Franc"]
+  },
+  {
+    "id": "chantalouette",
+    "name": "Château Chantalouette",
+    "type": "Rouge",
+    "appellation": {"name": "Pomerol", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "latour-camblanes",
+    "name": "Château Latour Camblanes",
+    "type": "Rouge",
+    "appellation": {"name": "Côtes de Bordeaux", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot"]
+  },
+  {
+    "id": "cormeil-figeac",
+    "name": "Chateau Cormeil Figeac",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Emilion", "region": "Bordeaux"},
+    "grapes": ["Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "jaillance",
+    "name": "Jaillance Cuvée de l'Abbaye Brut",
+    "type": "Effervescent",
+    "appellation": {"name": "Crémant de Bordeaux", "region": "Bordeaux"},
+    "grapes": ["Sémillon", "Ugni blanc", "Muscadelle"]
+  },
+  {
+    "id": "rahoul",
+    "name": "Château Rahoul",
+    "type": "Rouge",
+    "appellation": {"name": "Graves", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Petit Verdot"]
+  },
+  {
+    "id": "teynac",
+    "name": "Château Teynac",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Julien", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Petit Verdot"]
+  },
+  {
+    "id": "mouton-cadet-rose",
+    "name": "Le Rosé de Mouton Cadet",
+    "type": "Rosé",
+    "appellation": {"name": "Bordeaux", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "thomas-barton-reserve",
+    "name": "Thomas Barton Réserve Saint-Julien",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Julien", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "charme-cos-labory",
+    "name": "Charme de Cos Labory",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Estèphe", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot"]
+  },
+  {
+    "id": "roc-de-boissac",
+    "name": "Château Roc de Boissac \"La Millerie\"",
+    "type": "Rouge",
+    "appellation": {"name": "Puisseguin-Saint-Emilion", "region": "Bordeaux"},
+    "grapes": ["Merlot", "Cabernet Franc"]
+  },
+  {
+    "id": "mouton-cadet",
+    "name": "Mouton Cadet",
+    "type": "Rouge",
+    "appellation": {"name": "Bordeaux", "region": "Bordeaux"},
+    "grapes": ["Carménère", "Cabernet Sauvignon", "Merlot", "Petit Verdot", "Malbec", "Cabernet Franc"]
+  },
+  {
+    "id": "fleur-haut-bages-liberal",
+    "name": "La Fleur de Haut Bages Libéral",
+    "type": "Rouge",
+    "appellation": {"name": "Pauillac", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot"]
+  },
+  {
+    "id": "arcins",
+    "name": "Château d'Arcins",
+    "type": "Rouge",
+    "appellation": {"name": "Haut-Médoc", "region": "Bordeaux"},
+    "grapes": ["Cabernet Sauvignon", "Merlot"]
+  },
+  {
+    "id": "lacaussade-saint-martin",
+    "name": "Château Lacaussade Saint-Martin",
+    "type": "Blanc",
+    "appellation": {"name": "Blaye Côte de Bordeaux", "region": "Bordeaux"},
+    "grapes": ["Sauvignon"]
+  },
+  {
+    "id": "vin-de-messe",
+    "name": "Vin de Messe moelleux",
+    "type": "Moelleux",
+    "appellation": {"name": "Bordeaux", "region": "Bordeaux"},
+    "grapes": ["Colombard", "Ugni blanc"]
+  }
+]
