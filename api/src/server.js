@@ -2,7 +2,16 @@ var express = require('express');
 var app = express();
 
 var BordeauxWines = require('./data/bordeaux-wines.json')
+var ChampagneWines = require('./data/champagne-wines.json')
 var LoireWines = require('./data/loire-wines.json')
+
+var Regions = ["Bordeaux", "Champagne", "Loire"];
+
+var Wines = {
+  "Bordeaux": BordeauxWines,
+  "Champagne": ChampagneWines,
+  "Loire": LoireWines
+}
 
 app.use(express.static('doc'));
 
@@ -48,20 +57,11 @@ app.use(express.static('doc'));
 app.get('/api/wines', function (req, res) {
   var region = req.query.region;
 
-  if (!region) {
-    res.sendStatus(400);
+  if (region) {
+    res.send(Wines[region] || []);
   }
   else {
-    switch (region) {
-      case "Bordeaux":
-        res.send(BordeauxWines);
-        break;
-      case "Loire":
-          res.send(LoireWines);
-          break;
-      default:
-        res.send([]);
-    }
+    res.sendStatus(400);
   }
 });
 
@@ -79,7 +79,7 @@ app.get('/api/wines', function (req, res) {
  *     ["Bordeaux", "Loire"]
  */
 app.get('/api/regions', function (req, res) {
-  res.send(["Bordeaux", "Loire"]);
+  res.send(Regions);
 });
 
 app.listen(3000, function () {

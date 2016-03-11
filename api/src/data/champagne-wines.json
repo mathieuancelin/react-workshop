@@ -1,0 +1,51 @@
+[
+  {
+    "id": "pol-roger",
+    "name": "Pol Roger Brut Cuvée de Réserve",
+    "type": "Effervescent",
+    "appellation": {"name": "Champagne", "region": "Champagne"},
+    "grapes": ["Pinot Noir", "Pinot Meunier", "Chardonnay"]
+  },
+  {
+    "id": "laurent-perrier",
+    "name": "Laurent-Perrier Brut",
+    "type": "Effervescent",
+    "appellation": {"name": "Champagne", "region": "Champagne"},
+    "grapes": ["Pinot Noir", "Pinot Meunier", "Chardonnay"]
+  },
+  {
+    "id": "moet-chandon",
+    "name": "Moët & Chandon Brut Impérial",
+    "type": "Effervescent",
+    "appellation": {"name": "Champagne", "region": "Champagne"},
+    "grapes": ["Pinot Noir", "Pinot Meunier", "Chardonnay"]
+  },
+  {
+    "id": "lanson",
+    "name": "Lanson Black Label Brut",
+    "type": "Effervescent",
+    "appellation": {"name": "Champagne", "region": "Champagne"},
+    "grapes": ["Pinot Noir", "Pinot Meunier", "Chardonnay"]
+  },
+  {
+    "id": "deutz",
+    "name": "Deutz Classique Brut",
+    "type": "Effervescent",
+    "appellation": {"name": "Champagne", "region": "Champagne"},
+    "grapes": ["Pinot Noir", "Pinot Meunier", "Chardonnay"]
+  },
+  {
+    "id": "bollinger-special-cuvee",
+    "name": "Bollinger Spécial Cuvée",
+    "type": "Effervescent",
+    "appellation": {"name": "Champagne", "region": "Champagne"},
+    "grapes": ["Pinot Noir", "Pinot Meunier", "Chardonnay"]
+  },
+  {
+    "id": "lanson-blanc-de-blanc",
+    "name": "Lanson Extra Age Blanc de Blancs",
+    "type": "Effervescent",
+    "appellation": {"name": "Champagne", "region": "Champagne"},
+    "grapes": ["Chardonnay"]
+  }
+]
