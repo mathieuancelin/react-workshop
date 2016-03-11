@@ -57,7 +57,7 @@ Afin de disposer d'outils spécifiques à React dans votre navigateur web, insta
 * [Etape 0](/step-0)
   * mise en place des outils de build (webpack, dev-server, babel, eslint)
   * creation du premier composant
-* [Etape 0](/step-1)
+* [Etape 1](/step-1)
   * observation du premier composant (si step 0 bypassé)
   * ajout de tests sur le composant (mocha, chai, react-test-utils, jsdom)
 * step 2
