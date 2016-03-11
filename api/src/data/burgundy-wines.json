@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ladoix-pierre-andre",
+    "name": "Ladoix - Pierre André",
+    "type": "Rouge",
+    "appellation": {"name": "Ladoix", "region": "Bourgogne"},
+    "grapes": ["Pinot Noir"]
+  },
+  {
+    "id": "marsannay",
+    "name": "Château de Marsannay",
+    "type": "Rouge",
+    "appellation": {"name": "Marsannay", "region": "Bourgogne"},
+    "grapes": ["Pinot Noir"]
+  },
+  {
+    "id": "les-vaillons",
+    "name": "Chablis 1er cru Les Vaillons",
+    "type": "Blanc",
+    "appellation": {"name": "Chablis", "region": "Bourgogne"},
+    "grapes": ["Chardonnay"]
+  },
+  {
+    "id": "la-roche",
+    "name": "Domaine La Roche",
+    "type": "Blanc",
+    "appellation": {"name": "Chablis", "region": "Bourgogne"},
+    "grapes": ["Chardonnay"]
+  },
+  {
+    "id": "macon-lugny",
+    "name": "Mâcon Lugny Saint-Pierre - Bouchard",
+    "type": "Blanc",
+    "appellation": {"name": "Mâcon", "region": "Bourgogne"},
+    "grapes": ["Chardonnay"]
+  },
+  {
+    "id": "cote-beaune-village",
+    "name": "Côte de Beaune Villages - Joseph Drouin",
+    "type": "Rouge",
+    "appellation": {"name": "Côte de Beaune Villages", "region": "Bourgogne"},
+    "grapes": ["Pinot Noir"]
+  },
+  {
+    "id": "aligote",
+    "name": "Bourgogne Aligoté Buissonnier",
+    "type": "Blanc",
+    "appellation": {"name": "Bourgogne Aligoté", "region": "Bourgogne"},
+    "grapes": ["Aligoté"]
+  },
+  {
+    "id": "boisson",
+    "name": "Domaine Boisson - Hautes Côtes de Beaune",
+    "type": "Rouge",
+    "appellation": {"name": "Hautes Côtes de Beaune", "region": "Bourgogne"},
+    "grapes": ["Pinot Noir"]
+  }
+]
