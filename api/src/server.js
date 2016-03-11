@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 var BordeauxWines = require('./data/bordeaux-wines.json')
+var LoireWines = require('./data/loire-wines.json')
 
 app.use(express.static('doc'));
 
@@ -11,6 +12,8 @@ app.use(express.static('doc'));
  * @apiGroup Wines
  *
  * @apiParam {String} region the region to get wines from
+ *
+ * @apiSampleRequest /api/wines
  *
  * @apiSuccess {Object[]} wines                     List of wines
  * @apiSuccess {String}   wines.id                  Id of the wine
@@ -53,16 +56,30 @@ app.get('/api/wines', function (req, res) {
       case "Bordeaux":
         res.send(BordeauxWines);
         break;
+      case "Loire":
+          res.send(LoireWines);
+          break;
       default:
         res.send([]);
     }
   }
 });
 
+/**
+ * @api {get} /regions All Wine Regions
+ * @apiName All Wine Regions
+ * @apiGroup Regions
+ *
+ * @apiSampleRequest http://localhost:3000/api/regions
+ *
+ * @apiSuccess {String[]} regions Wine regions
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     ["Bordeaux", "Loire"]
+ */
 app.get('/api/regions', function (req, res) {
-  res.send([
-    "Bordeaux"
-  ]);
+  res.send(["Bordeaux", "Loire"]);
 });
 
 app.listen(3000, function () {

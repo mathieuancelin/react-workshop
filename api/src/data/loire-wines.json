@@ -1,0 +1,80 @@
+[
+  {
+    "id": "les-cailloux",
+    "name": "Les Cailloux",
+    "type": "Rouge",
+    "appellation": {"name": "Saint-Nicolas-de-Bourgueil", "region": "Loire"},
+    "grapes": ["Cabernet Franc"]
+  },
+  {
+    "id": "la-noe",
+    "name": "Château La Noë",
+    "type": "Blanc",
+    "appellation": {"name": "Muscadet Sèvre & Maine", "region": "Loire"},
+    "grapes": ["Muscadet"]
+  },
+  {
+    "id": "les-champs-clos-blanc",
+    "name": "Les Champs Clos",
+    "type": "Blanc",
+    "appellation": {"name": "Sancerre", "region": "Loire"},
+    "grapes": ["Sauvignon"]
+  },
+  {
+    "id": "les-champs-clos-rouge",
+    "name": "Les Champs Clos",
+    "type": "Rouge",
+    "appellation": {"name": "Sancerre", "region": "Loire"},
+    "grapes": ["Pinot noir"]
+  },
+
+  {
+    "id": "philippe-de-valois",
+    "name": "Philippe de Valois",
+    "type": "Rouge",
+    "appellation": {"name": "Bourgeuil", "region": "Loire"},
+    "grapes": ["Cabernet Franc"]
+  },
+  {
+    "id": "reserve-des-vignerons-blanc",
+    "name": "Réserve des Vignerons",
+    "type": "Blanc",
+    "appellation": {"name": "Saumur", "region": "Loire"},
+    "grapes": ["Chenin"]
+  },
+  {
+    "id": "reserve-des-vignerons-rouge",
+    "name": "Réserve des Vignerons",
+    "type": "Rouge",
+    "appellation": {"name": "Saumur", "region": "Loire"},
+    "grapes": ["Cabernet Franc"]
+  },
+  {
+    "id": "bonnamy",
+    "name": "Coteaux du Layon Bonnamy",
+    "type": "Moelleux",
+    "appellation": {"name": "Coteaux du Layon", "region": "Loire"},
+    "grapes": ["Chenin"]
+  },
+  {
+    "id": "domaine-petit-coteau",
+    "name": "Domaine du Petit Coteau",
+    "type": "Effervescent",
+    "appellation": {"name": "Vouvray", "region": "Loire"},
+    "grapes": ["Chenin"]
+  },
+  {
+    "id": "domaine-chatenoy",
+    "name": "Domaine de Châtenoy",
+    "type": "Blanc",
+    "appellation": {"name": "Menetou-Salon", "region": "Loire"},
+    "grapes": ["Sauvignon"]
+  },
+  {
+    "id": "domaine-desoucherie",
+    "name": "Domaine de la Désoucherie",
+    "type": "Rouge",
+    "appellation": {"name": "Cheverny", "region": "Loire"},
+    "grapes": ["Gamay", "Pinot Noir"]
+  }
+]

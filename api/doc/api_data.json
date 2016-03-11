@@ -1,6 +1,41 @@
 [
   {
     "type": "get",
+    "url": "/regions",
+    "title": "All Wine Regions",
+    "name": "All_Wine_Regions",
+    "group": "Regions",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:3000/api/regions"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "regions",
+            "description": "<p>Wine regions</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\"Bordeaux\", \"Loire\"]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/server.js",
+    "groupTitle": "Regions"
+  },
+  {
+    "type": "get",
     "url": "/wines?region=:region",
     "title": "All Wines",
     "name": "All_Wines",
@@ -18,6 +53,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "/api/wines"
+      }
+    ],
     "success": {
       "fields": {
         "Success 200": [
