@@ -1,0 +1,7 @@
+{
+  "name": "react-workshop-api-doc",
+  "version": "1.0.0",
+  "description": "React Workshop API documentation",
+  "title": "React Workshop API",
+  "url" : "https://localhost:9000/api"
+}
