@@ -5,7 +5,8 @@ const Styles = {
     padding: 8,
     boxSizing: 'border-box',
     boxShadow: '0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12)',
-    width: '30%'
+    width: '40%',
+    minHeight: 280
   },
   Title: {
     fontWeight: 'bold',
@@ -21,6 +22,9 @@ const Styles = {
     padding: 4,
     background: 'grey',
     borderRadius: '4px'
+  },
+  Image: {
+    float: 'left'
   }
 };
 
@@ -42,6 +46,7 @@ const Wine = React.createClass({
     let wine = this.props.wine;
     return (
       <div style={Styles.Card}>
+          <img style={Styles.Image} src="img/chevrol-bel-air.png" />
           <div style={Styles.Title}>{wine.name}</div>
           <div style={Styles.Info}>
             <span style={Styles.Label}>Type</span>{wine.type}
