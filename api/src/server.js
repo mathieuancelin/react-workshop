@@ -16,6 +16,12 @@ var Wines = {
   "Loire": LoireWines
 }
 
+var WinesById = {}
+BordeauxWines.forEach(function(wine) {WinesById[wine.id] = wine});
+BurgundyWines.forEach(function(wine) {WinesById[wine.id] = wine});
+ChampagneWines.forEach(function(wine) {WinesById[wine.id] = wine});
+LoireWines.forEach(function(wine) {WinesById[wine.id] = wine});
+
 // Serve API documentation
 app.use(express.static('doc'));
 
@@ -73,6 +79,45 @@ app.get('/api/wines', function (req, res) {
   }
   else {
     res.sendStatus(400);
+  }
+});
+
+/**
+ * @api {get} /wines/:id By Id
+ * @apiName By Id
+ * @apiGroup Wines
+ *
+ * @apiParam {String} id the id of the wine
+ *
+ * @apiSampleRequest /api/wines/:id
+ *
+ * @apiSuccess {String}   id                  Id of the wine
+ * @apiSuccess {String}   name                Name of the wine
+ * @apiSuccess {String}   type                Type of wine
+ * @apiSuccess {Object}   appellation         Appellation of the wine
+ * @apiSuccess {String}   appellation.name    Name of the appellation
+ * @apiSuccess {String}   appellation.region  Region of the appellation
+ * @apiSuccess {String[]} grapes              Grapes used to produce the wine
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *       {
+ *         "id": "cheval-noir",
+ *         "name": "Cheval Noir",
+ *         "type": "Rouge",
+ *         "appellation": {"name": "Saint-Emilion", "region": "Bordeaux"},
+ *         "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+ *       }
+ *
+ * @apiError {String} 404 Not found - No wine corresponding to given 'id'
+ */
+app.get('/api/wines/:id', function (req, res) {
+  var wine = WinesById[req.params.id];
+  if (wine) {
+    res.send(wine);
+  }
+  else {
+    res.sendStatus(404);
   }
 });
 

@@ -36,6 +36,109 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/wines/:id",
+    "title": "By Id",
+    "name": "By_Id",
+    "group": "Wines",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>the id of the wine</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "/api/wines/:id"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Id of the wine</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the wine</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of wine</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "appellation",
+            "description": "<p>Appellation of the wine</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "appellation.name",
+            "description": "<p>Name of the appellation</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "appellation.region",
+            "description": "<p>Region of the appellation</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "grapes",
+            "description": "<p>Grapes used to produce the wine</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n  {\n    \"id\": \"cheval-noir\",\n    \"name\": \"Cheval Noir\",\n    \"type\": \"Rouge\",\n    \"appellation\": {\"name\": \"Saint-Emilion\", \"region\": \"Bordeaux\"},\n    \"grapes\": [\"Cabernet Sauvignon\", \"Merlot\", \"Cabernet Franc\"]\n  }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not found - No wine corresponding to given 'id'</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/server.js",
+    "groupTitle": "Wines"
+  },
+  {
+    "type": "get",
     "url": "/wines?region=:region",
     "title": "By Region",
     "name": "By_Region",
