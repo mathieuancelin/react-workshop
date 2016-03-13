@@ -305,6 +305,19 @@
         }
       ]
     },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not found - No wine corresponding to given 'id'</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.0",
     "filename": "src/server.js",
     "groupTitle": "Wines"
@@ -324,6 +337,19 @@
             "optional": false,
             "field": "id",
             "description": "<p>the id of the wine</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not found - No wine corresponding to given 'id'</p>"
           }
         ]
       }
@@ -375,6 +401,19 @@
           "type": "json"
         }
       ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not found - No wine corresponding to given 'id'</p>"
+          }
+        ]
+      }
     },
     "version": "0.0.0",
     "filename": "src/server.js",

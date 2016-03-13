@@ -26,7 +26,7 @@ ChampagneWines.forEach(byId);
 LoireWines.forEach(byId);
 
 // Likes and Comments
-var Likes = [];
+var Likes = ["chevrol-bel-air"];
 var Comments = {
   "chevrol-bel-air": [{
     "date": new Date(),
@@ -140,10 +140,17 @@ app.get('/api/wines/:id', function (req, res) {
  * @apiGroup Wines
  *
  * @apiParam {String} id the id of the wine
+ *
+ * @apiError {String} 404 Not found - No wine corresponding to given 'id'
  */
 app.get('/api/wines/:id/image', function (req, res) {
-  // TODO what if image does not exists ?
-  res.sendFile(__dirname + '/data/images/' + req.params.id + '.png');
+  var id = req.params.id;
+  if (!WinesById[id]) {
+    res.sendStatus(404);
+  } else {
+    // TODO what if image does not exists ?
+    res.sendFile(__dirname + '/data/images/' + req.params.id + '.png');
+  }
 });
 
 /**
@@ -162,9 +169,16 @@ app.get('/api/wines/:id/image', function (req, res) {
  *     {
  *       "like": false
  *     }
+ *
+ * @apiError {String} 404 Not found - No wine corresponding to given 'id'
  */
 app.get('/api/wines/:id/like', function (req, res) {
-  res.send({like: Likes.indexOf(req.params.id) >= 0});
+  var id = req.params.id;
+  if (!WinesById[id]) {
+    res.sendStatus(404);
+  } else {
+    res.send({like: Likes.indexOf(req.params.id) >= 0});
+  }
 });
 
 /**
@@ -189,9 +203,16 @@ app.get('/api/wines/:id/like', function (req, res) {
  *         content: "J'ai bu le millésime 2009, parfait après une heure en carafe !"
  *       }
  *     ]
+ *
+ * @apiError {String} 404 Not found - No wine corresponding to given 'id'
  */
 app.get('/api/wines/:id/comments', function (req, res) {
-  res.send(Comments[req.params.id] || []);
+  var id = req.params.id;
+  if (!WinesById[id]) {
+    res.sendStatus(404);
+  } else {
+    res.send(Comments[req.params.id] || []);
+  }
 });
 
 /**
