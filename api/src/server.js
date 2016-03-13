@@ -8,6 +8,7 @@ var LoireWines = require('./data/loire-wines.json');
 
 var Regions = ["Bordeaux", "Bourgogne", "Champagne", "Languedoc", "Loire"];
 
+// Wines by Region
 var Wines = {
   "Bordeaux": BordeauxWines,
   "Bourgogne": BurgundyWines,
@@ -16,11 +17,13 @@ var Wines = {
   "Loire": LoireWines
 }
 
-var WinesById = {}
-BordeauxWines.forEach(function(wine) {WinesById[wine.id] = wine});
-BurgundyWines.forEach(function(wine) {WinesById[wine.id] = wine});
-ChampagneWines.forEach(function(wine) {WinesById[wine.id] = wine});
-LoireWines.forEach(function(wine) {WinesById[wine.id] = wine});
+// Wines by Id
+var WinesById = {};
+var byId = function(wine) { WinesById[wine.id] = wine };
+BordeauxWines.forEach(byId);
+BurgundyWines.forEach(byId);
+ChampagneWines.forEach(byId);
+LoireWines.forEach(byId);
 
 // Serve API documentation
 app.use(express.static('doc'));
