@@ -25,6 +25,16 @@ BurgundyWines.forEach(byId);
 ChampagneWines.forEach(byId);
 LoireWines.forEach(byId);
 
+// Likes and Comments
+var Likes = [];
+var Comments = {
+  "chevrol-bel-air": [{
+    "date": new Date(),
+    "title": "Un bon bordeaux !",
+    "content": "J'ai bu le millésime 2009, parfait après une heure en carafe !"
+  }]
+};
+
 // Serve API documentation
 app.use(express.static('doc'));
 
@@ -104,13 +114,13 @@ app.get('/api/wines', function (req, res) {
  *
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
- *       {
- *         "id": "cheval-noir",
- *         "name": "Cheval Noir",
- *         "type": "Rouge",
- *         "appellation": {"name": "Saint-Emilion", "region": "Bordeaux"},
- *         "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
- *       }
+ *     {
+ *       "id": "cheval-noir",
+ *       "name": "Cheval Noir",
+ *       "type": "Rouge",
+ *       "appellation": {"name": "Saint-Emilion", "region": "Bordeaux"},
+ *       "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
+ *     }
  *
  * @apiError {String} 404 Not found - No wine corresponding to given 'id'
  */
@@ -134,6 +144,54 @@ app.get('/api/wines/:id', function (req, res) {
 app.get('/api/wines/:id/image', function (req, res) {
   // TODO what if image does not exists ?
   res.sendFile(__dirname + '/data/images/' + req.params.id + '.png');
+});
+
+/**
+ * @api {get} /wines/:id/image Liked ?
+ * @apiName Liked ?
+ * @apiGroup Wines
+ *
+ * @apiParam {String} id the id of the wine
+ *
+ * @apiSampleRequest /api/wines/:id/like
+ *
+ * @apiSuccess {Boolean} like indicates if the current user likes the wine
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "like": false
+ *     }
+ */
+app.get('/api/wines/:id/like', function (req, res) {
+  res.send({like: Likes.indexOf(req.params.id) >= 0});
+});
+
+/**
+ * @api {get} /wines/:id/comments Comments
+ * @apiName Comments
+ * @apiGroup Wines
+ *
+ * @apiParam {String} id the id of the wine
+ *
+ * @apiSampleRequest /api/wines/:id/comments
+ *
+ * @apiSuccess {String} date    the date of the comment
+ * @apiSuccess {String} title   the title of the comment
+ * @apiSuccess {String} content the comment
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     [
+ *       {
+ *         date: "2016-03-13T20:49:12.129Z",
+ *         title: "Un bon bordeaux !",
+ *         content: "J'ai bu le millésime 2009, parfait après une heure en carafe !"
+ *       }
+ *     ]
+ */
+app.get('/api/wines/:id/comments', function (req, res) {
+  res.send(Comments[req.params.id] || []);
 });
 
 /**

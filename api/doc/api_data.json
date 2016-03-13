@@ -115,7 +115,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n  {\n    \"id\": \"cheval-noir\",\n    \"name\": \"Cheval Noir\",\n    \"type\": \"Rouge\",\n    \"appellation\": {\"name\": \"Saint-Emilion\", \"region\": \"Bordeaux\"},\n    \"grapes\": [\"Cabernet Sauvignon\", \"Merlot\", \"Cabernet Franc\"]\n  }",
+          "content": "HTTP/1.1 200 OK\n{\n  \"id\": \"cheval-noir\",\n  \"name\": \"Cheval Noir\",\n  \"type\": \"Rouge\",\n  \"appellation\": {\"name\": \"Saint-Emilion\", \"region\": \"Bordeaux\"},\n  \"grapes\": [\"Cabernet Sauvignon\", \"Merlot\", \"Cabernet Franc\"]\n}",
           "type": "json"
         }
       ]
@@ -249,6 +249,68 @@
   },
   {
     "type": "get",
+    "url": "/wines/:id/comments",
+    "title": "Comments",
+    "name": "Comments",
+    "group": "Wines",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>the id of the wine</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "/api/wines/:id/comments"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": "<p>the date of the comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>the title of the comment</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>the comment</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n[\n  {\n    date: \"2016-03-13T20:49:12.129Z\",\n    title: \"Un bon bordeaux !\",\n    content: \"J'ai bu le millésime 2009, parfait après une heure en carafe !\"\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/server.js",
+    "groupTitle": "Wines"
+  },
+  {
+    "type": "get",
     "url": "/wines/:id/image",
     "title": "Image",
     "name": "Image",
@@ -265,6 +327,54 @@
           }
         ]
       }
+    },
+    "version": "0.0.0",
+    "filename": "src/server.js",
+    "groupTitle": "Wines"
+  },
+  {
+    "type": "get",
+    "url": "/wines/:id/image",
+    "title": "Liked ?",
+    "name": "Liked__",
+    "group": "Wines",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>the id of the wine</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "/api/wines/:id/like"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "like",
+            "description": "<p>indicates if the current user likes the wine</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"like\": false\n}",
+          "type": "json"
+        }
+      ]
     },
     "version": "0.0.0",
     "filename": "src/server.js",
