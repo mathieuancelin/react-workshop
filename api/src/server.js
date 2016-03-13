@@ -16,7 +16,15 @@ var Wines = {
   "Loire": LoireWines
 }
 
+// Serve API documentation
 app.use(express.static('doc'));
+
+// Configure CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 /**
  * @api {get} /wines?region=:region By Region
