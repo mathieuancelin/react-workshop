@@ -425,6 +425,65 @@ define({ "api": [
     "groupTitle": "Wines"
   },
   {
+    "type": "post",
+    "url": "/wines/:id/comments",
+    "title": "Like",
+    "name": "Like",
+    "group": "Wines",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>the id of the wine</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "like",
+            "description": "<p>indicates if the current user likes the wine</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not found - No wine corresponding to given 'id'</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Bad request - missing 'like' boolean attribute in body</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/server.js",
+    "groupTitle": "Wines"
+  },
+  {
     "type": "get",
     "url": "/wines/:id/image",
     "title": "Liked ?",

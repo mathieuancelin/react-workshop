@@ -184,6 +184,44 @@ app.get('/api/wines/:id/like', function (req, res) {
 });
 
 /**
+ * @api {post} /wines/:id/comments Like
+ * @apiName Like
+ * @apiGroup Wines
+ *
+ * @apiParam {String} id    the id of the wine
+ * @apiParam {String} like  indicates if the current user likes the wine
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *
+ * @apiError {String} 404 Not found - No wine corresponding to given 'id'
+ * @apiError {String} 400 Bad request - missing 'like' boolean attribute in body
+ */
+app.post('/api/wines/:id/like', function (req, res) {
+  var id = req.params.id;
+  if (!WinesById[id]) {
+    res.sendStatus(404);
+  } else {
+    var like = req.body.like;
+    if (!(typeof(like) === "boolean")) {
+        res.sendStatus(400);
+    } else {
+      var index = Likes.indexOf(id);
+      if (like) {
+        if (index < 0) {
+          Likes.push(id);
+        }
+      } else {
+        if (index >= 0) {
+          Likes.splice(index, 1);
+        }
+      }
+      res.sendStatus(200);
+    }
+  }
+});
+
+/**
  * @api {get} /wines/:id/comments Comments
  * @apiName Comments
  * @apiGroup Wines
