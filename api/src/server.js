@@ -1,5 +1,5 @@
 var express = require('express');
-var app = express();
+var bodyParser = require('body-parser');
 
 var BordeauxWines = require('./data/bordeaux-wines.json');
 var BurgundyWines = require('./data/burgundy-wines.json');
@@ -35,9 +35,11 @@ var Comments = {
   }]
 };
 
+// Create Server
+var app = express();
+app.use(bodyParser.json());
 // Serve API documentation
 app.use(express.static('doc'));
-
 // Configure CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -212,6 +214,41 @@ app.get('/api/wines/:id/comments', function (req, res) {
     res.sendStatus(404);
   } else {
     res.send(Comments[req.params.id] || []);
+  }
+});
+
+/**
+ * @api {post} /wines/:id/comments Comment
+ * @apiName Comment
+ * @apiGroup Wines
+ *
+ * @apiParam {String} id the id of the wine
+ * @apiParam {String} title    title of the comment.
+ * @apiParam {String} content  content of the comment.
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 201 Created
+ *
+ * @apiError {String} 404 Not found - No wine corresponding to given 'id'
+ * @apiError {String} 400 Bad request - missing 'title' or 'content' attribute in body
+ */
+app.post('/api/wines/:id/comments', function (req, res) {
+  var id = req.params.id;
+  if (!WinesById[id]) {
+    res.sendStatus(404);
+  } else {
+    var body = req.body;
+    if (!body.title || !body.content) {
+        res.sendStatus(400);
+    } else {
+      var newComment = {
+        date: new Date(),
+        title: body.title,
+        content: body.content
+      };
+      Comments[id] = (Comments[id] || []).concat(newComment);
+      res.sendStatus(201);
+    }
   }
 });
 

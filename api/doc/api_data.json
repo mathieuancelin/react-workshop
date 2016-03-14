@@ -248,6 +248,72 @@
     "groupTitle": "Wines"
   },
   {
+    "type": "post",
+    "url": "/wines/:id/comments",
+    "title": "Comment",
+    "name": "Comment",
+    "group": "Wines",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>the id of the wine</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>title of the comment.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<p>content of the comment.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 201 Created",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Not found - No wine corresponding to given 'id'</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Bad request - missing 'title' or 'content' attribute in body</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/server.js",
+    "groupTitle": "Wines"
+  },
+  {
     "type": "get",
     "url": "/wines/:id/comments",
     "title": "Comments",

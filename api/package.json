@@ -3,7 +3,8 @@
   "description": "React Workshop API",
   "version": "0.0.0",
   "dependencies": {
-    "express": "4.13.4"
+    "express": "4.13.4",
+    "body-parser": "1.15.0"
   },
   "devDependencies": {
     "apidoc": "0.15.1"
