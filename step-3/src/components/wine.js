@@ -5,7 +5,6 @@ const Styles = {
     padding: 8,
     boxSizing: 'border-box',
     boxShadow: '0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12)',
-    width: '40%',
     minHeight: 280
   },
   Title: {
@@ -44,9 +43,12 @@ const Wine = React.createClass({
 
   render() {
     let wine = this.props.wine;
+    if (!wine) {
+      return <div>No information</div>
+    }
     return (
       <div style={Styles.Card}>
-          <img style={Styles.Image} src="img/chevrol-bel-air.png" />
+          <img style={Styles.Image} src={`http://localhost:3000/api/wines/${wine.id}/image`} />
           <div style={Styles.Title}>{wine.name}</div>
           <div style={Styles.Info}>
             <span style={Styles.Label}>Type</span>{wine.type}
