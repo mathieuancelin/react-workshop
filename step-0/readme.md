@@ -8,10 +8,10 @@ Créez un fichier `package.json`, en déclarant les dépendances React :
 {
     "name": "react-workshop",
     "description": "React Workshop",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "dependencies": {
-        "react": "0.14.3",
-        "react-dom": "0.14.3"
+        "react": "0.14.7",
+        "react-dom": "0.14.7"
     }
 }
 ```
@@ -21,93 +21,84 @@ Lancez ensuite la commande `npm install` afin de télécharger localement les d�
 
 ## Premier componsant
 
-### todo.js
+### wine.js
 
-Dans le répertoire `src/components`, créez le fichier `todo.js` qui contient le code de notre premier componsant, nommé `Todo` :  
+Dans le répertoire `src/components`, créez le fichier `wine.js` qui contient le code de notre premier componsant, nommé `Wine` :  
 
 ```javascript
-var React = require('react');
+import React from 'react';
 
-var Todo = React.createClass({
-    propTypes: {
-        text: React.PropTypes.string.isRequired
-    },
+const WineStyle = {
+  padding: 8,
+  boxShadow: '0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12)'
+};
 
-    render: function () {
-        return (
-            <div className="todo">
-                {this.props.text}
-            </div>
-        );
-    }
+const Wine = React.createClass({
+  propTypes: {
+    name: React.PropTypes.string.isRequired
+  },
+
+  render() {
+    return (
+      <div style={WineStyle}>
+          {this.props.name}
+      </div>
+    );
+  }
 });
 
-module.exports = Todo;
+export default Wine;
 ```
 
-Ce premier composant est volontairement très simple (type "hello world"), il retourne simplement un texte dans un élément HTML `<div>`.
-Ce texte est passé au composant grâce à une propriété `text`. Cette propriété est définie comme étant de type `string` et obligatoire (partie `propTypes` du composant).
+Ce premier composant est volontairement très simple (de type "hello world"), il retourne simplement le nom du vin dans un élément HTML `<div>`.
+Le nom du vin est passé au composant grâce à une propriété `name`. Cette propriété est définie comme étant de type `string` et obligatoire (partie `propTypes` du composant).
 
-Afin de pouvoir ajouter du style sur ce componsant, on définit également une classe CSS via l'attribut `className`.
-
-*Remarque : n'oubliez pas que JSX n'est que du "sucre syntaxique" transformé en javascript, ce n'est pas du HTML !
-Ce qui explique l'utilisation de `className` et non `class` qui est un mot clé réservé en javascript*
+Un style est également appliqué au componsant via l'attribut `style`.
 
 Vous pouvez également utiliser directement la fonction `createElement` de l'API `React` :
 
 ```javascript
-render: function () {
+render() {
     return React.createElement(
         'div',
-        {className: 'todo'},
-        this.props.text
+        {style: WineStyle},
+        this.props.name
     );
 }
 ```
 
 ### index.html
 
-Créez une page HTML basique et ajoutez-y une `<div>` (possédant l'identifiant `main`) dans laquelle nous effectuerons le rendu de notre composant.  
+Dans le dossier `public`, créez une page HTML basique et ajoutez-y une `<div>` (possédant l'identifiant `main`) dans laquelle nous effectuerons le rendu de notre composant.  
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>React Workshop - Etape 0</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <title>React Workshop</title>
 </head>
 <body>
-<h1>Etape 0 - Installation et premier composant</h1>
+<h1>Wines</h1>
 
 <div id="main"></div>
 
 </body>
 </html>
 ```
-Cette page référence la feuille de style `css/index.css`. Pensez à la créer afin de donner du style au componsant `Todo`. Par exemple :
-
-```css
-.todo {
-    border: 1px solid darkblue;
-    background: lightblue;
-    color: darkblue;
-    padding: 5px;
-}
-```
 
 ### app.js
 
-A la racine du répertoire `src`, créez le fichier `app.js` qui contient le code nécessaire au rendu du componsant `Todo` dans la `<div>` créée précédemment :
+A la racine du répertoire `src`, créez le fichier `app.js` qui contient le code nécessaire au rendu du componsant `Wine` dans la `<div>` créée précédemment :
 
 ```javascript
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-var Todo = require('./components/todo');
+import Wine from './components/wine';
 
 ReactDOM.render(
-    <Todo text="Ceci est une tâche à réaliser."/>,
+    <Wine name="Château Chevrol Bel Air"/>,
     document.getElementById('main')
 );
 ```
@@ -117,8 +108,8 @@ Vous pouvez également utiliser directement la fonction `createElement` de l'API
 ```javascript
 ReactDOM.render(
     React.createElement(
-        Todo,
-        {text:'Ceci est une tâche à réaliser.'}
+        Wine,
+        {name:'Château Chevrol Bel Air'}
     ),
     document.getElementById('main')
 );
@@ -196,7 +187,7 @@ Enfin, pensez à référencer le script `bundle.js` dans le fichier `index.html`
 
 ```html
 <body>
-<h1>Etape 0 - Installation et premier composant</h1>
+<h1>Wines</h1>
 
 <div id="main"></div>
 
@@ -225,7 +216,7 @@ Ajoutez un nouveau script permettant de lancer le serveur Webpack :
 
 Lancez enfin la commande `npm start` et ouvrez la page `http://localhost:8080`.
 
-Modifiez le code du composant `Todo` et observez les modifications en live dans votre navigateur !
+Modifiez le code du composant `Wine` et observez les modifications en live dans votre navigateur !
 
 ## ESLint
 
@@ -249,13 +240,15 @@ Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
   "extends": "eslint:recommended",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
   "plugins": [
     "react"
   ],
   "ecmaFeatures": {
-    "jsx": true
+    "jsx": true,
+    "modules": true
   },
   "rules": {
     "react/prop-types": 1,
@@ -266,7 +259,7 @@ Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
 * L'attribut `extends` permet d'hériter d'une configuration existante. `eslint:recommended` contient les règles recommandée par ESLint.
 * La partie `env` permet de définir quelles variables globales sont potentiellement utilisées dans le code. Ici nous ajoutons celles du navigateur et celle de node.
 * La partie `plugins` permet d'ajouter des plugins ESLint. Ici nous ajoutons le plugin React.
-* La partie `ecmaFeatures` permet de définir les options du langage Javascript supportées lors de l'analyse. Ici nous activons la syntaxe JSX.
+* La partie `ecmaFeatures` permet de définir les options du langage Javascript supportées lors de l'analyse. Ici nous activons la syntaxe JSX ainsi que les modules ES6.
 * La partie `rules` permet de définir les règles à appliquer lors de l'analyse du code. Pour plus de détails sur les règles disponibles : [https://www.npmjs.com/package/eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
 
 Il est possible d'exclure certains fichiers ou dossiers de l'analyse, grâce au fichier `.eslintignore`. Exemple :
@@ -281,6 +274,6 @@ Enfin, ajoutez un script dans le fichier `package.json` permettant d'exécuter E
 
 ```json
 "scripts": {
-  "lint": "eslint src tests"
+  "lint": "eslint src"
 }
 ```

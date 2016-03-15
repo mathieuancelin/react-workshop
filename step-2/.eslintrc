@@ -2,18 +2,16 @@
   "extends": "eslint:recommended",
   "env": {
     "browser": true,
-    "node": true,
-    "es6": true
+    "node": true
   },
   "plugins": [
     "react"
   ],
   "ecmaFeatures": {
-    "jsx": true,
-    "modules": true
+    "jsx": true
   },
   "rules": {
-    "react/display-name": 0,
+    "react/display-name": 1,
     "react/forbid-prop-types": 1,
     "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 1,
@@ -39,7 +37,7 @@
     "react/no-multi-comp": 1,
     "react/no-set-state": 1,
     "react/no-unknown-property": 1,
-    "react/prefer-es6-class": 0,
+    "react/prefer-es6-class": 1,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
     "react/require-extension": 1,
