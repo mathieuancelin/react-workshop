@@ -1,5 +1,5 @@
+import 'whatwg-fetch';
 import React from 'react';
-import Axios from 'axios';
 
 import Regions from './regions';
 import WineList from './wine-list';
@@ -17,13 +17,14 @@ const WineApp = React.createClass({
   },
 
   componentDidMount() {
-    Axios.get('http://localhost:3000/api/regions')
-      .then(response => {
+    fetch('http://localhost:3000/api/regions')
+      .then(r => r.json())
+      .then(data => {
         this.setState({
-          regions: response.data,
-          selectedRegion: response.data[0]
+          regions: data,
+          selectedRegion: data[0]
         });
-        this.loadWinesByRegion(response.data[0]);
+        this.loadWinesByRegion(data[0]);
       })
       .catch(response => {
         console.log(response);
@@ -31,11 +32,12 @@ const WineApp = React.createClass({
   },
 
   loadWinesByRegion(region) {
-    Axios.get(`http://localhost:3000/api/wines?region=${region}`)
-      .then(response => {
+    fetch(`http://localhost:3000/api/wines?region=${region}`)
+      .then(r => r.json())
+      .then(data => {
         this.setState({
-          wines: response.data,
-          selectedWine: response.data[0]
+          wines: data,
+          selectedWine: data[0]
         });
       })
       .catch(response => {
