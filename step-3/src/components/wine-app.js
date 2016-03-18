@@ -27,7 +27,7 @@ const WineApp = React.createClass({
         this.loadWinesByRegion(data[0]);
       })
       .catch(response => {
-        console.log(response);
+        console.error(response); // eslint-disable-line
       });
   },
 
@@ -41,7 +41,7 @@ const WineApp = React.createClass({
         });
       })
       .catch(response => {
-        console.log(response);
+        console.error(response); // eslint-disable-line
       });
   },
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react';
 
 const computeRegionStyle = function(region, selected) {
   let style = {
@@ -12,6 +12,12 @@ const computeRegionStyle = function(region, selected) {
 }
 
 const Regions = React.createClass({
+  propTypes: {
+    onRegionChange: PropTypes.func,
+    regions: PropTypes.arrayOf(PropTypes.string),
+    selected: PropTypes.string
+  },
+
   handleRegionClick(event) {
     this.props.onRegionChange(event.target.textContent);
   },
@@ -23,7 +29,8 @@ const Regions = React.createClass({
           this.props.regions.map(region =>
             <div key={region}
                 style={computeRegionStyle(region, this.props.selected)}
-                onClick={this.handleRegionClick}>
+                onClick={this.handleRegionClick}
+            >
               {region}
             </div>
           )

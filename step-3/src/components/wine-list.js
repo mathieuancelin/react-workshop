@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react';
 
 const computeWineStyle = function(region, selected) {
   let style = {
@@ -12,6 +12,12 @@ const computeWineStyle = function(region, selected) {
 }
 
 const WineList = React.createClass({
+  propTypes: {
+    onWineChange: PropTypes.func,
+    selected: PropTypes.string,
+    wines: PropTypes.arrayOf(PropTypes.object)
+  },
+
   handleWineClick(event) {
     let wineIndex = event.target.getAttribute('data-wineindex');
     this.props.onWineChange(this.props.wines[wineIndex]);
@@ -28,7 +34,8 @@ const WineList = React.createClass({
             <div key={wine.id}
                 data-wineindex={index}
                 style={computeWineStyle(wine, this.props.selected)}
-                onClick={this.handleWineClick}>
+                onClick={this.handleWineClick}
+            >
                 {wine.name}
             </div>
           )
