@@ -2,8 +2,7 @@ import React from 'react'
 
 const computeRegionStyle = function(region, selected) {
   let style = {
-    marginTop: 16,
-    marginBottom: 16
+    padding: 16
   };
   if (region === selected) {
     style['fontWeight'] = 'bold';
