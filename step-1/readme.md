@@ -47,6 +47,12 @@ Commencez par ajouter ces librairies au fichier package.json :
 }
 ```
 
+vous pouvez évidemment les ajouter via la ligner de commande :
+
+```
+npm install --save-dev babel-register jsdom mocha chai react-addons-test-utils
+```
+
 Ajoutez la configuration nécessaire à `babel-register` dans le fichier `.babelrc` :
 
 ```json
@@ -54,6 +60,9 @@ Ajoutez la configuration nécessaire à `babel-register` dans le fichier `.babel
   "presets": ["es2015", "react"]
 }
 ```
+
+Cette configuration est globale pour babel et sera utilisée si aucune autre configuration n'est passée aux outils babel. Ainsi vous pouvez enlever la partie configuration du `babel-loader` dans `webpack.config.js` afin que tous vos outils utilisent la même configuration babel.
+
 
 Créez un dossier `tests` dédiés aux tests unitaires de vos composants. Ecrivez ensuite le test du composant `Wine` dans un fichier `wine.spec.js`, en utilisant :
 

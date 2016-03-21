@@ -2,7 +2,18 @@
 
 ## Package.json
 
-Créez un fichier `package.json`, en déclarant les dépendances React :
+Créez un nouveau dossier pour votre application. Une fois dans ce dossier lancez la commande `npm init`.
+Répondez aux diverses questions de l'assistant afin d'initialiser votre fichier `package.json`.
+
+Une fois le fichier créé, installez les dépendances de la manière suivante :
+
+```
+npm install --save reat react-dom
+```
+
+avec cette commande, vous spécifiez à npm d'aller chercher la dernière version des paquets `react` et `react-dom` sur `npmjs.com`, de les installer en local dans le dossier `node_modules` local et de les déclarer comme dépendance dans le fichier `package.json` (via l'argument --save).
+
+Une autre possibilité est de créez un fichier `package.json` et de déclarer manuellement les dépendances React :
 
 ```json
 {
@@ -16,7 +27,7 @@ Créez un fichier `package.json`, en déclarant les dépendances React :
 }
 ```
 
-Lancez ensuite la commande `npm install` afin de télécharger localement les dépendances (elles se trouvent dans le répertoire `node_modules`)
+puis de lancer la commande `npm install` afin de télécharger localement les dépendances (elles se trouvent dans le répertoire `node_modules`)
 
 
 ## Premier componsant
@@ -133,6 +144,14 @@ Dans le fichier `package.json`, ajoutez les dépendances de développement néce
 }
 ```
 
+vous pouvez évidemment les ajouter via la ligner de commande :
+
+```
+npm install --save-dev babel-register webpack babel-loader babel-preset-es2015 babel-preset-react
+```
+
+ici l'argument `--save-dev` indique que le dépendance doit être inscrite dans les dépendances du build et non du projet lui même
+
 Créez le fichier `webpack.config.js` permettant de configurer Webpack et Babel :
 
 ```javascript
@@ -206,6 +225,9 @@ Ajoutez la dépendance à `webpack-dev-server` dans le fichier `package.json` :
     "webpack-dev-server": "1.14.0"
 }
 ```
+
+ou via la command `npm install --save-dev webpack-dev-server`
+
 Ajoutez un nouveau script permettant de lancer le serveur Webpack :
 
 ```json
@@ -232,6 +254,8 @@ Pour commencer, ajoutez les dépendances nécessaires dans le fichier `package.j
     "eslint-plugin-react": "3.11.3"
 }
 ```
+
+ou via la commande `npm install --save-dev eslint eslint-plugin-react`
 
 Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
 
