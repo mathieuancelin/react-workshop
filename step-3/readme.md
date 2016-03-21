@@ -4,7 +4,19 @@ Maintenant que notre application possède les fonctionnalités de base, nous all
 
 En effet pour le moment notre application regroupe toute les foncitonnalités dans une seul et même écran, ce qui s'avère très pratique d'un point de vue technique mais qui n'est pas génial d'un point de vue utilisateur.
 
-Nous allons donc découper notre application en 3 écrans successifs, permettant de choisir la region d'un vin, puis le vin a consulter et enfin la fiche de consultation du vin. Ici chaque sélection entrainera la navigation jusqu'à l'écran suivant, etc ...
+Nous allons donc découper notre application en 3 écrans successifs, permettant de choisir la region d'un vin,
+
+![View 1](https://raw.githubusercontent.com/mathieuancelin/react-workshop/master/step-3/view1.png)
+
+puis le vin a consulter
+
+![View 2](https://raw.githubusercontent.com/mathieuancelin/react-workshop/master/step-3/view2.png)
+
+et enfin la fiche de consultation du vin.
+
+![View 3](https://raw.githubusercontent.com/mathieuancelin/react-workshop/master/step-3/view3.png)
+
+Ici chaque sélection entrainera la navigation jusqu'à l'écran suivant, etc ...
 
 Mais comme nous sommes dans un contexte frontend et que nous ne sommes pas la pour coder du backend, nous allons développer tout ca sous forme d'une SPA (single page application).
 
