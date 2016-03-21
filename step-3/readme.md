@@ -14,7 +14,7 @@ Il va donc nous falloir un moyen de router l'utilisateur à travers divers écra
 
 Un moyen simple pourrait être d'avoir un composant technique au plus haut niveau de notre application pour gérer la navigation. Ce composant gérerait la pile d'appel et la vue courante dans son `state` et proposerai une API pour être piloté depuis les diverses vues.
 
-Par exemple :
+Par exemple, nous pourrions définir un composant comme suivant :
 
 ```javascript
 const Navigator = React.createElement({
@@ -83,3 +83,94 @@ ReactDOM.render(
   document.getElementById('main')
 );
 ```
+
+Cependant, ce genre d'approche a l'inconvénient de perdre la navigation courante lorsque l'on recharge la page. Du coup il existe de meilleures solutions, notamment, [React Router](https://github.com/reactjs/react-router) que nous allons utiliser pour gérer la navigation de notre application.
+
+Commençons par ajouter une dépendance pour `react-router` dans l'application.
+
+Dans le fichier `package.json` ajoutez la dépendance suivante :
+
+```json
+"dependencies": {
+    ...
+    "react-router": "^2.0.1",
+    ...
+}
+```
+
+vous pouvez évidemment l'ajouter via la ligner de commande :
+
+```
+npm install --save react-router
+```
+
+Maintenant nous pouvons commencer l'intégration du router. Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importont les APIs dans `app.js`
+
+```javascript
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+```
+
+l'initialisation du routeur se fera de la façon suivante :
+
+```javascript
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import NotFound from './components/not-found';
+
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path="/" component={???}>
+      <IndexRoute component={???} />
+      ...
+      <Route path="*" component={NotFound} />
+    </Route>
+  </Router>,
+  document.getElementById('main')
+);
+```
+
+Ici nous configurons le routeur pour utiliser les ancres du navigateur comme URL de routage côté client (`history={hashHistory}`) puis nous spécifions un container qui aura le role d'afficher la vue courante du router et qui sera le point d'entrée de l'application. D'après le tutorial de `react-router`, ce genre de composant peut s'écrire de la façon suivante :
+
+```javascript
+const App = React.createClass({
+  render() {
+    return (
+      <div>
+        <h1>App</h1>
+        {this.props.children}
+      </div>
+    )
+  }
+});
+```
+
+ensuite nous spécifions la vue à afficher sur pour une navigation vers `/` (`<IndexRoute component={???} />`) et enfin nous spécifions une route permettant d'attraper tous les appels n'ayant pu être routés (`<Route path="*" component={NotFound} />`).
+
+Pour notre application, nous vous proposons de respecter les schéma d'url suivant :
+
+* / => vue des régions
+* /regions/:regionId => vue des vins de la région
+* /regions/:regionId/wines/:wineId => vue du vin selectionné
+
+Ce routage est défini dans le routeur via l'utilisation du composant
+
+```javascript
+<Route path="/mon/path" component={MonComponent} />
+```
+
+Pour passer des paramètres aux routes et les récupérer, vous pouvez déclarer vos routes comme ceci
+
+```javascript
+<Route path="/mon/path/:monId" component={MonComponent} />
+
+const MonComponent = React.createClass({
+  render() {
+    return (
+      <div>Valeur de monId: {this.props.params.monId}</div>
+    );
+  }
+})
+```
+
+enfin vous pouvez créer des liens en utilisant l'API `<Link to="/mon/path/1234">Chose 1234</Link>` de `react-router`.
+
+A vous de jouer ;-)
