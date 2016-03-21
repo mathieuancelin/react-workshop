@@ -1,6 +1,7 @@
 /* eslint react/no-multi-comp: 0, react/jsx-max-props-per-line: 0 */
 
 import React, { PropTypes } from 'react';
+import { Comments } from './comments';
 
 const Styles = {
   Card: {
@@ -84,7 +85,7 @@ export const Wine = React.createClass({
           <div style={Styles.Info}>
             <span style={Styles.Label}>Cépages</span>{wine.grapes.join(', ')}
           </div>
-          <div style={Object.assign({}, Styles.Info, { marginTop: 40 })}>
+          <div style={Object.assign({}, Styles.Info, { marginTop: 40 })}>
             <span onClick={this.props.onToggleLike} style={liked ? Styles.Liked : Styles.Like}>{liked ? 'unlike' : 'like'}</span>
           </div>
       </div>
@@ -159,7 +160,10 @@ export const WinePage = React.createClass({
       return <div>Error while fetching wines : {this.state.error.message}</div>
     }
     return (
-      <Wine wine={this.state.wine} liked={this.state.liked} onToggleLike={this.handleToggleLike} />
+      <div>
+        <Wine wine={this.state.wine} liked={this.state.liked} onToggleLike={this.handleToggleLike} />
+        <Comments wineId={this.state.wine.id} />
+      </div>
     );
   }
 });
