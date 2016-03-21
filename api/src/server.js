@@ -98,6 +98,48 @@ app.get('/api/wines', function (req, res) {
 });
 
 /**
+ * @api {get} /likes
+ * @apiName Count likes
+ * @apiGroup Likes
+ * @apiSampleRequest /api/likes
+ *
+ * @apiSuccess {Number}   count                     The number of likes across all wines
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "count": 42
+ *     }
+ */
+app.get('/api/likes', function (req, res) {
+  res.send({ count: likes.length });
+});
+
+/**
+ * @api {get} /comments
+ * @apiName Comments likes
+ * @apiGroup Comments
+ * @apiSampleRequest /api/comments
+ *
+ * @apiSuccess {Number}   count                     The number of comments across all wines
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "count": 42
+ *     }
+ */
+app.get('/api/comments', function (req, res) {
+  var count = 0;
+  for (var key in comments) {
+    for (var idx in comment[key]) {
+      count += 1;
+    }
+  }
+  res.send({ count: count });
+});
+
+/**
  * @api {get} /wines/:id By Id
  * @apiName By Id
  * @apiGroup Wines
