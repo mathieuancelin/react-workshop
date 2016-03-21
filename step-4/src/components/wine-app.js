@@ -6,6 +6,10 @@ const WineApp = React.createClass({
     children: PropTypes.element
   },
 
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
   getInitialState() {
     return {
       title: ''
@@ -16,11 +20,15 @@ const WineApp = React.createClass({
     this.setState({ title });
   },
 
+  goBack() {
+    this.context.router.goBack();
+  },
+
   render () {
     return (
       <div className="grid">
           <div className="1/2 grid__cell">
-            <h2>{this.state.title}</h2>
+            <h2>{this.state.title} <button type="button" onClick={this.goBack}>back</button></h2>
             {this.props.children && React.cloneElement(this.props.children, {
               setTitle: this.setTitle
             })}
