@@ -195,7 +195,9 @@ const MonComponent = React.createClass({
 enfin vous pouvez créer des liens en utilisant l'API
 
 ```javascript
-<Link to="/mon/path/1234">Chose 1234</Link>` de `react-router
+<Link to="/mon/path/1234">Chose 1234</Link>
 ```
+
+de `react-router`
 
 A vous de jouer ;-)
