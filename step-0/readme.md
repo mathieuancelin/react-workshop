@@ -2,7 +2,18 @@
 
 ## Package.json
 
-Créez un fichier `package.json`, en déclarant les dépendances React :
+Créez un nouveau dossier pour votre application. Une fois dans ce dossier lancez la commande `npm init`.
+Répondez aux diverses questions de l'assistant afin d'initialiser votre fichier `package.json`.
+
+Une fois le fichier créé, installez les dépendances de la manière suivante :
+
+```
+npm install --save reat react-dom
+```
+
+avec cette commande, vous spécifiez à npm d'aller chercher la dernière version des paquets `react` et `react-dom` sur `npmjs.com`, de les installer en local dans le dossier `node_modules` local et de les déclarer comme dépendance dans le fichier `package.json` (via l'argument --save).
+
+Une autre possibilité est de créez un fichier `package.json` et de déclarer manuellement les dépendances React :
 
 ```json
 {
@@ -16,7 +27,7 @@ Créez un fichier `package.json`, en déclarant les dépendances React :
 }
 ```
 
-Lancez ensuite la commande `npm install` afin de télécharger localement les dépendances (elles se trouvent dans le répertoire `node_modules`)
+puis de lancer la commande `npm install` afin de télécharger localement les dépendances (elles se trouvent dans le répertoire `node_modules`)
 
 
 ## Premier componsant
