@@ -128,7 +128,19 @@ ReactDOM.render(
 );
 ```
 
-Ici nous configurons le routeur pour utiliser les ancres du navigateur comme URL de routage côté client (`history={hashHistory}`) puis nous spécifions un container qui aura le role d'afficher la vue courante du router et qui sera le point d'entrée de l'application. D'après le tutorial de `react-router`, ce genre de composant peut s'écrire de la façon suivante :
+Ici nous configurons le routeur pour utiliser les ancres du navigateur comme URL de routage côté client
+
+```javascript
+<Router history={hashHistory}> ... </Router>
+```
+
+puis nous spécifions un container qui aura le role d'afficher la vue courante du router et qui sera le point d'entrée de l'application.
+
+```javascript
+<Route path="/" component={???}> ... </Route>
+```
+
+D'après le tutorial de `react-router`, ce genre de composant peut s'écrire de la façon suivante :
 
 ```javascript
 const App = React.createClass({
@@ -143,7 +155,16 @@ const App = React.createClass({
 });
 ```
 
-ensuite nous spécifions la vue à afficher sur pour une navigation vers `/` (`<IndexRoute component={???} />`) et enfin nous spécifions une route permettant d'attraper tous les appels n'ayant pu être routés (`<Route path="*" component={NotFound} />`).
+ensuite nous spécifions la vue à afficher sur pour une navigation vers `/`
+```javascript
+<IndexRoute component={???} />
+```
+
+et enfin nous spécifions une route permettant d'attraper tous les appels n'ayant pu être routés
+
+```javascript
+<Route path="*" component={NotFound} />
+```
 
 Pour notre application, nous vous proposons de respecter les schéma d'url suivant :
 
@@ -171,6 +192,10 @@ const MonComponent = React.createClass({
 })
 ```
 
-enfin vous pouvez créer des liens en utilisant l'API `<Link to="/mon/path/1234">Chose 1234</Link>` de `react-router`.
+enfin vous pouvez créer des liens en utilisant l'API
+
+```javascript
+<Link to="/mon/path/1234">Chose 1234</Link>` de `react-router
+```
 
 A vous de jouer ;-)
