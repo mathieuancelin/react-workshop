@@ -112,7 +112,7 @@ app.get('/api/wines', function (req, res) {
  *     }
  */
 app.get('/api/likes', function (req, res) {
-  res.send({ count: likes.length });
+  res.send({ count: Likes.length });
 });
 
 /**
@@ -131,8 +131,8 @@ app.get('/api/likes', function (req, res) {
  */
 app.get('/api/comments', function (req, res) {
   var count = 0;
-  for (var key in comments) {
-    for (var idx in comment[key]) {
+  for (var key in Comments) {
+    for (var idx in Comments[key]) {
       count += 1;
     }
   }

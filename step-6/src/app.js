@@ -13,14 +13,31 @@ import { NotFound } from './components/not-found';
 
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import app from './reducers';
+import { setLikes, setComments } from './actions';
+
+const store = createStore(app);
+
+fetch(`http://localhost:3000/api/likes`)
+  .then(r => r.json())
+  .then(r => store.dispatch(setLikes(r.count)));
+
+fetch(`http://localhost:3000/api/comments`)
+  .then(r => r.json())
+  .then(r => store.dispatch(setComments(r.count)));
+
 ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route path="/" component={WineApp}>
-      <IndexRoute component={RegionsPage} />
-      <Route path="regions/:regionId" component={WineListPage} />
-      <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={hashHistory}>
+      <Route path="/" component={WineApp}>
+        <IndexRoute component={RegionsPage} />
+        <Route path="regions/:regionId" component={WineListPage} />
+        <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
+        <Route path="*" component={NotFound} />
+      </Route>
+    </Router>
+  </Provider>
   , document.getElementById('main')
 );

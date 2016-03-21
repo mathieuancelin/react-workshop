@@ -3,6 +3,9 @@
 import React, { PropTypes } from 'react';
 import { Comments } from './comments';
 
+import { connect } from 'react-redux';
+import { addLike, removeLike } from '../actions';
+
 const Styles = {
   Card: {
     padding: 8,
@@ -93,9 +96,10 @@ export const Wine = React.createClass({
   }
 });
 
-export const WinePage = React.createClass({
+export const WinePage = connect()(React.createClass({
 
   propTypes: {
+    dispatch: PropTypes.func.isRequired,
     history: PropTypes.shape({
       push: PropTypes.func.isRequired
     }),
@@ -136,6 +140,11 @@ export const WinePage = React.createClass({
 
   handleToggleLike() {
     const old = this.state.liked;
+    if (old) {
+      this.props.dispatch(removeLike());
+    } else {
+      this.props.dispatch(addLike());
+    }
     this.setState({ liked: !old });
     fetch(`http://localhost:3000/api/wines/${this.props.params.wineId}/like`, {
         method: 'post',
@@ -166,4 +175,4 @@ export const WinePage = React.createClass({
       </div>
     );
   }
-});
+}));

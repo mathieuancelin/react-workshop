@@ -1,6 +1,8 @@
 /* eslint react/no-multi-comp: 0, react/jsx-max-props-per-line: 0 */
 
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { addComment } from '../actions';
 
 export const Comment = React.createClass({
   render() {
@@ -10,9 +12,10 @@ export const Comment = React.createClass({
   }
 });
 
-export const Comments = React.createClass({
+export const Comments = connect()(React.createClass({
 
   propTypes: {
+    dispatch: PropTypes.func.isRequired,
     wineId: PropTypes.string.isRequired
   },
 
@@ -63,6 +66,7 @@ export const Comments = React.createClass({
       })
       .then(() => {
         this.updateComments();
+        this.props.dispatch(addComment());
         this.setState({ commentTitle: '', commentBody: '' });
       })
       .catch(error => {
@@ -106,4 +110,4 @@ export const Comments = React.createClass({
       </div>
     );
   }
-});
+}));
