@@ -87,7 +87,6 @@ export const WineListPage = React.createClass({
   },
 
   render () {
-    console.log(this.context);
     if (!this.state.loaded) {
       return <div>Loading ...</div>
     }
