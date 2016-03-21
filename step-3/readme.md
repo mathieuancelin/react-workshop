@@ -212,4 +212,14 @@ enfin vous pouvez créer des liens en utilisant l'API
 
 de `react-router`
 
+Un dernier petit conseil, vos composants existent déjà et sont idiot. Ce qui veut dire qu'ils n'ont pas d'état propre, et fonctionnent uniquement via les propriétés qui leur sont passés. Autrement dit, ce sont des composants stateless.
+
+Ce genre d'approche est plutôt intéressante car elle permet de bien séparer ce genre de composants des composants intelligent qui eux sont souvent stateful et technique sans forcément produire des éléments graphiques. (voir cet article sur le sujet)[https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.d5m6d6pbj]
+
+Dans le cadre de notre application, il serait intéressant de garder nos composants graphiques simple tel qu'ils sont, et les wrapper dans des composants intelligent qui se chargeront des appels HTTP et de la gestion de l'état
+
+* RegionsPage => Regions
+* WinelistPage => Winelist
+* WinePage => Wine
+
 A vous de jouer ;-)
