@@ -1,3 +1,5 @@
+/* eslint react/no-multi-comp: 0 */
+
 import React, { PropTypes } from 'react';
 
 const Styles = {
@@ -27,11 +29,70 @@ const Styles = {
   }
 };
 
-const Wine = React.createClass({
+export const Wine = React.createClass({
+  propTypes: {
+    wine: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      type: PropTypes.oneOf(['Rouge', 'Blanc', 'Rosé', 'Effervescent', 'Moelleux']),
+      appellation: PropTypes.shape({
+        name: PropTypes.string,
+        region: PropTypes.string
+      }),
+      grapes: PropTypes.arrayOf(PropTypes.string)
+    })
+  },
+
+  render() {
+    let wine = this.props.wine;
+    if (!wine) {
+      return <div>No information</div>
+    }
+    return (
+      <div style={Styles.Card}>
+          <img style={Styles.Image}
+              src={`http://localhost:3000/api/wines/${wine.id}/image`}
+          />
+          <div style={Styles.Title}>{wine.name}</div>
+          <div style={Styles.Info}>
+            <span style={Styles.Label}>Type</span>{wine.type}
+          </div>
+          <div style={Styles.Info}>
+            <span style={Styles.Label}>Région</span>{wine.appellation.region}
+          </div>
+          <div style={Styles.Info}>
+            <span style={Styles.Label}>Appellation</span>{wine.appellation.name}
+          </div>
+          <div style={Styles.Info}>
+            <span style={Styles.Label}>Cépages</span>{wine.grapes.join(', ')}
+          </div>
+      </div>
+    )
+  }
+});
+
+export const WinePage = React.createClass({
+
+  propTypes: {
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }),
+    params: PropTypes.shape({
+      regionId: PropTypes.string.isRequired,
+      wineId: PropTypes.string.isRequired
+    }),
+    setTitle: PropTypes.func
+  },
+
+  contextTypes: {
+    router: React.PropTypes.object
+  },
 
   getInitialState() {
     return {
       wine: undefined,
+      loaded: false,
+      error: null
     };
   },
 
@@ -39,39 +100,23 @@ const Wine = React.createClass({
     fetch(`http://localhost:3000/api/wines/${this.props.params.wineId}`)
       .then(r => r.json())
       .then(data => {
-        this.setState({ wine: data });
+        this.setState({ wine: data, loaded: true });
+        this.props.setTitle(data.name);
       })
-      .catch(response => {
-        console.error(response); // eslint-disable-line
+      .catch(error => {
+        this.setState({ error, loaded: true });
       });
   },
 
   render() {
-    const { wine } = this.state;
-    if (!wine) {
+    if (!this.state.loaded) {
       return <div>Loading ...</div>
     }
+    if (this.state.error) {
+      return <div>Error while fetching wines : {this.state.error.message}</div>
+    }
     return (
-      <div style={Styles.Card}>
-        <img style={Styles.Image}
-            src={`http://localhost:3000/api/wines/${wine.id}/image`}
-        />
-        <div style={Styles.Title}>{wine.name}</div>
-        <div style={Styles.Info}>
-          <span style={Styles.Label}>Type</span>{wine.type}
-        </div>
-        <div style={Styles.Info}>
-          <span style={Styles.Label}>Région</span>{wine.appellation.region}
-        </div>
-        <div style={Styles.Info}>
-          <span style={Styles.Label}>Appellation</span>{wine.appellation.name}
-        </div>
-        <div style={Styles.Info}>
-          <span style={Styles.Label}>Cépages</span>{wine.grapes.join(', ')}
-        </div>
-      </div>
-    )
+      <Wine wine={this.state.wine} />
+    );
   }
 });
-
-export default Wine;

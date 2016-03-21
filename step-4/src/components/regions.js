@@ -1,10 +1,11 @@
+/* eslint react/jsx-no-bind: 0, react/no-multi-comp: 0, react/jsx-closing-bracket-location: 0 */
+
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 
 const computeRegionStyle = function(region, selected) {
   let style = {
     padding: 16,
-    cursor: 'pointer',
+    cursor: 'pointer'
   };
   if (region === selected) {
     style['fontWeight'] = 'bold';
@@ -13,11 +14,51 @@ const computeRegionStyle = function(region, selected) {
   return style;
 }
 
-const Regions = React.createClass({
+export const Regions = React.createClass({
+  propTypes: {
+    onRegionChange: PropTypes.func,
+    regions: PropTypes.arrayOf(PropTypes.string)
+  },
+
+  handleRegionClick(event) {
+    this.props.onRegionChange(event.target.textContent);
+  },
+
+  render () {
+    return (
+      <div>
+        {
+          this.props.regions.map(region =>
+            <div key={region}
+                style={computeRegionStyle(region, null)}
+                onClick={this.handleRegionClick}>
+              {region}
+            </div>
+          )
+        }
+      </div>
+    )
+  }
+});
+
+export const RegionsPage = React.createClass({
+
+  propTypes: {
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }),
+    setTitle: PropTypes.func
+  },
+
+  contextTypes: {
+    router: React.PropTypes.object
+  },
 
   getInitialState() {
     return {
-      regions: []
+      regions: [],
+      loaded: false,
+      error: null
     };
   },
 
@@ -25,27 +66,30 @@ const Regions = React.createClass({
     fetch('http://localhost:3000/api/regions')
       .then(r => r.json())
       .then(data => {
-        this.setState({ regions: data });
+        this.setState({ regions: data, loaded: true });
+        this.props.setTitle(`Regions`);
       })
-      .catch(response => {
-        console.error(response); // eslint-disable-line
+      .catch(error => {
+        this.setState({ error, loaded: true });
       });
   },
 
-  render () {
-    return (
-      <div>
-        {
-          this.state.regions.map(region =>
-            <div key={region}
-                style={computeRegionStyle(region, this.props.selected)}>
-              <Link to={`/regions/${region}`}>{region}</Link>
-            </div>
-          )
-        }
-      </div>
-    )
-  }
-})
+  handleNavigateToRegion(region) {
+    this.context.router.push({
+      pathname: `/regions/${region}`
+    });
+  },
 
-export default Regions
+  render () {
+    if (!this.state.loaded) {
+      return <div>Loading ...</div>
+    }
+    if (this.state.error) {
+      return <div>Error while fetching regions : {this.state.error.message}</div>
+    }
+    return (
+      <Regions regions={this.state.regions}
+          onRegionChange={this.handleNavigateToRegion} />
+    );
+  }
+});
