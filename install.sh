@@ -17,6 +17,7 @@ do
 done
 
 cd "$APP_PATH/api"
+echo "fetching dependencies for the Wine API"
 npm install
 
 cd "$APP_PATH"

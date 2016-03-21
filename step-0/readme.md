@@ -144,6 +144,14 @@ Dans le fichier `package.json`, ajoutez les dépendances de développement néce
 }
 ```
 
+vous pouvez évidemment les ajouter via la ligner de commande :
+
+```
+npm install --save-dev babel-register webpack babel-loader babel-preset-es2015 babel-preset-react
+```
+
+ici l'argument `--save-dev` indique que le dépendance doit être inscrite dans les dépendances du build et non du projet lui même
+
 Créez le fichier `webpack.config.js` permettant de configurer Webpack et Babel :
 
 ```javascript
@@ -217,6 +225,9 @@ Ajoutez la dépendance à `webpack-dev-server` dans le fichier `package.json` :
     "webpack-dev-server": "1.14.0"
 }
 ```
+
+ou via la command `npm install --save-dev webpack-dev-server`
+
 Ajoutez un nouveau script permettant de lancer le serveur Webpack :
 
 ```json
@@ -243,6 +254,8 @@ Pour commencer, ajoutez les dépendances nécessaires dans le fichier `package.j
     "eslint-plugin-react": "3.11.3"
 }
 ```
+
+ou via la commande `npm install --save-dev eslint eslint-plugin-react`
 
 Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
 
