@@ -2,7 +2,7 @@
 
 APP_PATH=`pwd`
 
-STEPS=`find . -type d -name "step-*"`
+STEPS=`find $APP_PATH -type d -name "step-*"`
 
 for item in ${STEPS[*]}
 do
@@ -19,4 +19,4 @@ done
 cd "$APP_PATH/api"
 npm install
 
-cd "$item"
+cd "$APP_PATH"
