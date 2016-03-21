@@ -22,6 +22,12 @@ Commencez par ajouter ces librairies au fichier package.json :
 }
 ```
 
+vous pouvez évidemment les ajouter via la ligner de commande :
+
+```
+npm install --save-dev babel-register jsdom mocha chai react-addons-test-utils
+```
+
 Ajoutez la configuration nécessaire à `babel-register` dans le fichier `.babelrc` :
 
 ```json
