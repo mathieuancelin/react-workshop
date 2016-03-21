@@ -8,8 +8,15 @@ for item in ${STEPS[*]}
 do
   if [ -f "$item/package.json" ];
   then
+    cd "$item"
+    echo "fetching dependencies for $item"
     npm install
   else
     echo "nothing to do for $item"
   fi
 done
+
+cd "$APP_PATH/api"
+npm install
+
+cd "$item"
