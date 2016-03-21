@@ -69,6 +69,9 @@ Afin de disposer d'outils spécifiques à React dans votre navigateur web, insta
 * [React Developer Tools pour Google Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 * [React Developer Tools pour Mozilla Firefox](https://addons.mozilla.org/fr/firefox/addon/react-devtools/)
 
+## Pré-installer les dépendances
+
+Pour pré-installer les dépendances NPM à l'avance, vous pouvez lancer le script `install.sh` qui lancera les commandes `npm install` dans les différentes étapes du workshop.
 
 ## API
 

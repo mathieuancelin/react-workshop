@@ -36,6 +36,8 @@ Ajoutez la configuration nécessaire à `babel-register` dans le fichier `.babel
 }
 ```
 
+Cette configuration est globale pour babel et sera utilisée si aucune autre configuration n'est passée aux outils babel. Ainsi vous pouvez enlever la partie configuration du `babel-loader` dans `webpack.config.js` afin que tous vos outils utilisent la même configuration babel.
+
 Ecrivez ensuite le test du composant `Todo`, en utilisant :
 
 * la syntaxe Mocha pour décrire le test,
