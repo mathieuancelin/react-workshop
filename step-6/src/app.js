@@ -18,6 +18,8 @@ import { createStore } from 'redux';
 import app from './reducers';
 import { setLikes, setComments } from './actions';
 
+// http://redux.js.org/docs/basics/ExampleTodoList.html
+
 const store = createStore(app);
 
 fetch(`http://localhost:3000/api/likes`)

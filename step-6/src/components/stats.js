@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-export const Global = React.createClass({
+export const Stats = React.createClass({
   propTypes: {
     comments: PropTypes.number.isRequired,
     likes: PropTypes.number.isRequired
@@ -9,7 +9,7 @@ export const Global = React.createClass({
 
   render() {
     return (
-      <div className="1/2 grid__cell">
+      <div>
         <h2>Global stats</h2>
         <div>comments : {this.props.comments}</div>
         <div>likes : {this.props.likes}</div>
@@ -25,4 +25,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export const GlobalBar = connect(mapStateToProps)(Global);
+export const GlobalStats = connect(mapStateToProps)(Stats);

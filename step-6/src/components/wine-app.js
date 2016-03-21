@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { GlobalBar } from './global';
+import { GlobalStats } from './stats';
 
 const WineApp = React.createClass({
 
@@ -21,7 +21,7 @@ const WineApp = React.createClass({
     this.setState({ title });
   },
 
-  goBack() {
+  handleGoBack() {
     this.context.router.goBack();
   },
 
@@ -30,12 +30,19 @@ const WineApp = React.createClass({
       <div>
         <div className="grid">
             <div className="1/2 grid__cell">
-              <h2>{this.state.title} <button type="button" onClick={this.goBack}>back</button></h2>
+              <h2>
+                  {this.state.title}
+                  <button
+                      type="button"
+                      onClick={this.handleGoBack}>back</button>
+              </h2>
               {this.props.children && React.cloneElement(this.props.children, {
                 setTitle: this.setTitle
               })}
             </div>
-            <GlobalBar />
+            <div className="1/2 grid__cell">
+              <GlobalStats />
+            </div>
         </div>
       </div>
     );
