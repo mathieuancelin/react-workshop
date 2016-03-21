@@ -98,30 +98,37 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
     * eslint
   * Création du premier composant React
 * [Etape 1](/step-1)
-  * observation du premier composant (si step 0 bypassé)
-  * ajout de tests sur le composant (mocha, chai, react-test-utils, jsdom)
-* TODO: step 2
-  * utilisation de l'api
-    * recherche, liste, détails
-  * création de composants et composition sans librairie
-  * introduction aux concepts react
-    * penser découpage composants
-    * proptypes, createClass, etc ...
-    * dumb components vs smart component
-* TODO: step 3
-  * introduction de react-router => spa
-    * refactoring
-* TODO: step 4
-  * ajout de features
-    * like
-    * commentaires
-    * ...
-* TODO: step 5
-  * introduction de redux
-    * refactoring
-* TODO: step 6
-  * nouveaux patterns
-    * classes
+  * Ajout de tests unitaires sur le composant créé à l'étape 0
+    * react-test-utils
+    * mocha
+    * chai
+    * jsdom
+* [Etape 2](/step-2)
+  * Création d'une application React basique
+    * Découpage en composants
+    * Interactions entre composants
+    * Utilisation du `state`
+  * Utilisation de l'API (Appels AJAX)
+    * Liste des régions viticoles,
+    * Liste des vins d'une région
+    * Détail d'un vin
+  * Bonnes pratiques React
+    * PropTypes
+    * "Dumb components" vs "Smart components"
+* [Etape 3](/step-3)
+  * Single Page Applications
+  * Introduction à react-router
+  * Refactoring de l'étape 2 pour obtenir une SPA
+* [Etape 4](/step-4)
+  * Ajout de fonctionnalités
+    * Aimer un vin
+    * Ajouter un commentaire
+* [Etape 5](/step-5)
+  * Introduction à redux
+  * Refactoring de l'étape 4 avec redux
+* [Etape 6](/step-6)
+  * Nouveaux patterns React
+    * Classes
     * HOC
-    * stateless components
-    * contexts
+    * Stateless components
+    * Contexts
