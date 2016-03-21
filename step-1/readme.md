@@ -1,8 +1,33 @@
 # Etape 1 - Testing
 
-Les tests unitaires sont primordiaux dans le développement. Ils ne doivent en aucun cas être négligés, c'est pourquoi nous les introduisons dès l'étape 0 du workshop.
+## Pré-requis
 
-L'objectif est de mettre en place le test unitaire du composant `Todo`. Pour cela, nous allons nous appuyer sur les librairies suivantes :
+L'étape 0 du workshop a permis de développer un composant React basique `Wine` :
+
+```javascript
+const Wine = React.createClass({
+  propTypes: {
+    name: React.PropTypes.string
+  },
+
+  render() {
+    return (
+      <div style={WineStyle}>
+          {this.props.name}
+      </div>
+    );
+  }
+});
+```
+
+Le code disponible ici correspond au résultat attendu de l'étape 0. L'objectif de l'étape 1 est de le compléter pour ajouter le test unitaire du composant `Wine`.
+
+
+## Test unitaire
+
+Les tests unitaires sont primordiaux dans le développement. Ils ne doivent en aucun cas être négligés, c'est pourquoi nous les introduisons dès le début du workshop.
+
+L'objectif est de mettre en place le test unitaire du composant `Wine`. Pour cela, nous allons nous appuyer sur les librairies suivantes :
 
 * [react-addons-test-utils](https://facebook.github.io/react/docs/test-utils.html) : addon React facilitant les tests de composants React.
 * [jsdom](https://github.com/tmpvar/jsdom) : librairie implémentant les standards DOM et HTML, qui permettra de créer un document HTML dans lequel faire le rendu des componsants à tester.
@@ -30,38 +55,77 @@ Ajoutez la configuration nécessaire à `babel-register` dans le fichier `.babel
 }
 ```
 
-Ecrivez ensuite le test du composant `Todo`, en utilisant :
+Créez un dossier `tests` dédiés aux tests unitaires de vos composants. Ecrivez ensuite le test du composant `Wine` dans un fichier `wine.spec.js`, en utilisant :
 
 * la syntaxe Mocha pour décrire le test,
-* ReactTestUtils pour effectuer le rendu et parcourir l'arbre DOM du composant `Todo`,
+* ReactTestUtils pour effectuer le rendu et parcourir l'arbre DOM du composant `Wine`,
 * Chai pour vérifier le texte affiché.
 
 ```javascript
-var React = require('react');
-var ReactTestUtils = require('react-addons-test-utils');
-var chai = require('chai');
-var expect = chai.expect;
+import React from 'react';
+import { expect } from 'chai';
+import ReactTestUtils from 'react-addons-test-utils';
 
-var Todo = require('../../src/components/todo');
+import Wine from '../../src/components/wine';
 
-describe('Todo', function() {
-  it('affiche le texte de la tâche', function() {
-    var todo = ReactTestUtils.renderIntoDocument(<Todo text="Un Todo de test..."/>);
-    var div = ReactTestUtils.findRenderedDOMComponentWithTag(todo, 'div');
-    expect(div.textContent).to.be.equal('Un Todo de test...');
+describe('Wine', () => {
+  it('affiche le nom du vin', () => {
+    const wine = ReactTestUtils.renderIntoDocument(<Wine name="Un bon Bourgogne" />);
+    const div = ReactTestUtils.findRenderedDOMComponentWithTag(wine, 'div');
+    expect(div.textContent).to.be.equal('Un bon Bourgogne');
   });
 });
 ```
 
-Regardez également les fichiers suivants :
+Pour s'exécuter correctement, le test précédent nécessite de disposer globalement des objets `window` et `window.document`, ainsi que de la fonction `window.document.createElement`.
+Pour cela, créez un fichier `bootstrap.js` qui se base sur la librairie `jsdom` pour créer l'environnement DOM nécessaire au bon fonctionnement de ReactTestUtils.
 
-* `bootstrap.js` : fichier permettant de créer le contexte nécessaire au fonctionnement de ReactTestUtils.
-* `index.js` : point d'entrée permettant d'exécuter l'ensemble des tests unitaires.
+```javascript
+import jsdom from 'jsdom';
+
+export function bootstrapEnv(body = '') {
+  const doc = jsdom.jsdom(`<!doctype html><html><body>${body}</body></html>`);
+  const win = doc.defaultView;
+  function propagateToGlobal(window) {
+    for (const key in window) {
+      if (!window.hasOwnProperty(key)) continue;
+      if (key in global) continue;
+      global[key] = window[key];
+    }
+  }
+  global.document = doc;
+  global.window = win;
+  propagateToGlobal(win);
+  console.log('\nENV setup is done !!!');
+}
+```
+
+Créez enfin un fichier `index.js`, point d'entrée permettant d'exécuter l'ensemble des tests unitaires :
+
+```javascript
+import { bootstrapEnv } from './bootstrap';
+
+bootstrapEnv();
+
+const tests = [
+  require('./components/wine.spec.js')
+];
+```
+
+## Exécution des tests via NPM
 
 Ajoutez un nouveau script dans le fichier `package.json` permettant de lancer les tests à l'aide de la commande `npm test` :
 
 ```json
 "scripts": {
     "test": "mocha --compilers js:babel-register tests/index.js"
+}
+```
+
+Vous pouvez également préciser à ESLint qu'il doit désormais également traiter le dossier `tests` :
+
+```json
+"scripts": {
+    "lint": "eslint src tests"
 }
 ```

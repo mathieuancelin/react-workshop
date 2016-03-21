@@ -1,18 +1,19 @@
-var jsdom = require('jsdom');
+/* eslint no-console: 0 */
 
-module.exports = function bootstrap() {
-  var doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
-  var win = doc.defaultView;
+import jsdom from 'jsdom';
 
+export function bootstrapEnv(body = '') {
+  const doc = jsdom.jsdom(`<!doctype html><html><body>${body}</body></html>`);
+  const win = doc.defaultView;
   function propagateToGlobal(window) {
-    for (var key in window) {
+    for (const key in window) {
       if (!window.hasOwnProperty(key)) continue;
       if (key in global) continue;
       global[key] = window[key];
     }
   }
-
   global.document = doc;
   global.window = win;
   propagateToGlobal(win);
+  console.log('\nENV setup is done !!!');
 }
