@@ -55,3 +55,111 @@ store.dispatch({ type: 'DECREMENT' })
 ```
 
 Il est bien évidemment possible d'avoir plusieurs `reducers`, ou de faire en sorte qu'un reducer ne soit en charge que d'une partie de l'état global, etc ...
+
+Pour plus de détails et explications sur Redux, vous pouvez consulter la [documentation de la librairie](http://redux.js.org/index.html) qui est très bien faite.
+
+## Mise en pratique
+
+Commencez par installer redux et react-redux, dans le fichier `package.json` ajoutez la dépendance suivante :
+
+```json
+"dependencies": {
+    ...
+    "react-redux": "4.4.1",
+    "redux": "3.3.1",
+    ...
+}
+```
+
+ou via la ligne de commande
+
+```
+npm install --save redux react-redux
+```
+
+Dans le cadre de notre application, nous allons afficher des informations statistiques globales concernant notre application. A savoir le nombre global de likes et le nombre global de commentaire. Ces données serons mises a jour en temps réel.
+
+L'état de notre application contenu dans un store `redux` sera le suivant
+
+```json
+{
+  "comments": 42,
+  "likes": 42
+}
+```
+
+Nous allons donc avoir besoin de deux reducers chacun gérant respectivement le compteur de commentaires et le compteur de likes.
+
+Nous allons également avoir besoin d'actions permettant de muter notre état applicatif.
+
+Globalement, pour chacun des compteur nous avons besoin d'une action initial qui sera lancée après un appel HTTP et qui changera l'état pour lui donner une valeur initiale prevenant du serveur. Ensuite nous aurons besoin d'une action permettant d'incrémenter le compteur et d'une action permettant de décrémenter le compteur.
+
+Vous pouvez maintenant implémenter toutes vos actions dans un fichier `src/actions/index.js` tel que suivant (ici, pour un exemple de compteur classique)
+
+```javascript
+export const incrementCounter = () => {
+  return {
+    type: 'INCREMENT_COUNTER',
+    incrementValue: 2
+  };
+}
+
+export const decrementCounter = () => {
+  return {
+    type: 'DECREMENT_COUNTER',
+    decrementValue: 1
+  };
+}
+```
+
+puis vous pouvez créé vos reducers dans des fichiers respectivement nommés `src/reducers/comments.js` et `src/reducers/likes.js`. Chaque `reducer` gèrera un compteur avec une valeur initiale à 0.
+
+Il s'agit maintenant de créer un `reducer` global, pour cela commencer par créer un fichier `src/reducers/index.js` avec le contenu suivant
+
+```javascript
+import { combineReducers } from 'redux';
+import comments from './comments';
+import likes from './likes';
+
+const reducer = combineReducers({
+  comments: comments,
+  likes: likes
+});
+
+export default reducer;
+```
+
+ici la fonction `combineReducers` permet de créer un reducer global à partir de différent reducers responsable de différentes parties de l'état global, dans notre cas `comments` et `likes`.
+
+Il ne nous reste plus qu'à créer le store de notre application, par exemple dans le fichier `src/app.js`.
+
+```javascript
+import { createStore } from 'redux';
+import app from './reducers';
+
+const store = createStore(app);
+```
+
+il ne reste plus qu'a faire deux appels HTTP aux apis
+
+* `http://localhost:3000/api/likes`
+* `http://localhost:3000/api/comments`
+
+afin d'initialiser le store avec les bonnes valeurs.
+
+
+```javascript
+import { createStore } from 'redux';
+import app from './reducers';
+import { setCounterValue } from './actions';
+
+const store = createStore(app);
+
+fetch(`http://localhost:3000/api/count`)
+  .then(r => r.json())
+  .then(r => store.dispatch(setCounterValue(r.count)));
+```
+
+Nous avons maintenant un état global correctement alimenté. Il ne nous reste qu'à le connecter à l'UI
+
+## react-redux
