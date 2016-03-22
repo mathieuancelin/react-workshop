@@ -79,6 +79,8 @@ npm install --save redux react-redux
 
 Dans le cadre de notre application, nous allons afficher des informations statistiques globales concernant notre application. A savoir le nombre global de likes et le nombre global de commentaire. Ces données serons mises a jour en temps réel.
 
+![View 1](https://raw.githubusercontent.com/mathieuancelin/react-workshop/master/step-5/view1.png)
+
 L'état de notre application contenu dans un store `redux` sera le suivant
 
 ```json
