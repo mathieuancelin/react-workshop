@@ -76,8 +76,8 @@ Pour pré-installer les dépendances NPM à l'avance, vous pouvez lancer le scri
 Nous vous recommandons également de télécharger un exemplaire des dépendances pour éviter les problèmes de réseau potentiels
 
 * [node_modules pour Mac OS](https://drive.google.com/file/d/0B-_N2ZIolzedRm52S1dXT2pvTFk/view?usp=sharing)
-* [node_modules pour Linux](https://drive.google.com/file/d/0B52sde31mfE7dmpNXzVsQWZzVW8/view?usp=sharing)
-* [node_modules pour Windows](https://drive.google.com/file/d/0B6Ca3m7AjE4KMHBYeWdpd0FiYmc/view?usp=sharing)
+* [node_modules pour Linux](https://drive.google.com/file/d/0B-_N2ZIolzedd0JBUVYxamZhU0k/view?usp=sharing)
+* [node_modules pour Windows](https://drive.google.com/file/d/0B-_N2ZIolzedcWwzdWN6R2FhTHc/view?usp=sharing)
 
 Si les dépendances posent des problèmes, notamment au niveau des paquets natifs, n'hésitez pas a lancer un `npm rebuild` pour recompiler ces paquets sur votre machine.
 
