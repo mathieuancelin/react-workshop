@@ -14,6 +14,8 @@ L'objectif de cette étape est d'ajouter des fonctionnalités sur la fiche de de
 * Visualiser les commentaires sur le vin
 * Ajouter un nouveau commentaire
 
+![mockup](./mockup.png)
+
 
 ## Like
 
