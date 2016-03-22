@@ -73,6 +73,14 @@ Afin de disposer d'outils spécifiques à React dans votre navigateur web, insta
 
 Pour pré-installer les dépendances NPM à l'avance, vous pouvez lancer le script `install.sh` qui lancera les commandes `npm install` dans les différentes étapes du workshop.
 
+Nous vous recommandons également de télécharger un exemplaire des dépendances pour éviter les problèmes de réseau potentiels
+
+* [node_modules pour Mac OS](https://drive.google.com/file/d/0B-_N2ZIolzedRm52S1dXT2pvTFk/view?usp=sharing)
+* [node_modules pour Linux](https://drive.google.com/file/d/0B52sde31mfE7dmpNXzVsQWZzVW8/view?usp=sharing)
+* [node_modules pour Windows]()
+
+Si les dépendances posent des problèmes, notamment au niveau des paquets natifs, n'hésitez pas a lancer un `npm rebuild` pour recompiler ces paquets sur votre machine.
+
 ## API
 
 L'application web s'appuie sur une API REST disponible dans le dossier [api](/api).
