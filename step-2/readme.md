@@ -81,7 +81,7 @@ Par expérience, une bonne façon de démarrer le développement d'une applicati
 
 ### Version statique de l'application
 
-### Dumbs
+#### Dumbs
 
 Créez l'ensemble des composants de type présentation: `Regions`, `WineList`, et `Wine` et implémentez la méthode `render()` de chacun d'eux, en vous appuyant sur les `props`.
 
@@ -282,4 +282,29 @@ const WineApp = React.createClass({
     }
   }
 })
+```
+
+## A vous de jouer !
+
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans l'étape suivante ;-)
+
+Pour le style de l'application, ne vous prenez pas la tête, l'enjeu n'est pas là :-) Pour l'organisation en colonne, vous pouvez utilisez le framework CSS [avalanche](http://colourgarden.net/avalanche/). Le CSS est disponible dans le dossier `public/css/avalanche.css`.
+
+Exemple de grille avec Avalanche :
+
+```html
+<div className="grid">
+  <div className="1/4 grid__cell">
+    <h2>Regions</h2>
+    <!-- ... -->
+  </div>
+  <div className="1/3 grid__cell">
+    <h2>Wine List</h2>
+    <!-- ... -->
+  </div>
+  <div className="5/12 grid__cell">
+    <h2>Wine Description</h2>
+    <!-- ... -->
+  </div>
+</div>
 ```
