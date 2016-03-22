@@ -23,11 +23,3 @@
 ## React context
 
 [https://facebook.github.io/react/docs/context.html](https://facebook.github.io/react/docs/context.html)
-
-
-
-Classes
-
-HOC
-Stateless components
-Contexts
