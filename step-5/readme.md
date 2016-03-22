@@ -163,3 +163,136 @@ fetch(`http://localhost:3000/api/count`)
 Nous avons maintenant un état global correctement alimenté. Il ne nous reste qu'à le connecter à l'UI
 
 ## react-redux
+
+Connecter un composant react à notre est finalement très simple. Il suffit simplement d'abonner le composant au store une fois monté dans le DOM, le désabonner lors de sa disparition du DOM et mettre a jour son état a chaque notification du store
+
+```javascript
+const Component = React.createClass({
+  propTypes: {
+    store: PropTypes.shape({
+      subscribe: PropTypes.func,
+      getState: PropTypes.func
+    })
+  },
+  getInitialState() {
+    return {
+      counter: 0
+    };
+  },
+  componentDidMount() {
+    this.unsubscribe = this.props.store.subscribe(this.updateViewFromRedux);
+  },
+  componentWillUnmount() {
+    this.unsubscribe();
+  },
+  updateViewFromRedux() {
+    const { counter } = this.props.store.getState();
+    this.setState({ counter });
+  },
+  render() {
+    return (
+      <div>
+        <span>counter : {this.state.counter}</span>
+      </div>
+    );
+  }
+});
+```
+
+Cependant tout ce boilerplate peut se réveler fastidieux et rébarbatif à écrire à la longue.
+Pour éviter tout ce code inutile, la librairie `react-redux` permet de fournir un store a un arbre de composants `react` et de connecter un composant `react` a ce store, voir même de mapper automatiquement des propriété de l'état du `store` sur des propriétés du composant.
+
+La première chose a faire et de fournir le store a notre arbre de composants. Nous allons utiliser un composant `<Provider store={...} />` fournit par `react-redux` que nous allons placer a la racine de l'application
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import WineApp from './components/wine-app';
+import { RegionsPage } from './components/regions';
+import { WineListPage } from './components/wine-list';
+import { WinePage } from './components/wine';
+import { NotFound } from './components/not-found';
+
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import app from './reducers';
+
+const store = createStore(app);
+
+...
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={hashHistory}>
+      <Route path="/" component={WineApp}>
+        <IndexRoute component={RegionsPage} />
+        <Route path="regions/:regionId" component={WineListPage} />
+        <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
+        <Route path="*" component={NotFound} />
+      </Route>
+    </Router>
+  </Provider>
+  , document.getElementById('main')
+);
+```
+
+Provider va simplement alimenter le context `react` avec un champ `store`. (pour plus de détails sur le contexte `react`, voir [https://facebook.github.io/react/docs/context.html](https://facebook.github.io/react/docs/context.html))
+
+Il faut maintenant être capable de récupérer le store dans un composant afin de pouvoir
+
+* dispatcher des actions
+* récupérer l'état du store
+
+Pour celà, `redux` propose une fonction `connect` permettant de créer un composant wrapper (Higher Order Component) qui fera le lien entre le store présent dans le contexte `react` et le componsant wrappé.
+
+```javascript
+import { incrementCounter } from '../actions';
+import { connect } from 'react-redux';
+
+const SimpleComponent = React.createElement({
+  propTypes: {
+    dispatch: PropTypes.func
+  },
+  handleButtonClick() {
+    dispatch(incrementCounter(42));
+  },
+  render() {
+    ...
+  }
+});
+
+export const ConnectedToStoreComponent = connect()(SimpleComponent);
+```
+
+ici le fait d'appeler `connect` avec le composant original en paramètre créé une nouvelle classe de composant comportant la logique d'abonnement et mise a jour du composant nécessaire à `redux`. Lorsque `connect` est appelé sans premier argument, le composant wrappé se voit ajouté une propriété `dispatch` permettant de dispatcher une action sur le store.
+
+Cependant ici, pas moyen de récupérer l'état du store. Pour ce faire, il est nécessaire de spécifier une fonction de mapping permettant d'extraire un ensemble de propriété depuis l'état du store `redux` avec quelles soient ajoutées aux propriétés du composant wrappé
+
+```javascript
+import { incrementCounter } from '../actions';
+import { connect } from 'react-redux';
+
+const SimpleComponent = React.createElement({
+  propTypes: {
+    dispatch: PropTypes.func,
+    simpleCounter: PropTypes.number
+  },
+  handleButtonClick() {
+    dispatch(incrementCounter(42));
+  },
+  render() {
+    return <div>{this.props.counter}</div>
+  }
+});
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    simpleCounter: state.counter
+  }
+};
+
+export const ConnectedToStoreComponent = connect(mapStateToProps)(SimpleComponent);
+```
