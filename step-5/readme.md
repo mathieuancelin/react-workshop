@@ -296,3 +296,7 @@ const mapStateToProps = (state, ownProps) => {
 
 export const ConnectedToStoreComponent = connect(mapStateToProps)(SimpleComponent);
 ```
+
+Il ne nous reste donc plus qu'a émettre les différentes actions aus bons moment pour muter l'état de notre `store` (ajout de commentaire, ajout de like, retrait de like) et de rajouter un composant global (dans `<WineApp>` par exemple) affichant le nombre global de likes et de commentaires dans l'application.
+
+A vous de jouer ;-)
