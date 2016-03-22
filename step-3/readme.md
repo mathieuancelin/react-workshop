@@ -223,3 +223,23 @@ Dans le cadre de notre application, il serait intéressant de garder nos composa
 * WinePage => Wine
 
 A vous de jouer ;-)
+
+### Bonus
+
+A priori vous avez créé un composant type `container` lié à l'URL `/` qui a pour seul role de contenir les différentes pages de l'application. Il pourrait être intéressant que ce composant affiche le titre courant de la vue (`Regions` -> `Wines from Bordeaux` -> `Cheval Noir`). Pour celà une petite astuce, Le meilleur moyen a votre disposition est de rajouter une fonction de mise a jour du titre courant dans les props de la vue rendue à l'intérieur du container principal. Il vous est donc possible de cloner l'élément a render et de lui rajouter des propriétés de la façon suivante :
+
+```javascript
+const WineApp = React.createClass({
+  render () {
+    return (
+      <div className="grid">
+          <div className="1/2 grid__cell">
+            {this.props.children && React.cloneElement(this.props.children, {
+              uneNouvelleProps: 'Hello World!'
+            })}
+          </div>
+      </div>
+    );
+  }
+});
+```
