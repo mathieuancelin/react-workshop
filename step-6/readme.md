@@ -1,5 +1,9 @@
 # Step 6 : aller plus loin ...
 
+## Pré-requis
+
+Le code disponible dans cette étape correspond au résultat attendu des étapes 0, 1, 2, 3, 4, et 5
+
 ## Why React is awesome
 
 [http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome](http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome)

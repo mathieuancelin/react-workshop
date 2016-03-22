@@ -1,5 +1,13 @@
 # Step 5 : redux
 
+## Pré-requis
+
+Vous devez maîtriser les étapes 0, 1, 2, 3 et 4 du workshop afin de pouvoir réaliser l'étape 5.
+
+Le code disponible dans cette étape correspond au résultat attendu des étapes 0, 1, 2, 3 et 4. Vous pouvez partir de cette base pour développer l'étape 5.
+
+## Objectif
+
 dans cette étape, nous allons intégrer [Redux](http://redux.js.org/index.html) a notre magnifique application.
 
 [Redux](http://redux.js.org/index.html) est un container d'état global pour des applications JavaScript.
@@ -18,9 +26,12 @@ Regardons un exemple simple
 import { createStore } from 'redux'
 
 /**
- * Ici nous avons un unique reducer qui va gérer un état de type number. On note que l'état initial est fourni
- * on utilise un switch pour gérer les différentes actions, mais ce n'est absolument pas obligatoire
- * A noter qu'il est impératif lors d'une mutation d'état de renvoyer un nouvel état et non l'ancien état muté.
+ * Ici nous avons un unique reducer qui va gérer un état de type number.
+ * On note que l'état initial est fourni via les parametres par defaut
+ * On utilise un switch pour gérer les différentes actions,
+ * mais ce n'est absolument pas obligatoire
+ * A noter qu'il est impératif lors d'une mutation d'état de
+ * renvoyer un nouvel état et non l'ancien état muté.
  */
 function counter(state = 0, action) {
   switch (action.type) {
@@ -33,19 +44,24 @@ function counter(state = 0, action) {
   }
 }
 
-// Ici nous créons un store pour notre application se basant sur le reducer `counter`
+// Ici nous créons un store pour notre application
+// se basant sur le reducer `counter`
 // l'API du store est la suivante { subscribe, dispatch, getState }.
 let store = createStore(counter)
 
-// Maintenant nous pouvons nous abonner aux modifications de l'état contenu dans le store.
-// Un cas d'usage pourrait être un composant react qui veut afficher l'état courant du compteur.
-// On note que le nouvel état n'est pas véhiculer dans le callback mais qu'il faut aller le chercher
+// Maintenant nous pouvons nous abonner aux modifications
+// de l'état contenu dans le store.
+// Un cas d'usage pourrait être un composant react qui
+// veut afficher l'état courant du compteur.
+// On note que le nouvel état n'est pas véhiculer dans le
+// callback mais qu'il faut aller le chercher
 // directement sur le store.
 store.subscribe(() =>
   console.log(store.getState())
 )
 
-// Maintenant, le seul moyen de muter l'état interne du store est de lui envoyer une action
+// Maintenant, le seul moyen de muter l'état interne
+// du store est de lui envoyer une action
 store.dispatch({ type: 'INCREMENT' })
 // afficher 1 dans la console
 store.dispatch({ type: 'INCREMENT' })
@@ -301,4 +317,6 @@ export const ConnectedToStoreComponent = connect(mapStateToProps)(SimpleComponen
 
 Il ne nous reste donc plus qu'a émettre les différentes actions aus bons moment pour muter l'état de notre `store` (ajout de commentaire, ajout de like, retrait de like) et de rajouter un composant global (dans `<WineApp>` par exemple) affichant le nombre global de likes et de commentaires dans l'application.
 
-A vous de jouer ;-)
+## A vous de jouer !
+
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans l'étape suivante ;-)
