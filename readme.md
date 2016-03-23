@@ -4,7 +4,7 @@ Ce workshop permet de découvrir [React](https://facebook.github.io/react/) et s
 
 ## Le sujet
 
-Lors de ce workshop, nous allons développer une application web permettant de gérer ses vins préférés !
+Lors de ce workshop, nous allons développer une application web permettant de gérer ses vins préférés* !
 
 Les principales fonctionnalités de l'application sont :
 
@@ -13,6 +13,7 @@ Les principales fonctionnalités de l'application sont :
 * Aimer un vin,
 * Ajouter un commentaire sur un vin.
 
+\* *L'abus d'alcool est dangereux pour la santé, à consommer avec modération ;-)*
 
 ## Les pré-requis techniques
 
