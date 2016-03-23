@@ -14,7 +14,7 @@ const computeWineStyle = function(region, selected) {
 const WineList = React.createClass({
   propTypes: {
     onWineChange: PropTypes.func,
-    selected: PropTypes.string,
+    selected: PropTypes.object,
     wines: PropTypes.arrayOf(PropTypes.object)
   },
 
