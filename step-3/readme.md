@@ -14,9 +14,9 @@ Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la
 
 Maintenant que notre application possède les fonctionnalités de base, nous allons commencer a nous attaquer à la navigation.
 
-En effet pour le moment notre application regroupe toutes les foncitonnalités dans une seul et même écran, ce qui s'avère très pratique d'un point de vue technique mais qui n'est pas génial d'un point de vue utilisateur.
+En effet pour le moment notre application regroupe toutes les fonctionnalités dans un seul et même écran, ce qui s'avère très pratique d'un point de vue technique mais qui n'est pas génial d'un point de vue utilisateur.
 
-Nous allons donc découper notre application en 3 écrans successifs, permettant de choisir la region d'un vin,
+Nous allons donc découper notre application en 3 écrans successifs, permettant de choisir la région d'un vin,
 
 ![View 1](https://raw.githubusercontent.com/mathieuancelin/react-workshop/master/step-3/view1.png)
 
@@ -36,7 +36,7 @@ Une SPA est une application web (front) accessible via une page unique. Le but e
 
 Il va donc nous falloir un moyen de router l'utilisateur à travers divers écrans.
 
-Un moyen simple pourrait être d'avoir un composant technique au plus haut niveau de notre application pour gérer la navigation. Ce composant gérerait la pile d'appel et la vue courante dans son `state` et proposerai une API pour être piloté depuis les diverses vues.
+Un moyen simple pourrait être d'avoir un composant technique au plus haut niveau de notre application pour gérer la navigation. Ce composant gérerait la pile d'appel et la vue courante dans son `state` et proposerait une API pour être piloté depuis les diverses vues.
 
 Par exemple, nous pourrions définir un composant comme suivant :
 
@@ -122,7 +122,7 @@ Dans le fichier `package.json` ajoutez la dépendance suivante :
 }
 ```
 
-vous pouvez évidemment l'ajouter via la ligner de commande :
+vous pouvez évidemment l'ajouter via la ligne de commande :
 
 ```
 npm install --save react-router@2.0.1
@@ -191,7 +191,7 @@ et enfin nous spécifions une route permettant d'attraper tous les appels n'ayan
 <Route path="*" component={NotFound} />
 ```
 
-Pour notre application, nous vous proposons de respecter les schéma d'url suivant :
+Pour notre application, nous vous proposons de respecter les schémas d'url suivants :
 
 * `/` => vue des régions
 * `/regions/:regionId` => vue des vins de la région
@@ -226,7 +226,7 @@ enfin vous pouvez créer des liens en utilisant l'API
 
 de `react-router`
 
-Un dernier petit conseil, vos composants existent déjà et sont idiot (Dumb Components). Ce qui veut dire qu'ils n'ont pas d'état propre, et fonctionnent uniquement via les propriétés qui leur sont passés. Autrement dit, ce sont des composants stateless.
+Un dernier petit conseil, vos composants existent déjà et sont idiots (Dumb Components). Ce qui veut dire qu'ils n'ont pas d'état propre, et fonctionnent uniquement via les propriétés qui leur sont passés. Autrement dit, ce sont des composants stateless.
 
 Ce genre d'approche est plutôt intéressante car elle permet de bien séparer ce genre de composants des composants intelligents (Smart Components) qui eux sont souvent stateful et technique sans forcément produire des éléments graphiques. (voir cet [article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.d5m6d6pbj) sur le sujet)
 
@@ -238,11 +238,11 @@ Dans le cadre de notre application, il serait intéressant de garder nos composa
 
 ## A vous de jouer !
 
-Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans l'étape suivante ;-)
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jeter un oeil au code disponible dans l'étape suivante ;-)
 
 ## Bonus
 
-A priori vous avez créé un composant type `container` lié à l'URL `/` qui a pour seul role de contenir les différentes pages de l'application. Il pourrait être intéressant que ce composant affiche le titre courant de la vue (`Regions` -> `Wines from Bordeaux` -> `Cheval Noir`). Pour celà une petite astuce, le meilleur moyen a votre disposition est de rajouter une fonction de mise à jour du titre courant dans les props de la vue rendue à l'intérieur du container principal. Il vous est donc possible de cloner l'élément a render et de lui rajouter des propriétés de la façon suivante :
+A priori vous avez créé un composant type `container` lié à l'URL `/` qui a pour seul rôle de contenir les différentes pages de l'application. Il pourrait être intéressant que ce composant affiche le titre courant de la vue (`Regions` -> `Wines from Bordeaux` -> `Cheval Noir`). Pour cela une petite astuce, le meilleur moyen à votre disposition est de rajouter une fonction de mise à jour du titre courant dans les props de la vue rendue à l'intérieur du container principal. Il vous est donc possible de cloner l'élément à render et de lui rajouter des propriétés de la façon suivante :
 
 ```javascript
 const WineApp = React.createClass({

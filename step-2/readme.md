@@ -29,7 +29,7 @@ Voici une maquette de l'application :
 
 Avant de partir la tête baissée dans le développement, il est nécessaire de se poser quelques questions :
 
-* Quels sont les composants de mon applications et comment sont-ils liés ?
+* Quels sont les composants de mon application et comment sont-ils liés ?
 * Quelles sont les données gérées par mes composants ? Ces données sont-elles gérées via les `props` ou via le `state` ?
 * Quelles sont les interactions entre mes composants ? Quels événements doivent-être gérés ?
 * Ok, je suis prêt pour développer, mais par quoi je commence ?
@@ -53,15 +53,15 @@ Les données gérées par l'application sont les suivantes :
 
 * la liste des régions viticoles,
 * la référence à la région sélectionnée dans la liste des régions,
-* la liste des vins de la régions viticole sélectionnée,
+* la liste des vins de la région viticole sélectionnée,
 * la description du vin sélectionné dans la liste des vins.
 
 Il reste à savoir de quelle manière ces données doivent être gérées au niveau de chaque composant : via les `props` ou via le `state` ?
 
 Les `props` d'un composant sont immutables contrairement au `state` qui lui est mutable. Il est donc généralement conseillé de définir deux types de composants dans une application React :
 
-* Les composants dédiés purement à la présentation, qui s'appuieront uniquement sur leur `props`. Nous les surnommeront `Dumb components`.
-* Les composants plutôt orientés "conteneurs", qui sont responsable du fonctionnement de l'application, qui s'appuient fortement sur leur `state`. Nous les surnommeront `Smart components`.
+* Les composants dédiés purement à la présentation, qui s'appuieront uniquement sur leur `props`. Nous les surnommerons `Dumb components`.
+* Les composants plutôt orientés "conteneurs", qui sont responsables du fonctionnement de l'application, qui s'appuient fortement sur leur `state`. Nous les surnommerons `Smart components`.
 
 Vous pouvez lire un article très intéressant sur le sujet : [Smart and Dumb Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.a0czhe4g8)
 
@@ -79,7 +79,7 @@ Les interactions entre les composants sont les suivantes :
 Par expérience, une bonne façon de démarrer le développement d'une application React est la suivante :
 
 * Construire une version statique de l'application en créant l'ensemble des composants définis lors des précédentes étapes de conception.
-* Définir l'état initial des composants de type conteneur et utliser cet état dans le rendu des composants.
+* Définir l'état initial des composants de type conteneur et utiliser cet état dans le rendu des composants.
 * Charger dynamiquement les données depuis l'API (appels Ajax) et mettre à jour l'état des composants.
 * Gérer les événements pour rendre l'application interactive.
 
@@ -294,7 +294,7 @@ const WineApp = React.createClass({
 
 ## A vous de jouer !
 
-Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans l'étape suivante ;-)
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jeter un oeil au code disponible dans l'étape suivante ;-)
 
 Pour le style de l'application, ne vous prenez pas la tête, l'enjeu n'est pas là :-) Pour l'organisation en colonne, vous pouvez utilisez le framework CSS [avalanche](http://colourgarden.net/avalanche/). Le CSS est disponible dans le dossier `public/css/avalanche.css`.
 
