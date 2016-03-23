@@ -32,7 +32,7 @@ Avant de partir la tête baissée dans le développement, il est nécessaire de 
 
 ## Hiérarchie de composants
 
-La première chose à faire est de mettre son cerveau en **mode React** et de **penser composants"** :-)
+La première chose à faire est de mettre son cerveau en **mode React** et de **penser composants** :-)
 
 A partir de la maquette fournie, nous pouvons identifier les principaux composants de notre application :
 
@@ -110,6 +110,8 @@ Il est possible de définir plus précisément le format attendu dans les `props
 Par exemple sur notre composant `Wine` qui gère l'affichage de la description d'un vin :
 
 ```javascript
+imoort React, { PropTypes } from 'react';
+
 const Wine = React.createClass({
   propTypes: {
     wine: PropTypes.shape({
@@ -128,6 +130,8 @@ const Wine = React.createClass({
 ```
 
 Définissez les `propTypes` de chaque composant, en vous appuyant sur le format des données remontées par l'API.
+
+*Attention : les `propTypes` ne sont vérifiées qu'en mode développement pour aider le développeur à utiliser correctement les composants.*
 
 #### Smarts
 
@@ -236,7 +240,7 @@ La dernière étape consiste à gérer les événements afin de rendre l'applica
 
 Ce sont les composants de type présentation qui vont capter les événements. Mais ce ne sont pas eux qui effectueront le traitement lié aux événements : ils se contenteront de déléguer ce traitement au composant parent, via une fonction de type "handler" passée via les `props`.
 
-Par exemple pour le composant `Regions`, il faut déterminer ce que l'on fait lorsque l'utilisateur sélectionne une région (événement ̀`onClick`).
+Par exemple pour le composant `Regions`, il faut déterminer ce que l'on fait lorsque l'utilisateur sélectionne une région (événement `onClick`).
 
 Au niveau du composant `Regions` cela donne simplement :
 
