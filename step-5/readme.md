@@ -8,15 +8,15 @@ Le code disponible dans cette étape correspond au résultat attendu des étapes
 
 ## Objectif
 
-dans cette étape, nous allons intégrer [Redux](http://redux.js.org/index.html) a notre magnifique application.
+Dans cette étape, nous allons intégrer [Redux](http://redux.js.org/index.html) a notre magnifique application.
 
 [Redux](http://redux.js.org/index.html) est un container d'état global pour des applications JavaScript.
 Redux peut être utilisé dans n'importe quel environnement et ne dépend pas de React. Redux possède quelques
 propriétés très intéressantes en matière de cohérence, de prévisibilité et d'expérience du développeur.
 
-Redux peut être vu comme une implémentation du [pattern Flux](https://facebook.github.io/flux/docs/overview.html) avec cependant quelques variations, notamment au niveau de la complexité de mise en place bien moindre que Flux. Redux s'inspire également de patterns propre au langage Elm
+Redux peut être vu comme une implémentation du [pattern Flux](https://facebook.github.io/flux/docs/overview.html) avec cependant quelques variations, notamment au niveau de la complexité de mise en place bien moindre que Flux. Redux s'inspire également de patterns propre au langage Elm.
 
-Redux fourni un concept de `store` de données unique pour l'application (singleton), auquel nos composants vont s'abonner. Il est ensuite possible de dispatcher des `actions` sur ce `store` qui déclencheront une mutation de l'état contenu dans le `store`. Une fois la mutation effectuée, le `store` notifiera tous ses abonnés du changement d'état. L'intérêt d'un tel pattern devient évident lorsqu'une application grossit et que plusieurs composants React ont besoin d'une même source de données. Il est alors plus simple de gérer l'état `fonctionnel` de l'application en dehors des composants et de s'y abonner.
+Redux fournit un concept de `store` de données unique pour l'application (singleton), auquel nos composants vont s'abonner. Il est ensuite possible de dispatcher des `actions` sur ce `store` qui déclencheront une mutation de l'état contenu dans le `store`. Une fois la mutation effectuée, le `store` notifiera tous ses abonnés du changement d'état. L'intérêt d'un tel pattern devient évident lorsqu'une application grossit et que plusieurs composants React ont besoin d'une même source de données. Il est alors plus simple de gérer l'état *fonctionnel* de l'application en dehors des composants et de s'y abonner.
 
 Pour fonctionner Redux utilise une notion de `reducer` qui fonctionne exactement de la même facon qu'une fonction de réduction sur une collection. Si on visualise l'état de l'application comme une collection de mutations, le `reducer` est simplement la fonction qui prend en paramètre l'état précédant et retourne le prochain état via un second paramètre qui dans notre cas est une `action`. Un `reducer` est donc une fonction pure avec la signature suivante `(state, action) => state` qui décrit comment une action transforme l'état courant en un nouvel état.
 
@@ -76,7 +76,7 @@ Pour plus de détails et explications sur Redux, vous pouvez consulter la [docum
 
 ## Mise en pratique
 
-Commencez par installer redux et react-redux, dans le fichier `package.json` ajoutez la dépendance suivante :
+Commencez par installer `redux` et `react-redux`. Dans le fichier `package.json` ajoutez les dépendances suivantes :
 
 ```json
 "dependencies": {
@@ -93,7 +93,7 @@ ou via la ligne de commande
 npm install --save redux react-redux
 ```
 
-Dans le cadre de notre application, nous allons afficher des informations statistiques globales concernant notre application. A savoir le nombre global de likes et le nombre global de commentaire. Ces données serons mises a jour en temps réel.
+Dans le cadre de notre application, nous allons afficher des informations statistiques globales concernant notre application. A savoir le nombre global de likes et le nombre global de commentaires. Ces données seront mises a jour en temps réel.
 
 ![View 1](https://raw.githubusercontent.com/mathieuancelin/react-workshop/master/step-5/view1.png)
 
@@ -106,11 +106,11 @@ L'état de notre application contenu dans un store `redux` sera le suivant
 }
 ```
 
-Nous allons donc avoir besoin de deux reducers chacun gérant respectivement le compteur de commentaires et le compteur de likes.
+Nous allons donc avoir besoin de deux reducers, chacun gérant respectivement le compteur de commentaires et le compteur de likes.
 
 Nous allons également avoir besoin d'actions permettant de muter notre état applicatif.
 
-Globalement, pour chacun des compteur nous avons besoin d'une action initial qui sera lancée après un appel HTTP et qui changera l'état pour lui donner une valeur initiale prevenant du serveur. Ensuite nous aurons besoin d'une action permettant d'incrémenter le compteur et d'une action permettant de décrémenter le compteur.
+Globalement, pour chacun des compteurs nous avons besoin d'une action initiale qui sera lancée après un appel HTTP et qui changera l'état pour lui donner une valeur initiale prevenant du serveur. Ensuite nous aurons besoin d'une action permettant d'incrémenter le compteur et d'une action permettant de décrémenter le compteur.
 
 Vous pouvez maintenant implémenter toutes vos actions dans un fichier `src/actions/index.js` tel que suivant (ici, pour un exemple de compteur classique)
 
@@ -130,9 +130,9 @@ export const decrementCounter = () => {
 }
 ```
 
-puis vous pouvez créé vos reducers dans des fichiers respectivement nommés `src/reducers/comments.js` et `src/reducers/likes.js`. Chaque `reducer` gèrera un compteur avec une valeur initiale à 0.
+puis vous pouvez créer vos reducers dans des fichiers respectivement nommés `src/reducers/comments.js` et `src/reducers/likes.js`. Chaque `reducer` gèrera un compteur avec une valeur initiale à 0.
 
-Il s'agit maintenant de créer un `reducer` global, pour cela commencer par créer un fichier `src/reducers/index.js` avec le contenu suivant
+Il s'agit maintenant de créer un `reducer` global, pour cela commencez par créer un fichier `src/reducers/index.js` avec le contenu suivant :
 
 ```javascript
 import { combineReducers } from 'redux';
@@ -147,7 +147,7 @@ const reducer = combineReducers({
 export default reducer;
 ```
 
-ici la fonction `combineReducers` permet de créer un reducer global à partir de différent reducers responsable de différentes parties de l'état global, dans notre cas `comments` et `likes`.
+ici la fonction `combineReducers` permet de créer un reducer global à partir de différent reducers responsables de différentes parties de l'état global, dans notre cas `comments` et `likes`.
 
 Il ne nous reste plus qu'à créer le store de notre application, par exemple dans le fichier `src/app.js`.
 
@@ -184,7 +184,7 @@ Maintenant, il ne nous reste qu'à le connecter à l'UI
 
 ## react-redux
 
-Connecter un composant react à notre est finalement très simple. Il suffit simplement d'abonner le composant au store une fois monté dans le DOM, le désabonner lors de sa disparition du DOM et mettre a jour son état a chaque notification du store
+Connecter un composant react à notre store est finalement très simple. Il suffit simplement d'abonner le composant au store une fois monté dans le DOM, le désabonner lors de sa disparition du DOM et mettre a jour son état a chaque notification du store
 
 ```javascript
 const Component = React.createClass({
@@ -220,9 +220,9 @@ const Component = React.createClass({
 ```
 
 Cependant tout ce boilerplate peut se réveler fastidieux et rébarbatif à écrire à la longue.
-Pour éviter tout ce code inutile, la librairie `react-redux` permet de fournir un store a un arbre de composants `react` et de connecter un composant `react` a ce store, voir même de mapper automatiquement des propriété de l'état du `store` sur des propriétés du composant.
+Pour éviter tout ce code inutile, la librairie `react-redux` permet de fournir un store a un arbre de composants `react` et de connecter un composant `react` a ce store, voire même de mapper automatiquement des propriétés de l'état du `store` sur des propriétés du composant.
 
-La première chose a faire et de fournir le store a notre arbre de composants. Nous allons utiliser un composant `<Provider store={...} />` fournit par `react-redux` que nous allons placer a la racine de l'application
+La première chose à faire est de fournir le store a notre arbre de composants. Nous allons utiliser un composant `<Provider store={...} />` fourni par `react-redux` que nous allons placer à la racine de l'application
 
 ```javascript
 import React from 'react';
@@ -272,7 +272,7 @@ Pour celà, `redux` propose une fonction `connect` permettant de créer un compo
 import { incrementCounter } from '../actions';
 import { connect } from 'react-redux';
 
-const SimpleComponent = React.createElement({
+const SimpleComponent = React.createClass({
   propTypes: {
     dispatch: PropTypes.func
   },
@@ -287,15 +287,15 @@ const SimpleComponent = React.createElement({
 export const ConnectedToStoreComponent = connect()(SimpleComponent);
 ```
 
-ici le fait d'appeler `connect` avec le composant original en paramètre créé une nouvelle classe de composant comportant la logique d'abonnement et mise a jour du composant nécessaire à `redux`. Lorsque `connect` est appelé sans premier argument, le composant wrappé se voit ajouté une propriété `dispatch` permettant de dispatcher une action sur le store.
+ici le fait d'appeler `connect` avec le composant original en paramètre créé une nouvelle classe de composant comportant la logique d'abonnement et mise a jour du composant nécessaire à `redux`. Lorsque `connect` est appelé sans premier argument, le composant wrappé se voit ajouter une propriété `dispatch` permettant de dispatcher une action sur le store.
 
-Cependant ici, pas moyen de récupérer l'état du store. Pour ce faire, il est nécessaire de spécifier une fonction de mapping permettant d'extraire un ensemble de propriété depuis l'état du store `redux` avec quelles soient ajoutées aux propriétés du composant wrappé
+Cependant ici, pas moyen de récupérer l'état du store. Pour ce faire, il est nécessaire de spécifier une fonction de mapping permettant d'extraire un ensemble de propriétés depuis l'état du store `redux` pour qu'elles soient ajoutées aux propriétés du composant wrappé
 
 ```javascript
 import { incrementCounter } from '../actions';
 import { connect } from 'react-redux';
 
-const SimpleComponent = React.createElement({
+const SimpleComponent = React.createClass({
   propTypes: {
     dispatch: PropTypes.func,
     simpleCounter: PropTypes.number
@@ -317,7 +317,7 @@ const mapStateToProps = (state, ownProps) => {
 export const ConnectedToStoreComponent = connect(mapStateToProps)(SimpleComponent);
 ```
 
-Il ne nous reste donc plus qu'a émettre les différentes actions aus bons moment pour muter l'état de notre `store` (ajout de commentaire, ajout de like, retrait de like) et de rajouter un composant global (dans `<WineApp>` par exemple) affichant le nombre global de likes et de commentaires dans l'application.
+Il ne nous reste donc plus qu'a émettre les différentes actions au bon moment pour muter l'état de notre `store` (ajout de commentaire, ajout de like, retrait de like) et de rajouter un composant global (dans `<WineApp>` par exemple) affichant le nombre global de likes et de commentaires dans l'application.
 
 ## A vous de jouer !
 
