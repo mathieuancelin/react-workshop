@@ -280,6 +280,8 @@ Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
   },
   "rules": {
     "react/prop-types": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1
   }
 }
 ```
