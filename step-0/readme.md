@@ -255,7 +255,7 @@ Pour commencer, ajoutez les dépendances nécessaires dans le fichier `package.j
 }
 ```
 
-ou via la commande `npm install --save-dev eslint eslint-plugin-react`
+ou via la commande `npm install --save-dev eslint@2.4.0 eslint-plugin-react@4.2.3`
 
 Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
 
