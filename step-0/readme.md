@@ -139,6 +139,7 @@ Dans le fichier `package.json`, ajoutez les dépendances de développement néce
 "devDependencies": {
     "webpack": "1.12.9",
     "babel-loader": "6.2.0",
+    "babel-register": "6.7.2",
     "babel-preset-es2015": "6.1.18",
     "babel-preset-react": "6.1.18"
 }
