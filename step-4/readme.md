@@ -6,6 +6,8 @@ Vous devez maîtriser l'étape 3 du workshop afin de pouvoir réaliser l'étape 
 
 Le code disponible dans cette étape correspond au résultat attendu de l'étape 3. Vous pouvez partir de cette base pour développer l'étape 4.
 
+Pour lancer l'application de l'étape 3, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
+
 ## Objectif
 
 L'objectif de cette étape est d'ajouter des fonctionnalités sur la fiche de description d'un vin, à savoir :

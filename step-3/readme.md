@@ -6,6 +6,8 @@ Vous devez maîtriser les étapes 0, 1 et 2 du workshop afin de pouvoir réalise
 
 Le code disponible dans cette étape correspond au résultat attendu des étapes 0, 1 et 2. Vous pouvez partir de cette base pour développer l'étape 3.
 
+Pour lancer l'application de l'étape 2, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
+
 ## Objectif
 
 Maintenant que notre application possède les fonctionnalités de base, nous allons commencer a nous attaquer à la navigation.

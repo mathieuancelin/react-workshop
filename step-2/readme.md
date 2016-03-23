@@ -6,6 +6,8 @@ Vous devez maîtriser les étapes 0 et 1 du workshop afin de pouvoir réaliser l
 
 Le code disponible dans cette étape correspond au résultat attendu des étapes 0 et 1. Vous pouvez partir de cette base pour développer l'étape 2.
 
+Pour lancer l'application de l'étape 1, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
+
 ## Objectif
 
 L'objectif de cette étape est de développer une application permettant d'afficher la fiche descriptive d'un vin, chaque vin étant catégorisé dans une région viticole.

@@ -22,6 +22,7 @@ const Wine = React.createClass({
 
 Le code disponible ici correspond au résultat attendu de l'étape 0. L'objectif de l'étape 1 est de le compléter pour ajouter le test unitaire du composant `Wine`.
 
+Pour lancer l'application de l'étape 0, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
 
 ## Test unitaire
 

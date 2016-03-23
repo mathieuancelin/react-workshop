@@ -6,6 +6,8 @@ Vous devez maîtriser les étapes 0, 1, 2, 3 et 4 du workshop afin de pouvoir r�
 
 Le code disponible dans cette étape correspond au résultat attendu des étapes 0, 1, 2, 3 et 4. Vous pouvez partir de cette base pour développer l'étape 5.
 
+Pour lancer l'application de l'étape 4, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
+
 ## Objectif
 
 Dans cette étape, nous allons intégrer [Redux](http://redux.js.org/index.html) a notre magnifique application.
