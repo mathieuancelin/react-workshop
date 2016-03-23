@@ -98,8 +98,8 @@ app.get('/api/wines', function (req, res) {
 });
 
 /**
- * @api {get} /likes
- * @apiName Count likes
+ * @api {get} /likes All
+ * @apiName All
  * @apiGroup Likes
  * @apiSampleRequest /api/likes
  *
@@ -116,8 +116,8 @@ app.get('/api/likes', function (req, res) {
 });
 
 /**
- * @api {get} /comments
- * @apiName Comments likes
+ * @api {get} /comments All
+ * @apiName All
  * @apiGroup Comments
  * @apiSampleRequest /api/comments
  *
