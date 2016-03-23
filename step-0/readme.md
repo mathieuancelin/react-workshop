@@ -8,7 +8,7 @@ Répondez aux diverses questions de l'assistant afin d'initialiser votre fichier
 Une fois le fichier créé, installez les dépendances de la manière suivante :
 
 ```
-npm install --save react react-dom
+npm install --save react@0.14.7 react-dom@0.14.7
 ```
 
 avec cette commande, vous spécifiez à `npm` d'aller chercher la dernière version des paquets `react` et `react-dom` sur `npmjs.com`, de les installer en local dans le dossier `node_modules` local et de les déclarer comme dépendance dans le fichier `package.json` (via l'argument --save).
@@ -147,7 +147,7 @@ Dans le fichier `package.json`, ajoutez les dépendances de développement néce
 vous pouvez évidemment les ajouter via la ligner de commande :
 
 ```
-npm install --save-dev webpack babel-loader babel-preset-es2015 babel-preset-react
+npm install --save-dev webpack@1.12.9 babel-loader@6.2.0 babel-preset-es2015@6.1.18 babel-preset-react@6.1.18
 ```
 
 ici l'argument `--save-dev` indique que le dépendance doit être inscrite dans les dépendances du build et non du projet lui même
@@ -226,7 +226,7 @@ Ajoutez la dépendance à `webpack-dev-server` dans le fichier `package.json` :
 }
 ```
 
-ou via la command `npm install --save-dev webpack-dev-server`
+ou via la command `npm install --save-dev webpack-dev-server@1.14.0`
 
 Ajoutez un nouveau script permettant de lancer le serveur Webpack :
 

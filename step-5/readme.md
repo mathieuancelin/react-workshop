@@ -94,7 +94,7 @@ Commencez par installer `redux` et `react-redux`. Dans le fichier `package.json`
 ou via la ligne de commande
 
 ```
-npm install --save redux react-redux
+npm install --save redux@3.3.1 react-redux@4.4.1
 ```
 
 Dans le cadre de notre application, nous allons afficher des informations statistiques globales concernant notre application. A savoir le nombre global de likes et le nombre global de commentaires. Ces données seront mises a jour en temps réel.

@@ -117,7 +117,7 @@ Dans le fichier `package.json` ajoutez la dépendance suivante :
 ```json
 "dependencies": {
     ...
-    "react-router": "^2.0.1",
+    "react-router": "2.0.1",
     ...
 }
 ```
@@ -125,7 +125,7 @@ Dans le fichier `package.json` ajoutez la dépendance suivante :
 vous pouvez évidemment l'ajouter via la ligner de commande :
 
 ```
-npm install --save react-router
+npm install --save react-router@2.0.1
 ```
 
 Maintenant nous pouvons commencer l'intégration du router. Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `app.js`
