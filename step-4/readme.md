@@ -8,6 +8,8 @@ Le code disponible dans cette étape correspond au résultat attendu de l'étape
 
 Pour lancer l'application de l'étape 3, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
 
+Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la commande `npm start` dans le dossier `api`. La documentation de l'API est disponible à l'adresse http://localhost:3000
+
 ## Objectif
 
 L'objectif de cette étape est d'ajouter des fonctionnalités sur la fiche de description d'un vin, à savoir :

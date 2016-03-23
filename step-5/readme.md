@@ -8,6 +8,8 @@ Le code disponible dans cette étape correspond au résultat attendu des étapes
 
 Pour lancer l'application de l'étape 4, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
 
+Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la commande `npm start` dans le dossier `api`. La documentation de l'API est disponible à l'adresse http://localhost:3000
+
 ## Objectif
 
 Dans cette étape, nous allons intégrer [Redux](http://redux.js.org/index.html) a notre magnifique application.

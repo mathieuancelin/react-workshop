@@ -4,7 +4,7 @@
 
 Le code disponible dans cette étape correspond au résultat attendu des étapes 0, 1, 2, 3, 4, et 5.
 
-Pour lancer l'application de l'étape 5, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
+Pour lancer l'application de l'étape 5, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur. Vous avez également besoin de l'API (lancez la commande `npm start` dans le dossier `api`).
 
 ## Why React is awesome
 

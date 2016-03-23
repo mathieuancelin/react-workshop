@@ -8,6 +8,8 @@ Le code disponible dans cette étape correspond au résultat attendu des étapes
 
 Pour lancer l'application de l'étape 1, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
 
+Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la commande `npm start` dans le dossier `api`.
+
 ## Objectif
 
 L'objectif de cette étape est de développer une application permettant d'afficher la fiche descriptive d'un vin, chaque vin étant catégorisé dans une région viticole.
