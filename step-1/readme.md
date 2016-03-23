@@ -138,3 +138,11 @@ Vous pouvez également préciser à ESLint qu'il doit désormais également trai
     "lint": "eslint src tests"
 }
 ```
+
+## Pour plus tard ...
+
+`ReactTestUtils` permet également de simuler des clics sur des éléments du DOM :
+
+```javascript
+ReactTestUtils.Simulate.click(button);
+```
