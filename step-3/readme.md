@@ -37,7 +37,7 @@ Un moyen simple pourrait être d'avoir un composant technique au plus haut nivea
 Par exemple, nous pourrions définir un composant comme suivant :
 
 ```javascript
-const Navigator = React.createElement({
+const Navigator = React.createClass({
   propTypes: {
     initialRoute: React.PropTypes.shape({
       component: React.PropTypes.func.isRequired,
@@ -74,11 +74,11 @@ const Navigator = React.createElement({
   }
 });
 
-const Page2 = React.createElement({
+const Page2 = React.createClass({
   ...
 });
 
-const Page1 = React.createElement({
+const Page1 = React.createClass({
   gotoNext() {
     this.props.navigator.navigateTo({
       title: 'Page 2',
