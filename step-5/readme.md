@@ -178,7 +178,9 @@ fetch(`http://localhost:3000/api/count`)
   .then(r => store.dispatch(setCounterValue(r.count)));
 ```
 
-Nous avons maintenant un état global correctement alimenté. Il ne nous reste qu'à le connecter à l'UI
+Nous avons maintenant un état global correctement alimenté. Cependant lors qu'il est nécessaire de faire beaucoup d'asynchrone avec `redux`, il devient utile d'utiliser [`redux-thunk`](https://github.com/gaearon/redux-thunk) permettant de faire de l'inversion de contrôle au niveau des actions dispatchées au `store` et donc de dispatcher plusieurs fois ou de manière conditionnelle pour une meme action.
+
+Maintenant, il ne nous reste qu'à le connecter à l'UI
 
 ## react-redux
 
