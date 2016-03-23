@@ -8,7 +8,7 @@ Répondez aux diverses questions de l'assistant afin d'initialiser votre fichier
 Une fois le fichier créé, installez les dépendances de la manière suivante :
 
 ```
-npm install --save reat react-dom
+npm install --save react react-dom
 ```
 
 avec cette commande, vous spécifiez à `npm` d'aller chercher la dernière version des paquets `react` et `react-dom` sur `npmjs.com`, de les installer en local dans le dossier `node_modules` local et de les déclarer comme dépendance dans le fichier `package.json` (via l'argument --save).
