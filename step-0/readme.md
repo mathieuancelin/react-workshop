@@ -250,8 +250,8 @@ Pour commencer, ajoutez les dépendances nécessaires dans le fichier `package.j
 
 ```json
 "devDependencies": {
-    "eslint": "1.10.3",
-    "eslint-plugin-react": "3.11.3"
+    "eslint": "2.4.0",
+    "eslint-plugin-react": "4.2.3"
 }
 ```
 
@@ -270,9 +270,13 @@ Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
   "plugins": [
     "react"
   ],
-  "ecmaFeatures": {
-    "jsx": true,
-    "modules": true
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
   },
   "rules": {
     "react/prop-types": 1,
