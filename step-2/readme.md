@@ -141,7 +141,7 @@ Définissez les `propTypes` de chaque composant, en vous appuyant sur le format 
 
 Créez le composant conteneur `WineApp` qui permet d'assembler l'ensemble des composants.
 
-C'est ce composant qui sera utilisé pour effectuer le rendu de l'application dans le DOM :
+C'est ce composant qui sera utilisé pour effectuer le rendu de l'application dans le DOM, dans le fichier `app.js` :
 
 ```javascript
 import React from 'react';
