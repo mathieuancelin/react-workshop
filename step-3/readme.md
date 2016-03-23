@@ -10,7 +10,7 @@ Le code disponible dans cette étape correspond au résultat attendu des étapes
 
 Maintenant que notre application possède les fonctionnalités de base, nous allons commencer a nous attaquer à la navigation.
 
-En effet pour le moment notre application regroupe toute les foncitonnalités dans une seul et même écran, ce qui s'avère très pratique d'un point de vue technique mais qui n'est pas génial d'un point de vue utilisateur.
+En effet pour le moment notre application regroupe toutes les foncitonnalités dans une seul et même écran, ce qui s'avère très pratique d'un point de vue technique mais qui n'est pas génial d'un point de vue utilisateur.
 
 Nous allons donc découper notre application en 3 écrans successifs, permettant de choisir la region d'un vin,
 
@@ -26,7 +26,7 @@ et enfin la fiche de consultation du vin.
 
 Ici chaque sélection entrainera la navigation jusqu'à l'écran suivant, etc ...
 
-Mais comme nous sommes dans un contexte frontend et que nous ne sommes pas la pour coder du backend, nous allons développer tout ca sous forme d'une SPA (single page application).
+Mais comme nous sommes dans un contexte frontend et que nous ne sommes pas la pour coder du backend, nous allons développer tout ca sous forme d'une SPA (Single Page Application).
 
 Une SPA est une application web (front) accessible via une page unique. Le but est d'éviter le chargement d'une nouvelle page à chaque action demandée et donc de fluidifier l'expérience utilisateur.
 
@@ -124,7 +124,7 @@ vous pouvez évidemment l'ajouter via la ligner de commande :
 npm install --save react-router
 ```
 
-Maintenant nous pouvons commencer l'intégration du router. Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importont les APIs dans `app.js`
+Maintenant nous pouvons commencer l'intégration du router. Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `app.js`
 
 ```javascript
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
@@ -222,11 +222,11 @@ enfin vous pouvez créer des liens en utilisant l'API
 
 de `react-router`
 
-Un dernier petit conseil, vos composants existent déjà et sont idiot (Dumb component). Ce qui veut dire qu'ils n'ont pas d'état propre, et fonctionnent uniquement via les propriétés qui leur sont passés. Autrement dit, ce sont des composants stateless.
+Un dernier petit conseil, vos composants existent déjà et sont idiot (Dumb Components). Ce qui veut dire qu'ils n'ont pas d'état propre, et fonctionnent uniquement via les propriétés qui leur sont passés. Autrement dit, ce sont des composants stateless.
 
-Ce genre d'approche est plutôt intéressante car elle permet de bien séparer ce genre de composants des composants intelligent (Smart Component) qui eux sont souvent stateful et technique sans forcément produire des éléments graphiques. (voir cet [article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.d5m6d6pbj) sur le sujet)
+Ce genre d'approche est plutôt intéressante car elle permet de bien séparer ce genre de composants des composants intelligents (Smart Components) qui eux sont souvent stateful et technique sans forcément produire des éléments graphiques. (voir cet [article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.d5m6d6pbj) sur le sujet)
 
-Dans le cadre de notre application, il serait intéressant de garder nos composants graphiques simple tel qu'ils sont, et les wrapper dans des composants intelligent qui se chargeront des appels HTTP et de la gestion de l'état
+Dans le cadre de notre application, il serait intéressant de garder nos composants graphiques simple tel qu'ils sont, et les wrapper dans des composants intelligents qui se chargeront des appels HTTP et de la gestion de l'état
 
 * `RegionsPage` => `Regions`
 * `WinelistPage` => `Winelist`
@@ -238,7 +238,7 @@ Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organi
 
 ## Bonus
 
-A priori vous avez créé un composant type `container` lié à l'URL `/` qui a pour seul role de contenir les différentes pages de l'application. Il pourrait être intéressant que ce composant affiche le titre courant de la vue (`Regions` -> `Wines from Bordeaux` -> `Cheval Noir`). Pour celà une petite astuce, Le meilleur moyen a votre disposition est de rajouter une fonction de mise à jour du titre courant dans les props de la vue rendue à l'intérieur du container principal. Il vous est donc possible de cloner l'élément a render et de lui rajouter des propriétés de la façon suivante :
+A priori vous avez créé un composant type `container` lié à l'URL `/` qui a pour seul role de contenir les différentes pages de l'application. Il pourrait être intéressant que ce composant affiche le titre courant de la vue (`Regions` -> `Wines from Bordeaux` -> `Cheval Noir`). Pour celà une petite astuce, le meilleur moyen a votre disposition est de rajouter une fonction de mise à jour du titre courant dans les props de la vue rendue à l'intérieur du container principal. Il vous est donc possible de cloner l'élément a render et de lui rajouter des propriétés de la façon suivante :
 
 ```javascript
 const WineApp = React.createClass({
