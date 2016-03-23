@@ -147,7 +147,7 @@ Dans le fichier `package.json`, ajoutez les dépendances de développement néce
 vous pouvez évidemment les ajouter via la ligner de commande :
 
 ```
-npm install --save-dev babel-register webpack babel-loader babel-preset-es2015 babel-preset-react
+npm install --save-dev webpack babel-loader babel-preset-es2015 babel-preset-react
 ```
 
 ici l'argument `--save-dev` indique que le dépendance doit être inscrite dans les dépendances du build et non du projet lui même
