@@ -30,11 +30,11 @@ Une autre possibilité est de créez un fichier `package.json` et de déclarer m
 puis de lancer la commande `npm install` afin de télécharger localement les dépendances (elles se trouvent dans le répertoire `node_modules`)
 
 
-## Premier componsant
+## Premier composant
 
 ### wine.js
 
-Dans le répertoire `src/components`, créez le fichier `wine.js` qui contient le code de notre premier componsant, nommé `Wine` :  
+Dans le répertoire `src/components`, créez le fichier `wine.js` qui contient le code de notre premier composant, nommé `Wine` :  
 
 ```javascript
 import React from 'react';
@@ -64,7 +64,7 @@ export default Wine;
 Ce premier composant est volontairement très simple (de type "hello world"), il retourne simplement le nom du vin dans un élément HTML `<div>`.
 Le nom du vin est passé au composant grâce à une propriété `name`. Cette propriété est définie comme étant de type `string` et obligatoire (partie `propTypes` du composant).
 
-Un style est également appliqué au componsant via l'attribut `style`.
+Un style est également appliqué au composant via l'attribut `style`.
 
 Vous pouvez également utiliser directement la fonction `createElement` de l'API `React` :
 
@@ -100,7 +100,7 @@ Dans le dossier `public`, créez une page HTML basique et ajoutez-y une `<div>` 
 
 ### app.js
 
-A la racine du répertoire `src`, créez le fichier `app.js` qui contient le code nécessaire au rendu du componsant `Wine` dans la `<div>` créée précédemment :
+A la racine du répertoire `src`, créez le fichier `app.js` qui contient le code nécessaire au rendu du composant `Wine` dans la `<div>` créée précédemment :
 
 ```javascript
 import React from 'react';
