@@ -17,7 +17,7 @@ const WineApp = React.createClass({
   },
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/regions')
+    fetch('/api/regions')
       .then(r => r.json())
       .then(data => {
         this.setState({
@@ -32,7 +32,7 @@ const WineApp = React.createClass({
   },
 
   loadWinesByRegion(region) {
-    fetch(`http://localhost:3000/api/wines?region=${region}`)
+    fetch(`/api/wines?region=${region}`)
       .then(r => r.json())
       .then(data => {
         this.setState({

@@ -69,7 +69,7 @@ export const WineListPage = React.createClass({
   },
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/wines?region=${this.props.params.regionId}`)
+    fetch(`/api/wines?region=${this.props.params.regionId}`)
       .then(r => r.json())
       .then(data => {
         this.setState({ wines: data, loaded: true });

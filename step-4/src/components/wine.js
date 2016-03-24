@@ -51,7 +51,7 @@ export const Wine = React.createClass({
     return (
       <div style={Styles.Card}>
           <img style={Styles.Image}
-              src={`http://localhost:3000/api/wines/${wine.id}/image`}
+              src={`/api/wines/${wine.id}/image`}
           />
           <div style={Styles.Title}>{wine.name}</div>
           <div style={Styles.Info}>
@@ -97,7 +97,7 @@ export const WinePage = React.createClass({
   },
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/wines/${this.props.params.wineId}`)
+    fetch(`/api/wines/${this.props.params.wineId}`)
       .then(r => r.json())
       .then(data => {
         this.setState({ wine: data, loaded: true });

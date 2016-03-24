@@ -34,7 +34,7 @@ export const Comments = connect()(React.createClass({
   },
 
   updateComments() {
-    fetch(`http://localhost:3000/api/wines/${this.props.wineId}/comments`)
+    fetch(`/api/wines/${this.props.wineId}/comments`)
       .then(r => r.json())
       .then(comments => {
         this.setState({ comments: comments.sort((a, b) => new Date(b.date) - new Date(a.date)), loaded: true });
@@ -53,7 +53,7 @@ export const Comments = connect()(React.createClass({
   },
 
   handlePostComment() {
-    fetch(`http://localhost:3000/api/wines/${this.props.wineId}/comments`, {
+    fetch(`/api/wines/${this.props.wineId}/comments`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',

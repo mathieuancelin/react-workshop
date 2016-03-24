@@ -22,11 +22,11 @@ import { setLikes, setComments } from './actions';
 
 const store = createStore(app);
 
-fetch(`http://localhost:3000/api/likes`)
+fetch(`/api/likes`)
   .then(r => r.json())
   .then(r => store.dispatch(setLikes(r.count)));
 
-fetch(`http://localhost:3000/api/comments`)
+fetch(`/api/comments`)
   .then(r => r.json())
   .then(r => store.dispatch(setComments(r.count)));
 

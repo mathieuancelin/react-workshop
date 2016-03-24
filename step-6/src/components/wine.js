@@ -73,7 +73,7 @@ export const Wine = React.createClass({
     return (
       <div style={Styles.Card}>
           <img style={Styles.Image}
-              src={`http://localhost:3000/api/wines/${wine.id}/image`}
+              src={`/api/wines/${wine.id}/image`}
           />
           <div style={Styles.Title}>{wine.name}</div>
           <div style={Styles.Info}>
@@ -124,9 +124,9 @@ export const WinePage = connect()(React.createClass({
   },
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/wines/${this.props.params.wineId}`)
+    fetch(`/api/wines/${this.props.params.wineId}`)
       .then(r => r.json())
-      .then(data => fetch(`http://localhost:3000/api/wines/${this.props.params.wineId}/like`)
+      .then(data => fetch(`/api/wines/${this.props.params.wineId}/like`)
         .then(r => r.json()).then(data2 => [data, data2]))
       .then(data => {
         const [wine, liked] = data;
@@ -146,7 +146,7 @@ export const WinePage = connect()(React.createClass({
       this.props.dispatch(addLike());
     }
     this.setState({ liked: !old });
-    fetch(`http://localhost:3000/api/wines/${this.props.params.wineId}/like`, {
+    fetch(`/api/wines/${this.props.params.wineId}/like`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',
