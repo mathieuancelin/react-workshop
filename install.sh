@@ -4,7 +4,7 @@ APP_PATH=`pwd`
 
 STEPS=`find $APP_PATH -type d -name "step-*"`
 
-for item in ${STEPS[*]}
+for item in ${STEPS}
 do
   if [ -f "$item/package.json" ];
   then
