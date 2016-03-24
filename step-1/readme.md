@@ -40,18 +40,18 @@ Commencez par ajouter ces librairies au fichier package.json :
 
 ```json
 "devDependencies": {
-    "babel-register": "6.3.13",
-    "jsdom": "7.2.0",
-    "mocha": "2.3.4",
+    "babel-register": "6.7.2",
+    "jsdom": "8.1.0",
+    "mocha": "2.4.5",
     "chai": "3.4.1",
-    "react-addons-test-utils": "0.14.3"
+    "react-addons-test-utils": "0.14.7"
 }
 ```
 
 vous pouvez évidemment les ajouter via la ligner de commande :
 
 ```
-npm install --save-dev babel-register@6.3.13 jsdom@7.2.0 mocha@2.3.4 chai@3.4.1 react-addons-test-utils@0.14.3
+npm install --save-dev babel-register@6.7.2 jsdom@8.1.0 mocha@2.4.5 chai@3.4.1 react-addons-test-utils@0.14.7
 ```
 
 Ajoutez la configuration nécessaire à `babel-register` dans le fichier `.babelrc` :

@@ -137,17 +137,17 @@ Dans le fichier `package.json`, ajoutez les dépendances de développement néce
 
 ```json
 "devDependencies": {
-    "webpack": "1.12.9",
-    "babel-loader": "6.2.0",
-    "babel-preset-es2015": "6.1.18",
-    "babel-preset-react": "6.1.18"
+    "webpack": "1.12.14",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.6.0",
+    "babel-preset-react": "6.5.0"
 }
 ```
 
 vous pouvez évidemment les ajouter via la ligner de commande :
 
 ```
-npm install --save-dev webpack@1.12.9 babel-loader@6.2.0 babel-preset-es2015@6.1.18 babel-preset-react@6.1.18
+npm install --save-dev webpack@1.12.14 babel-loader@6.2.4 babel-preset-es2015@6.6.0 babel-preset-react@6.5.0
 ```
 
 ici l'argument `--save-dev` indique que le dépendance doit être inscrite dans les dépendances du build et non du projet lui même
