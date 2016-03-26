@@ -31,7 +31,7 @@ Faites évoluer le composant `Wine` :
 * Ajout d'un bouton "like / unlike" dans le rendu du composant se basant sur la valeur de la propriété `liked`.
 * Gestion de l'événement `onClick` sur le bouton.
 
-Faites évoluer le composant `WineApp` :
+Faites évoluer le composant `WinePage` :
 
 * Ajout dans le `state` d'un attribut `liked`.
 * Evolution du code de la méthode `componentDidMount()` pour aller chercher la valeur de `liked` sur le serveur.
