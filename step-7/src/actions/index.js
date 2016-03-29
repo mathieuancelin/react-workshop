@@ -145,7 +145,7 @@ export function fetchCommentsCount() {
 
 export function fetchRegions() {
   return (dispatch, state) => {
-    if (state().regions.lastUpdated + 60000 < Date.now()) {
+    if (state().regions.lastUpdated + 60000 < Date.now()) { // caches data during 1mn
       dispatch(loading('Regions'));
       fetch('/api/regions')
         .then(r => r.json())
@@ -164,7 +164,7 @@ export function fetchRegions() {
 export function fetchWinesForRegion(regionId) {
   return (dispatch, state) => {
     const lastUpdated = (state().wines[regionId] || { lastUpdated: 0 }).lastUpdated;
-    if (lastUpdated + 60000 < Date.now()) {
+    if (lastUpdated + 60000 < Date.now()) { // caches data during 1mn
       dispatch(setCurrentRegion(regionId));
       dispatch(loading(`Wines for region ${regionId}`));
       fetch(`/api/wines?region=${regionId}`)
