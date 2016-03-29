@@ -60,15 +60,22 @@ export function fetchCommentsCount() {
 }
 
 export function fetchRegions() {
-  return dispatch => {
-    dispatch(loading());
-    fetch('/api/regions')
-      .then(r => r.json())
-      .then(data => {
-        dispatch(setRegions(data));
-        dispatch(loaded());
-      })
-      .catch(error => dispatch(errorLoading(`error while fetching regions : ${error.message}`)));
+  return (dispatch, state) => {
+    if (state().regions.lastUpdated + 60000 < Date.now()) {
+      console.log('Actualy fetching regions ...');
+      dispatch(loading());
+      fetch('/api/regions')
+        .then(r => r.json())
+        .then(data => {
+          dispatch(updateRegionsTimestamp());
+          dispatch(setRegions(data));
+          dispatch(loaded());
+        })
+        .catch(error => dispatch(errorLoading(`error while fetching regions : ${error.message}`)));
+    } else {
+      console.log('fetching regions from cache');
+      dispatch(setRegions(state().regions.data));
+    }
   };
 }
 
@@ -227,5 +234,18 @@ export const errorLoading = (error) => {
   return {
     type: 'ERROR',
     error
+  };
+}
+
+export const updateRegionsTimestamp = () => {
+  return {
+    type: 'UPDATE_REGIONS_TIMESTAMP'
+  };
+}
+
+export const updateWinesTimestamp = (region) => {
+  return {
+    type: 'UPDATE_REGIONS_TIMESTAMP',
+    region
   };
 }
