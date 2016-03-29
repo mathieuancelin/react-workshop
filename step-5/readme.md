@@ -326,7 +326,3 @@ Il ne nous reste donc plus qu'a émettre les différentes actions au bon moment 
 ## A vous de jouer !
 
 Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans l'étape suivante ;-)
-
-## Bonus
-
-Maintenant que vous maitrisez `redux`, vous pouvez vous lancer dans un gros refactoring pour que tout l'état applicatif soit contenu dans le store `redux`. Une fois que vous aurez réussi vous pourrez installer [`redux-devtools`](https://github.com/gaearon/redux-devtools) et jouer avec le `time travelling` rendu possible par `redux` et sa gestion d'état immutable.

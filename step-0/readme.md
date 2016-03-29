@@ -222,11 +222,11 @@ Ajoutez la dépendance à `webpack-dev-server` dans le fichier `package.json` :
 
 ```json
 "devDependencies": {
-    "webpack-dev-server": "1.14.0"
+    "webpack-dev-server": "1.14.1"
 }
 ```
 
-ou via la command `npm install --save-dev webpack-dev-server@1.14.0`
+ou via la command `npm install --save-dev webpack-dev-server@1.14.1`
 
 Ajoutez un nouveau script permettant de lancer le serveur Webpack :
 

@@ -1,4 +1,4 @@
-# Step 6 : aller plus loin ...
+# Step 6 : redux, redux-thunk et les devtools
 
 ## Pré-requis
 
@@ -6,26 +6,14 @@ Le code disponible dans cette étape correspond au résultat attendu des étapes
 
 Pour lancer l'application de l'étape 5, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur. Vous avez également besoin de l'API (lancez la commande `npm start` dans le dossier `api`).
 
-## Why React is awesome
+## Objectif
 
-[http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome](http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome)
+Maintenant que vous maitrisez `redux`, vous pouvez vous lancer dans un gros refactoring pour que tout l'état applicatif soit contenu dans le store `redux`.
 
-## Presentational and Container components
+## redux-thunk
 
-[https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.ys0wrphn6](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.ys0wrphn6)
+TODO
 
-## React components as Classes
+## redux-devtools
 
-[https://facebook.github.io/react/docs/reusable-components.html#es6-classes](https://facebook.github.io/react/docs/reusable-components.html#es6-classes)
-
-## Higher Order components
-
-[https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e)
-
-## Stateless components
-
-[https://facebook.github.io/react/docs/reusable-components.html#stateless-functions](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions)
-
-## React context
-
-[https://facebook.github.io/react/docs/context.html](https://facebook.github.io/react/docs/context.html)
+Une fois que vous aurez réussi vous pourrez installer [`redux-devtools`](https://github.com/gaearon/redux-devtools) et jouer avec le `time travelling` rendu possible par `redux` et sa gestion d'état immutable.
