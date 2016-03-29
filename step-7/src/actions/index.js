@@ -83,15 +83,17 @@ export const setWines = (region, wines) => {
   };
 }
 
-export const loading = () => {
+export const loading = (what) => {
   return {
-    type: 'LOADING'
+    type: 'LOADING',
+    what
   };
 }
 
-export const loaded = () => {
+export const loaded = (what) => {
   return {
-    type: 'LOADED'
+    type: 'LOADED',
+    what
   };
 }
 
@@ -117,12 +119,12 @@ export const updateWinesTimestamp = (region) => {
 
 export function fetchLikesCount() {
   return dispatch => {
-    dispatch(loading());
+    dispatch(loading('Likes count'));
     fetch(`/api/likes`)
       .then(r => r.json())
       .then(r => {
         dispatch(setLikes(r.count));
-        dispatch(loading());
+        dispatch(loaded('Likes count'));
       })
       .catch(error => dispatch(errorLoading(`error while fetching like count : ${error.message}`)));
   };
@@ -130,12 +132,12 @@ export function fetchLikesCount() {
 
 export function fetchCommentsCount() {
   return dispatch => {
-    dispatch(loading());
+    dispatch(loading('Comment counts'));
     fetch(`/api/comments`)
       .then(r => r.json())
       .then(r => {
         dispatch(setComments(r.count));
-        dispatch(loaded());
+        dispatch(loaded('Comment counts'));
       })
       .catch(error => dispatch(errorLoading(`error while fetching comment count : ${error.message}`)));
   };
@@ -144,13 +146,13 @@ export function fetchCommentsCount() {
 export function fetchRegions() {
   return (dispatch, state) => {
     if (state().regions.lastUpdated + 60000 < Date.now()) {
-      dispatch(loading());
+      dispatch(loading('Regions'));
       fetch('/api/regions')
         .then(r => r.json())
         .then(data => {
           dispatch(updateRegionsTimestamp());
           dispatch(setRegions(data));
-          dispatch(loaded());
+          dispatch(loaded('Regions'));
         })
         .catch(error => dispatch(errorLoading(`error while fetching regions : ${error.message}`)));
     } else {
@@ -164,13 +166,13 @@ export function fetchWinesForRegion(regionId) {
     const lastUpdated = (state().wines[regionId] || { lastUpdated: 0 }).lastUpdated;
     if (lastUpdated + 60000 < Date.now()) {
       dispatch(setCurrentRegion(regionId));
-      dispatch(loading());
+      dispatch(loading(`Wines for region ${regionId}`));
       fetch(`/api/wines?region=${regionId}`)
         .then(r => r.json())
         .then(data => {
           dispatch(updateWinesTimestamp(regionId));
           dispatch(setWines(regionId, data));
-          dispatch(loaded());
+          dispatch(loaded(`Wines for region ${regionId}`));
         })
         .catch(error => dispatch(errorLoading(`error while fetching wines for ${regionId} : ${error.message}`)));
     } else {
@@ -181,12 +183,12 @@ export function fetchWinesForRegion(regionId) {
 
 export function fetchWine(wineId) {
   return dispatch => {
-    dispatch(loading());
+    dispatch(loading(`wine with id ${wineId}`));
     return fetch(`/api/wines/${wineId}`)
       .then(r => r.json())
       .then(data => {
         dispatch(setCurrentWine(data));
-        dispatch(loaded());
+        dispatch(loaded(`wine with id ${wineId}`));
       })
       .catch(error => dispatch(errorLoading(`error while fetching wine ${wineId} : ${error.message}`)));
   };
