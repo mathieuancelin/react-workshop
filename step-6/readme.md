@@ -391,3 +391,7 @@ Voici à quoi pourrait ressembler votre état global
  }
 }
 ```
+
+pour les régions par exemple, il est possible d'avoir un timestamp pour situer le dernier `fetch` dans le temps. Si ce dernier n'est est assez récent, il est possible de retourner la valeur déjà présente dans l'état au lieu d'aller la chercher sur le serveur.
+
+n'oubliez pas de mettre a jour le timestamp lorsque la valeur en cache n'est plus valide ;-)
