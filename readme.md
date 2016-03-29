@@ -134,8 +134,10 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
     * Ajouter un commentaire
 * [Etape 5](/step-5)
   * Introduction à redux
-  * Refactoring de l'étape 4 avec redux
+  * Ajout d'une fonctionnalité avec redux
 * [Etape 6](/step-6)
+  * Refactoring de l'application avec redux
+* [Etape 7](/step-7)
   * Nouveaux patterns React
     * Classes
     * HOC
