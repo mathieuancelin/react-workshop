@@ -62,7 +62,6 @@ export function fetchCommentsCount() {
 export function fetchRegions() {
   return (dispatch, state) => {
     if (state().regions.lastUpdated + 60000 < Date.now()) {
-      console.log('Actualy fetching regions ...');
       dispatch(loading());
       fetch('/api/regions')
         .then(r => r.json())
@@ -73,7 +72,6 @@ export function fetchRegions() {
         })
         .catch(error => dispatch(errorLoading(`error while fetching regions : ${error.message}`)));
     } else {
-      console.log('fetching regions from cache');
       dispatch(setRegions(state().regions.data));
     }
   };
@@ -210,10 +208,10 @@ export const setTitle = (title) => {
   };
 }
 
-export const setWines = (regionId, wines) => {
+export const setWines = (region, wines) => {
   return {
     type: 'SET_WINES',
-    region: regionId,
+    region,
     wines
   };
 }

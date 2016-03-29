@@ -49,7 +49,7 @@ export const WineList = React.createClass({
 
 const mapStateToProps = (state) => {
   return {
-    wines: state.wines.data,
+    wines: state.wines,
     httpState: state.http.state
   };
 }
@@ -85,8 +85,9 @@ export const WineListPage = connect(mapStateToProps)(React.createClass({
 
   render () {
     if (this.props.httpState === 'LOADED') {
+      const wines = this.props.wines[this.props.params.regionId] || { data: [] };
       return (
-        <WineList wines={this.props.wines[this.props.params.regionId] || []} onWineChange={this.handleNavigateToWine} />
+        <WineList wines={wines.data} onWineChange={this.handleNavigateToWine} />
       );
     }
     return null;

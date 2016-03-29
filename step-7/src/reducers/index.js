@@ -8,7 +8,7 @@ import { http } from './http';
 
 /**
  * shape of the global state
- * 
+ *
  *  {
  *   comments: {
  *     count: 42
@@ -21,8 +21,11 @@ import { http } from './http';
  *     data: [...]
  *   },
  *   wines: {
- *     lastUpdated: 0,
- *     data: [...]
+ *     bordeaux: {
+ *       lastUpdated: 0,
+ *       data: [...]
+ *     },
+ *     ...
  *   },
  *   currentWine: {
  *     wine: {...},

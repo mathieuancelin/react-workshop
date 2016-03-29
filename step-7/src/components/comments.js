@@ -63,7 +63,7 @@ export const Comments = connect(mapStateToProps)(React.createClass({
   },
 
   render() {
-    if (!this.props.httpState === 'LOADED') {
+    if (this.props.httpState === 'LOADED') {
       return (
         <div>
           <h3>Comments</h3>
