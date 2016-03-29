@@ -84,12 +84,9 @@ export const WineListPage = connect(mapStateToProps)(React.createClass({
   },
 
   render () {
-    if (this.props.httpState === 'LOADED') {
-      const wines = this.props.wines[this.props.params.regionId] || { data: [] };
-      return (
-        <WineList wines={wines.data} onWineChange={this.handleNavigateToWine} />
-      );
-    }
-    return null;
+    const wines = this.props.wines[this.props.params.regionId] || { data: [] };
+    return (
+      <WineList wines={wines.data} onWineChange={this.handleNavigateToWine} />
+    );
   }
 }));

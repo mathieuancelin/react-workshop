@@ -79,12 +79,9 @@ export const RegionsPage = connect(mapStateToProps)(React.createClass({
   },
 
   render () {
-    if (this.props.httpState === 'LOADED') {
-      return (
-        <Regions regions={this.props.regions}
-            onRegionChange={this.handleNavigateToRegion} />
-      );
-    }
-    return null;
+    return (
+      <Regions regions={this.props.regions}
+          onRegionChange={this.handleNavigateToRegion} />
+    );
   }
 }));

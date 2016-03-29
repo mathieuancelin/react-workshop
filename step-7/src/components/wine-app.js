@@ -42,7 +42,11 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
     return (
       <div>
         <div className="grid">
-            <div className="1/2 grid__cell">
+            <div className="1/2 grid__cell" style={{
+              height: 20,
+              backgroundColor: this.props.httpState === 'ERROR' ? 'red' : null,
+              color: this.props.httpState === 'ERROR' ? 'white' : 'black'  
+            }}>
                 <div>{message}</div>
             </div>
         </div>

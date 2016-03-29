@@ -136,15 +136,12 @@ export const WinePage = connect(mapStateToProps)(React.createClass({
   },
 
   render() {
-    if (this.props.httpState === 'LOADED') {
-      const comments = this.props.wine ? <Comments wineId={this.props.wine.id} /> : null;
-      return (
-        <div>
-          <Wine wine={this.props.wine} liked={this.props.liked} onToggleLike={this.handleToggleLike} />
-          {comments}
-        </div>
-      );
-    }
-    return null;
+    const comments = this.props.wine ? <Comments wineId={this.props.wine.id} /> : null;
+    return (
+      <div>
+        <Wine wine={this.props.wine} liked={this.props.liked} onToggleLike={this.handleToggleLike} />
+        {comments}
+      </div>
+    );
   }
 }));

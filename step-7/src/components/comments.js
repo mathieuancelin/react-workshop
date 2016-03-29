@@ -63,36 +63,33 @@ export const Comments = connect(mapStateToProps)(React.createClass({
   },
 
   render() {
-    if (this.props.httpState === 'LOADED') {
-      return (
-        <div>
-          <h3>Comments</h3>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', marginBottom: 10 }}>
-              <input
-                  onChange={this.handleCommentTitleChange}
-                  style={{ flexGrow: 8 }}
-                  type="text"
-                  placeholder="Comment title"
-                  value={this.state.commentTitle} />
-              <button
-                  onClick={this.handlePostComment}
-                  style={{ flexGrow: 2, marginLeft: 10 }}
-                  type="button">Comment</button>
-            </div>
-            <textarea onChange={this.handleCommentBodyChange} placeholder="Comment" rows="5" value={this.state.commentBody}></textarea>
+    return (
+      <div>
+        <h3>Comments</h3>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', marginBottom: 10 }}>
+            <input
+                onChange={this.handleCommentTitleChange}
+                style={{ flexGrow: 8 }}
+                type="text"
+                placeholder="Comment title"
+                value={this.state.commentTitle} />
+            <button
+                onClick={this.handlePostComment}
+                style={{ flexGrow: 2, marginLeft: 10 }}
+                type="button">Comment</button>
           </div>
-          {
-            this.props.comments.map(comment =>
-              <div key={comment.date.toString()} style={{ padding: 10, backgroundColor: '#ececec', marginTop: 5 }}>
-                <span>{comment.title} (le <small>{comment.date}</small>)</span>
-                <p>{comment.content}</p>
-              </div>
-            )
-          }
+          <textarea onChange={this.handleCommentBodyChange} placeholder="Comment" rows="5" value={this.state.commentBody}></textarea>
         </div>
-      );
-    }
-    return null;
+        {
+          this.props.comments.map(comment =>
+            <div key={comment.date.toString()} style={{ padding: 10, backgroundColor: '#ececec', marginTop: 5 }}>
+              <span>{comment.title} (le <small>{comment.date}</small>)</span>
+              <p>{comment.content}</p>
+            </div>
+          )
+        }
+      </div>
+    );
   }
 }));
