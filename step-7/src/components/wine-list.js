@@ -47,7 +47,12 @@ export const WineList = React.createClass({
   }
 })
 
-const mapStateToProps = state => ({ wines: state.wines.data, httpState: state.http.state });
+const mapStateToProps = (state) => {
+  return {
+    wines: state.wines.data,
+    httpState: state.http.state
+  };
+}
 
 export const WineListPage = connect(mapStateToProps)(React.createClass({
   propTypes: {
@@ -60,7 +65,7 @@ export const WineListPage = connect(mapStateToProps)(React.createClass({
       regionId: PropTypes.string.isRequired
     }),
     setTitle: PropTypes.func.isRequired,
-    wines: PropTypes.array.isRequired
+    wines: PropTypes.object.isRequired
   },
 
   contextTypes: {
@@ -81,7 +86,7 @@ export const WineListPage = connect(mapStateToProps)(React.createClass({
   render () {
     if (this.props.httpState === 'LOADED') {
       return (
-        <WineList wines={this.props.wines} onWineChange={this.handleNavigateToWine} />
+        <WineList wines={this.props.wines[this.props.params.regionId] || []} onWineChange={this.handleNavigateToWine} />
       );
     }
     return null;

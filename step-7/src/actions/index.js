@@ -79,7 +79,7 @@ export function fetchWinesForRegion(regionId) {
     fetch(`/api/wines?region=${regionId}`)
       .then(r => r.json())
       .then(data => {
-        dispatch(setWines(data));
+        dispatch(setWines(regionId, data));
         dispatch(loaded());
       })
       .catch(error => dispatch(errorLoading(`error while fetching wines for ${regionId} : ${error.message}`)));
@@ -203,9 +203,10 @@ export const setTitle = (title) => {
   };
 }
 
-export const setWines = (wines) => {
+export const setWines = (regionId, wines) => {
   return {
     type: 'SET_WINES',
+    region: regionId,
     wines
   };
 }

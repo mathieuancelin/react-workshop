@@ -4,7 +4,13 @@ import { setTitle } from '../actions';
 import { connect } from 'react-redux';
 import { DevTools } from './devtools';
 
-const mapStateToProps = state => ({ title: state.title, httpState: state.http.state, httpError: state.http.error });
+const mapStateToProps = (state) => {
+  return {
+    title: state.title,
+    httpState: state.http.state,
+    httpError: state.http.error
+  };
+}
 
 export const WineApp = connect(mapStateToProps)(React.createClass({
   propTypes: {

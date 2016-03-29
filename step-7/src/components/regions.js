@@ -44,7 +44,12 @@ export const Regions = React.createClass({
   }
 });
 
-const mapStateToProps = state => ({ regions: state.regions.data, httpState: state.http.state });
+const mapStateToProps = (state) => {
+  return {
+    regions: state.regions.data,
+    httpState: state.http.state
+  };
+}
 
 export const RegionsPage = connect(mapStateToProps)(React.createClass({
 

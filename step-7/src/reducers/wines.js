@@ -1,7 +1,7 @@
-export const wines = (state = { data: [], lastUpdated: 0 }, action) => {
+export const wines = (state = { data: {}, lastUpdated: 0 }, action) => {
   switch (action.type) {
     case 'SET_WINES':
-      return Object.assign({}, state, { data: action.wines });
+      return Object.assign({}, state, { data: Object.assign({}, state.data, { [action.region]: action.wines }) }) ;
     default:
       return state;
   }

@@ -12,7 +12,12 @@ export const Comment = React.createClass({
   }
 });
 
-const mapStateToProps = state => ({ comments: state.currentWine.comments, httpState: state.http.state });
+const mapStateToProps = (state) => {
+  return {
+    comments: state.currentWine.comments,
+    httpState: state.http.state
+  };
+}
 
 export const Comments = connect(mapStateToProps)(React.createClass({
 
