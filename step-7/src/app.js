@@ -14,12 +14,13 @@ import { NotFound } from './components/not-found';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { app } from './reducers';
 import { fetchLikesCount, fetchCommentsCount } from './actions';
+import { DevTools } from './components/devtools';
 
-const store = createStore(app, applyMiddleware(thunk));
+const store = compose(applyMiddleware(thunk), DevTools.instrument())(createStore)(app);
 
 store.dispatch(fetchLikesCount());
 store.dispatch(fetchCommentsCount());

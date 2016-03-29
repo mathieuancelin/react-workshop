@@ -2,9 +2,11 @@ import React, { PropTypes } from 'react';
 import { GlobalStats } from './stats';
 import { setTitle } from '../actions';
 import { connect } from 'react-redux';
+import { DevTools } from './devtools';
 
-export const WineApp = connect(state => ({ title: state.title, httpState: state.http.state, httpError: state.http.error }))(React.createClass({
+const mapStateToProps = state => ({ title: state.title, httpState: state.http.state, httpError: state.http.error });
 
+export const WineApp = connect(mapStateToProps)(React.createClass({
   propTypes: {
     children: PropTypes.element,
     dispatch: PropTypes.func.isRequired,
@@ -52,6 +54,7 @@ export const WineApp = connect(state => ({ title: state.title, httpState: state.
               <GlobalStats />
             </div>
         </div>
+        <DevTools />
       </div>
     );
   }

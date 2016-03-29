@@ -88,5 +88,6 @@ export const Comments = connect(mapStateToProps)(React.createClass({
         </div>
       );
     }
+    return null;
   }
 }));
