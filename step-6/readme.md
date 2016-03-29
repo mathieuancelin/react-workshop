@@ -270,7 +270,82 @@ import { DevTools } from './components/devtools';
 const store = compose(applyMiddleware(thunk), DevTools.instrument())(createStore)(app);
 ```
 
-Et vous pouvez maintenant jouer avec les devtools et jouer avec le temps dans votre application
+Et vous pouvez maintenant jouer avec les devtools et jouer avec le temps dans votre application.
+Il y a cependant un problème. Même si l'état de votre application change, ce dernier n'est pas synchronisé avec le routeur et l'expérience des `devtools` n'est pas optimale. Pour éviter cela nous allons utiliser `react-router-redux`.
+
+Commencons par installer la dépendance. Ajoutez les lignes suivantes dans votre fichier `package.json` puis lancez `npm install`
+
+```json
+"dependencies": {
+    ...
+    "react-router-redux": "4.0.0",
+    ...
+}
+```
+
+ou alors via la ligne de commande
+
+```
+npm install --save react-router-redux@4.0.0
+```
+
+Ajoutez ensuite le `reducer` dédié de `react-router-redux` dans votre `reducer` global (`src/reducers/index.js`)
+
+```javascript
+import { combineReducers } from 'redux';
+import { comments } from './comments';
+import { likes } from './likes';
+import { regions } from './regions';
+import { wines, currentWine } from './wines';
+import { title } from './title';
+import { http } from './http';
+import { routerReducer } from 'react-router-redux';
+
+export const app = combineReducers({
+  comments,
+  likes,
+  regions,
+  wines,
+  currentWine,
+  title,
+  http,
+  // ici on rajoute un reducer capable de mémoriser la route courante
+  routing: routerReducer
+})
+```
+
+il ne reste plus qu'a synchroniser les changements d'état du routeur avec le store, ce qui revient a dispatcher des actions pour chaque changement de route.
+
+Editez votre fichier `src/app.js` comme suivant
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { syncHistoryWithStore } from 'react-router-redux';
+import thunk from 'redux-thunk';
+import { app } from './reducers';
+import { DevTools } from './components/devtools';
+
+const store = compose(applyMiddleware(thunk), DevTools.instrument())(createStore)(app);
+// ici on synchronise le routeur avec le store
+const history = syncHistoryWithStore(hashHistory, store);
+
+...
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={history}> // et on utilise notre historique synchronisé
+      ...
+    </Router>
+  </Provider>
+  , document.getElementById('main')
+);
+```
 
 ## A vous de jouer !
 
