@@ -11,7 +11,7 @@ import { WineListPage } from './components/wine-list';
 import { WinePage } from './components/wine';
 import { NotFound } from './components/not-found';
 
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -22,7 +22,7 @@ import { fetchLikesCount, fetchCommentsCount } from './actions';
 import { DevTools } from './components/devtools';
 
 const store = compose(applyMiddleware(thunk), DevTools.instrument())(createStore)(app);
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 store.dispatch(fetchLikesCount());
 store.dispatch(fetchCommentsCount());

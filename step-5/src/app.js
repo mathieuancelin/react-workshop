@@ -11,10 +11,10 @@ import { WineListPage } from './components/wine-list';
 import { WinePage } from './components/wine';
 import { NotFound } from './components/not-found';
 
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserhHistory, IndexRoute } from 'react-router';
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+  <Router history={browserhHistory}>
     <Route path="/" component={WineApp}>
       <IndexRoute component={RegionsPage} />
       <Route path="regions/:regionId" component={WineListPage} />

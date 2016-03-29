@@ -131,17 +131,17 @@ npm install --save react-router@2.0.1
 Maintenant nous pouvons commencer l'intégration du router. Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `app.js`
 
 ```javascript
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserhHistory, IndexRoute } from 'react-router';
 ```
 
 l'initialisation du routeur se fera de la façon suivante :
 
 ```javascript
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserhHistory, IndexRoute } from 'react-router';
 import NotFound from './components/not-found';
 
 ReactDOM.render(
-  <Router history={hashHistory}>
+  <Router history={browserhHistory}>
     <Route path="/" component={???}>
       <IndexRoute component={???} />
       ...
@@ -155,7 +155,7 @@ ReactDOM.render(
 Ici nous configurons le routeur pour utiliser les ancres du navigateur comme URL de routage côté client
 
 ```javascript
-<Router history={hashHistory}> ... </Router>
+<Router history={browserhHistory}> ... </Router>
 ```
 
 puis nous spécifions un container qui aura le role d'afficher la vue courante du router et qui sera le point d'entrée de l'application.

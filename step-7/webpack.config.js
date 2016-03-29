@@ -7,6 +7,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
+    historyApiFallback: true,
     proxy: {
       '/api/*': {
         target: 'http://localhost:3000'
