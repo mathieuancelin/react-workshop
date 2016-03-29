@@ -15,19 +15,21 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { app } from './reducers';
 import { fetchLikesCount, fetchCommentsCount } from './actions';
 import { DevTools } from './components/devtools';
 
 const store = compose(applyMiddleware(thunk), DevTools.instrument())(createStore)(app);
+const history = syncHistoryWithStore(hashHistory, store);
 
 store.dispatch(fetchLikesCount());
 store.dispatch(fetchCommentsCount());
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={history}>
       <Route path="/" component={WineApp}>
         <IndexRoute component={RegionsPage} />
         <Route path="regions/:regionId" component={WineListPage} />

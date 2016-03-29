@@ -5,6 +5,7 @@ import { regions } from './regions';
 import { wines, currentWine } from './wines';
 import { title } from './title';
 import { http } from './http';
+import { routerReducer } from 'react-router-redux';
 
 /**
  * shape of the global state
@@ -47,5 +48,6 @@ export const app = combineReducers({
   wines,
   currentWine,
   title,
-  http
+  http,
+  routing: routerReducer
 })
