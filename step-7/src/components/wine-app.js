@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { GlobalStats } from './stats';
-import { setTitle } from '../actions';
 import { connect } from 'react-redux';
 import { DevTools } from './devtools';
 
@@ -25,10 +24,6 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
     router: React.PropTypes.object
   },
 
-  setTitle(title) {
-    this.props.dispatch(setTitle(title));
-  },
-
   handleGoBack() {
     this.context.router.goBack();
   },
@@ -45,7 +40,7 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
             <div className="1/2 grid__cell" style={{
               height: 20,
               backgroundColor: this.props.httpState === 'ERROR' ? 'red' : null,
-              color: this.props.httpState === 'ERROR' ? 'white' : 'black'  
+              color: this.props.httpState === 'ERROR' ? 'white' : 'black'
             }}>
                 <div>{message}</div>
             </div>
@@ -56,9 +51,7 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
                   {this.props.title}
                   <button type="button" onClick={this.handleGoBack}>back</button>
               </h2>
-              {this.props.children && React.cloneElement(this.props.children, {
-                setTitle: this.setTitle
-              })}
+              {this.props.children}
             </div>
             <div className="1/2 grid__cell">
               <GlobalStats />

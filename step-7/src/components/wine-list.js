@@ -1,6 +1,6 @@
 /* eslint react/jsx-no-bind: 0, react/no-multi-comp: 0, react/jsx-closing-bracket-location: 0 */
 import React, { PropTypes } from 'react';
-import { fetchWinesForRegion } from '../actions';
+import { fetchWinesForRegion, setTitle } from '../actions';
 import { connect } from 'react-redux';
 
 const computeWineStyle = function(region, selected) {
@@ -64,7 +64,6 @@ export const WineListPage = connect(mapStateToProps)(React.createClass({
     params: PropTypes.shape({
       regionId: PropTypes.string.isRequired
     }),
-    setTitle: PropTypes.func.isRequired,
     wines: PropTypes.object.isRequired
   },
 
@@ -74,7 +73,7 @@ export const WineListPage = connect(mapStateToProps)(React.createClass({
 
   componentDidMount() {
     this.props.dispatch(fetchWinesForRegion(this.props.params.regionId));
-    this.props.setTitle(`Wines from ${this.props.params.regionId}`);
+    this.props.dispatch(setTitle(`Wines from ${this.props.params.regionId}`));
   },
 
   handleNavigateToWine(wine) {

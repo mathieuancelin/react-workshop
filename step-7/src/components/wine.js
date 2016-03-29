@@ -116,7 +116,6 @@ export const WinePage = connect(mapStateToProps)(React.createClass({
       regionId: PropTypes.string.isRequired,
       wineId: PropTypes.string.isRequired
     }),
-    setTitle: PropTypes.func,
     wine: PropTypes.object
   },
 

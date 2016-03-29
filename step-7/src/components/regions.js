@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react';
 
 import { connect } from 'react-redux';
-import { fetchRegions } from '../actions';
+import { fetchRegions, setTitle } from '../actions';
 
 const computeRegionStyle = function(region, selected) {
   let style = {
@@ -59,8 +59,7 @@ export const RegionsPage = connect(mapStateToProps)(React.createClass({
       push: PropTypes.func.isRequired
     }),
     httpState: PropTypes.string,
-    regions: PropTypes.arrayOf(PropTypes.string),
-    setTitle: PropTypes.func
+    regions: PropTypes.arrayOf(PropTypes.string)
   },
 
   contextTypes: {
@@ -68,7 +67,7 @@ export const RegionsPage = connect(mapStateToProps)(React.createClass({
   },
 
   componentDidMount() {
-    this.props.setTitle(`Regions`);
+    this.props.dispatch(setTitle(`Regions`));
     this.props.dispatch(fetchRegions());
   },
 
