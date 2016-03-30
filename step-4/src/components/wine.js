@@ -1,6 +1,7 @@
 /* eslint react/no-multi-comp: 0 */
 
 import React, { PropTypes } from 'react';
+import { Comments } from './comments';
 
 const Styles = {
   Card: {
@@ -116,7 +117,10 @@ export const WinePage = React.createClass({
       return <div>Error while fetching wines : {this.state.error.message}</div>
     }
     return (
-      <Wine wine={this.state.wine} />
+      <div>
+        <Wine wine={this.state.wine} />
+        <Comments />
+      </div>
     );
   }
 });
