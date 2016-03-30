@@ -1,7 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-export const Stats = React.createClass({
+const mapStateToProps = (state) => {
+  return {
+    comments: state.comments.count,
+    likes: state.likes.count
+  };
+}
+
+export const GlobalStats = connect(mapStateToProps)(React.createClass({
   propTypes: {
     comments: PropTypes.number.isRequired,
     likes: PropTypes.number.isRequired
@@ -16,13 +23,4 @@ export const Stats = React.createClass({
       </div>
     );
   }
-});
-
-const mapStateToProps = (state) => {
-  return {
-    comments: state.comments,
-    likes: state.likes
-  };
-};
-
-export const GlobalStats = connect(mapStateToProps)(Stats);
+}))

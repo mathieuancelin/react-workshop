@@ -131,7 +131,6 @@ export const WinePage = connect()(React.createClass({
       .then(data => {
         const [wine, liked] = data;
         this.setState({ wine, liked: liked.like, loaded: true });
-        this.props.setTitle(wine.name);
       })
       .catch(error => {
         this.setState({ error, loaded: true });

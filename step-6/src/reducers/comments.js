@@ -1,12 +1,10 @@
-const comments = (state = 0, action) => {
+export const comments = (state = { count: 0 }, action) => {
   switch (action.type) {
     case 'ADD_COMMENT':
-      return state + action.increment;
+      return Object.assign({}, state, { count: state.count + action.increment });
     case 'SET_COMMENTS':
-      return action.comments;
+      return Object.assign({}, state, { count: action.comments });
     default:
       return state;
   }
 }
-
-export default comments;

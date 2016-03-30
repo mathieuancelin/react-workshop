@@ -67,7 +67,6 @@ export const RegionsPage = React.createClass({
       .then(r => r.json())
       .then(data => {
         this.setState({ regions: data, loaded: true });
-        this.props.setTitle(`Regions`);
       })
       .catch(error => {
         this.setState({ error, loaded: true });

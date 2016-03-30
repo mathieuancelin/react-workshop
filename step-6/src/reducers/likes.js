@@ -1,14 +1,12 @@
-const likes = (state = 0, action) => {
+export const likes = (state = { count: 0 }, action) => {
   switch (action.type) {
     case 'ADD_LIKE':
-      return state + action.increment;
+      return Object.assign({}, state, { count: state.count + action.increment });
     case 'REMOVE_LIKE':
-      return state - action.decrement;
+      return Object.assign({}, state, { count: state.count - action.decrement });
     case 'SET_LIKES':
-      return action.likes;
+      return Object.assign({}, state, { count: action.likes });
     default:
       return state;
   }
 }
-
-export default likes;

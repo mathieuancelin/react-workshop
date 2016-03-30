@@ -73,7 +73,6 @@ export const WineListPage = React.createClass({
       .then(r => r.json())
       .then(data => {
         this.setState({ wines: data, loaded: true });
-        this.props.setTitle(`Wines from ${this.props.params.regionId}`);
       })
       .catch(error => {
         this.setState({ error, loaded: true });

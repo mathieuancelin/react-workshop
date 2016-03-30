@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import comments from './comments';
-import likes from './likes';
+import { comments } from './comments';
+import { likes } from './likes';
+import { http } from './http';
+import { routerReducer } from 'react-router-redux';
 
-const app = combineReducers({
+export const app = combineReducers({
   comments,
-  likes
-});
-
-export default app;
+  likes,
+  http,
+  routing: routerReducer
+})
