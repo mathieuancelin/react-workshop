@@ -1,3 +1,5 @@
+/* eslint react/jsx-no-bind: 0, react/no-multi-comp: 0, react/jsx-closing-bracket-location: 0 */
+
 import React, { PropTypes } from 'react';
 
 const Styles = {
@@ -27,7 +29,7 @@ const Styles = {
   }
 };
 
-const Wine = React.createClass({
+export const Wine = React.createClass({
   propTypes: {
     wine: PropTypes.shape({
       id: PropTypes.string,
@@ -69,4 +71,10 @@ const Wine = React.createClass({
   }
 });
 
-export default Wine;
+export const WinePage = React.createClass({
+  render () {
+    return (
+      <h2>TODO : WinePage</h2>
+    );
+  }
+});

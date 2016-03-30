@@ -128,7 +128,7 @@ vous pouvez évidemment l'ajouter via la ligne de commande :
 npm install --save react-router@2.0.1
 ```
 
-Maintenant nous pouvons commencer l'intégration du router. Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `app.js`
+Maintenant nous pouvons commencer l'intégration du router (l'intégration de base est présente dans le projet mais vous pouvez tout de même lire les paragraphes suivant). Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `app.js`
 
 ```javascript
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
@@ -152,7 +152,7 @@ ReactDOM.render(
 );
 ```
 
-Ici nous configurons le routeur pour utiliser les ancres du navigateur comme URL de routage côté client
+Ici nous configurons le routeur pour utiliser l'API `history`, tirée de HTML5, du navigateur comme URL de routage côté client. Cette API permet de faire varier l'URL du navigateur sans pour autant déclencher un rechargement de la page.
 
 ```javascript
 <Router history={browserHistory}> ... </Router>
@@ -221,10 +221,36 @@ const MonComponent = React.createClass({
 enfin vous pouvez créer des liens en utilisant l'API
 
 ```javascript
+import { Link } from 'react-router';
+
+...
+
 <Link to="/mon/path/1234">Chose 1234</Link>
 ```
 
-de `react-router`
+de `react-router` ou en utilisant directement l'API `history`disponible à travers le contexte `react`.
+
+Pour celà, il est nécessaire de spécifier sur le composant routé, un `contextType` afin de valider le contenu du contexte
+
+```javascript
+export const Page = React.createClass({
+
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
+  handleNavigationTo(path) {
+    // ici on déclenche la navigation vers l'url /view/${path}/details
+    this.context.router.push({
+      pathname: `/view/${path}/details`
+    });
+  },
+
+  render() {
+    ...
+  }
+}
+```
 
 Un dernier petit conseil, vos composants existent déjà et sont idiots (Dumb Components). Ce qui veut dire qu'ils n'ont pas d'état propre, et fonctionnent uniquement via les propriétés qui leur sont passés. Autrement dit, ce sont des composants stateless.
 
@@ -235,6 +261,8 @@ Dans le cadre de notre application, il serait intéressant de garder nos composa
 * `RegionsPage` => `Regions`
 * `WinelistPage` => `Winelist`
 * `WinePage` => `Wine`
+
+Les composants `RegionsPage`, `WinelistPage` et `WinePage` sont mis a votre disposition dans les fichiers `src/components/regions.js`, `src/components/wine-list.js`, `src/components/wine.js`
 
 ## A vous de jouer !
 

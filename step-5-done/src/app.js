@@ -11,7 +11,7 @@ import { WineListPage } from './components/wine-list';
 import { WinePage } from './components/wine';
 import { NotFound } from './components/not-found';
 
-import { Router, Route, browserhHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -32,7 +32,7 @@ fetch(`/api/comments`)
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserhHistory}>
+    <Router history={browserHistory}>
       <Route path="/" component={WineApp}>
         <IndexRoute component={RegionsPage} />
         <Route path="regions/:regionId" component={WineListPage} />

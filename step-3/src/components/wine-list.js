@@ -1,4 +1,7 @@
+/* eslint react/jsx-no-bind: 0, react/no-multi-comp: 0, react/jsx-closing-bracket-location: 0 */
+
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 const computeWineStyle = function(region, selected) {
   let style = {
@@ -11,7 +14,7 @@ const computeWineStyle = function(region, selected) {
   return style;
 }
 
-const WineList = React.createClass({
+export const WineList = React.createClass({
   propTypes: {
     onWineChange: PropTypes.func,
     selected: PropTypes.object,
@@ -45,4 +48,13 @@ const WineList = React.createClass({
   }
 })
 
-export default WineList
+export const WineListPage = React.createClass({
+  render () {
+    return (
+      <div>
+        <h2>TODO : WineListPage</h2>
+        <Link to="/regions/foo/wines/bar">Goto WinePage</Link>
+      </div>
+    );
+  }
+});

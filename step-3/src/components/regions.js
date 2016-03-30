@@ -1,4 +1,7 @@
+/* eslint react/jsx-no-bind: 0, react/no-multi-comp: 0, react/jsx-closing-bracket-location: 0 */
+
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 const computeRegionStyle = function(region, selected) {
   let style = {
@@ -11,7 +14,7 @@ const computeRegionStyle = function(region, selected) {
   return style;
 }
 
-const Regions = React.createClass({
+export const Regions = React.createClass({
   propTypes: {
     onRegionChange: PropTypes.func,
     regions: PropTypes.arrayOf(PropTypes.string),
@@ -40,4 +43,13 @@ const Regions = React.createClass({
   }
 })
 
-export default Regions
+export const RegionsPage = React.createClass({
+  render () {
+    return (
+      <div>
+        <h2>TODO : RegionsPage</h2>
+        <Link to="/regions/foo">Goto WineListPage</Link>
+      </div>
+    );
+  }
+})
