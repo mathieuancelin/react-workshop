@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Clicker } from '../components/clicker';
 
 const WineApp = React.createClass({
 
@@ -26,13 +27,21 @@ const WineApp = React.createClass({
 
   render () {
     return (
-      <div className="grid">
+      <div>
+        <div className="grid">
           <div className="1/2 grid__cell">
-            <h2>{this.state.title} <button type="button" onClick={this.goBack}>back</button></h2>
-            {this.props.children && React.cloneElement(this.props.children, {
-              setTitle: this.setTitle
-            })}
+            <h3>Redux example</h3>
+            <Clicker />
           </div>
+        </div>
+        <div className="grid">
+            <div className="1/2 grid__cell">
+              <h2>{this.state.title} <button type="button" onClick={this.goBack}>back</button></h2>
+              {this.props.children && React.cloneElement(this.props.children, {
+                setTitle: this.setTitle
+              })}
+            </div>
+        </div>
       </div>
     );
   }

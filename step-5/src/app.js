@@ -13,14 +13,22 @@ import { NotFound } from './components/not-found';
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import app from './reducers';
+
+const store = createStore(app);
+
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={WineApp}>
-      <IndexRoute component={RegionsPage} />
-      <Route path="regions/:regionId" component={WineListPage} />
-      <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={WineApp}>
+        <IndexRoute component={RegionsPage} />
+        <Route path="regions/:regionId" component={WineListPage} />
+        <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
+        <Route path="*" component={NotFound} />
+      </Route>
+    </Router>
+  </Provider>
   , document.getElementById('main')
 );

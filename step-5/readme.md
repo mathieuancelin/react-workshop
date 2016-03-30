@@ -305,10 +305,15 @@ const SimpleComponent = React.createClass({
     simpleCounter: PropTypes.number
   },
   handleButtonClick() {
-    dispatch(incrementCounter(42));
+    this.props.dispatch(incrementCounter(42));
   },
   render() {
-    return <div>{this.props.counter}</div>
+    return (
+      <div>
+        <span>Clicked : {this.props.counter}  </span>
+        <button type="button" onClick={this.handleButtonClick}>+1</button>
+      </div>
+    );
   }
 });
 
