@@ -17,7 +17,9 @@ Les principales fonctionnalités de l'application sont :
 
 ### Attention
 
-Durant votre voyage initiatique au coeur de `react` vous allez vous rendre compte que malgré diverses descriptions des choses à faire dans les étapes, certains morceaux de code sont déjà écrit !!! Ceci est bien évidemment volontaire de notre part pour afin de vous laisser un maximum de temps pour vous consacrer aux choses importantes. Si cette philosophie ne vous convient pas, vous pouvez également démarrer votre projet de zéro dans un dossier à part et suivre les indications dans les diverses étapes.
+Durant votre voyage initiatique au coeur de `react` vous allez vous rendre compte que malgré diverses descriptions des choses à faire dans les étapes, certains morceaux de code sont déjà écrit !!! Ceci est bien évidemment volontaire de notre part pour afin de vous laisser un maximum de temps pour vous consacrer aux choses importantes.
+
+Si cette philosophie ne vous convient pas, vous pouvez également démarrer votre application de gestion des vins de zéro dans un dossier à part et suivre les indications dans les diverses étapes.
 
 ## Les pré-requis techniques
 
