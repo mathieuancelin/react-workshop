@@ -20,5 +20,13 @@ module.exports = {
                 loader: 'babel'
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
+        proxy: {
+            '/api/*': {
+                target: 'http://localhost:3000'
+            }
+        }
     }
 };

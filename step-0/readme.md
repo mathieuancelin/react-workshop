@@ -228,6 +228,21 @@ Ajoutez la dépendance à `webpack-dev-server` dans le fichier `package.json` :
 
 ou via la command `npm install --save-dev webpack-dev-server@1.14.1`
 
+il faudra également rajouter un peu de configuration pour plus tard dans le fichier `webpack.config.js`
+
+```javascript
+devServer: {
+    historyApiFallback: true,
+    proxy: {
+        '/api/*': {
+            target: 'http://localhost:3000'
+        }
+    }
+}
+```
+
+cette ajout ne nous est pas tout de suite utile, mais le deviendra dans les prochaines étapes. Il permet a notre serveur de développement de proxyfier tous les appels à `http://localhost:8080/api/*` vers `http://localhost:3000/api/*` qui se trouve être notre serveur de données sur les vins (d'ailleurs n'oubliez pas d'aller lancer ce serveur dans le dossier `api` via la commande `npm start`). Cette astuce permet d'éviter a avoir à gérer des appels `CORS` en développement. La configuration `historyApiFallback` permet au serveur de renvoyer la page d'index en cas de page non trouvée. Cette astuce nous permettra d'utiliser facilement l'API `history` du navigateur.
+
 Ajoutez un nouveau script permettant de lancer le serveur Webpack :
 
 ```json
