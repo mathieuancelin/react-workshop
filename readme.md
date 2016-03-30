@@ -26,7 +26,6 @@ Si cette philosophie ne vous convient pas, vous pouvez également démarrer votr
 Les pré-requis techniques sont les suivants :
 
 * Node (version 4.x ou 5.x) et NPM (version 3.x)
-  * il semblerait que le workshop fonctionne bien avec Node 0.12.x et NPM 2.x, vous pouvez donc conserver votre setup si besoin. Mais sérieusement, Node 0.12 ???
 * Git
 * Atom
 * React Developer Tools
@@ -46,6 +45,8 @@ $ npm -v
 ```
 
 Si npm n'est pas en version 3.x, vous pouvez effectuer la mise à jour grâce à la commande suivante : `npm upgrade -g npm`
+
+*Attention: il semblerait que le workshop fonctionne bien avec Node 0.12.x et NPM 2.x, vous pouvez donc conserver votre setup si besoin. Mais sérieusement, Node 0.12 ???*
 
 ### Git
 
