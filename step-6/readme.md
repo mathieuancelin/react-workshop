@@ -349,7 +349,7 @@ ReactDOM.render(
 
 ## A vous de jouer !
 
-Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans l'étape suivante ;-)
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans [l'étape suivante](../step-7) ;-)
 
 ## Bonus
 
@@ -395,3 +395,7 @@ Voici à quoi pourrait ressembler votre état global
 pour les régions par exemple, il est possible d'avoir un timestamp pour situer le dernier `fetch` dans le temps. Si ce dernier n'est est assez récent, il est possible de retourner la valeur déjà présente dans l'état au lieu d'aller la chercher sur le serveur.
 
 n'oubliez pas de mettre a jour le timestamp lorsque la valeur en cache n'est plus valide ;-)
+
+## Prochaine étape
+
+Une fois cette étape terminée, vous pouvez aller consulter la [version corrigée](../step-6-done) puis aller jusqu'à [l'étape suivante](../step-7)

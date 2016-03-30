@@ -147,3 +147,11 @@ Vous pouvez également préciser à ESLint qu'il doit désormais également trai
 ```javascript
 ReactTestUtils.Simulate.click(button);
 ```
+
+## A vous de jouer !
+
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jeter un oeil au code disponible dans [l'étape suivante](../step-2) ;-)
+
+## Prochaine étape
+
+Une fois cette étape terminée, vous pouvez aller consulter la [version corrigée](../step-1-done) puis aller jusqu'à [l'étape suivante](../step-2)

@@ -325,4 +325,8 @@ Il ne nous reste donc plus qu'a émettre les différentes actions au bon moment 
 
 ## A vous de jouer !
 
-Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans l'étape suivante ;-)
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans [l'étape suivante](../step-6) ;-)
+
+## Prochaine étape
+
+Une fois cette étape terminée, vous pouvez aller consulter la [version corrigée](../step-5-done) puis aller jusqu'à [l'étape suivante](../step-6)
