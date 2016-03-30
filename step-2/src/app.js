@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Wine from './components/wine';
+import WineApp from './components/wine-app';
 
 ReactDOM.render(
-    <Wine name="Château Chevrol Bel Air"/>,
+    <WineApp />,
     document.getElementById('main')
 );
