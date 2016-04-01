@@ -1,4 +1,4 @@
-import React, { PropTypes, Navigator, BackAndroid } from 'react-native';
+import React, { PropTypes, Navigator, BackAndroid, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Regions } from './regions';
 import { styles } from './style';
@@ -46,9 +46,14 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
       this.isOnMainScreen = false;
     }
     return (
-      <Component {...props}
-          navigator={nav}
-          title={title} />
+      <View>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
+              <Text style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '500' }}>{this.props.title}</Text>
+          </View>
+          <Component {...props}
+              navigator={nav}
+              title={title} />
+      </View>
     );
   },
 
@@ -61,11 +66,11 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
 
   render() {
     return (
-      <Navigator
-          style={styles.navigatorandroid}
-          initialRoute={{ id: 'regions', title: 'Régions viticoles', component: Regions }}
-          renderScene={this.renderScene}
-          configureScene={this.configureScene} />
+        <Navigator
+            style={styles.navigatorandroid}
+            initialRoute={{ id: 'regions', title: 'Régions viticoles', component: Regions }}
+            renderScene={this.renderScene}
+            configureScene={this.configureScene} />
     );
   }
 
