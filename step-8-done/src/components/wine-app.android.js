@@ -27,11 +27,11 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
   render() {
     return (
       <NavigatorIOS
-        style={styles.navigatorios}
-        initialRoute={{
-          title: 'Regions ',
-          component: Regions
-        }} />
+          style={styles.navigatorios}
+          initialRoute={{
+              title: 'Regions ',
+              component: Regions
+          }} />
     );
   }
 
