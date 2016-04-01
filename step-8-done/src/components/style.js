@@ -6,6 +6,11 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F6F6EF',
     paddingTop: 30
   },
+  navigatorandroid: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 0
+  },
   container: {
     flex: 1,
     flexDirection: 'row',

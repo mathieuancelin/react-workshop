@@ -20,10 +20,6 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
     title: PropTypes.string.isRequired
   },
 
-  contextTypes: {
-    router: React.PropTypes.object
-  },
-
   render() {
     return (
       <NavigatorIOS

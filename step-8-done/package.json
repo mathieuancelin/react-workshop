@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "install-android": "cd ./android && ./gradlew :app:installDebug",
     "run-adv": "$ANDROID_HOME/tools/emulator -netdelay none -netspeed full -avd reactnative",
-    "start-android": "node node_modules/react-native/local-cli/cli.js run-android hot"
+    "start-android": "node node_modules/react-native/local-cli/cli.js run-android hot",
+    "android-log": "adb logcat *:S ReactNative:V ReactNativeJS:V"
   },
   "dependencies": {
     "moment": "^2.12.0",

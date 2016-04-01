@@ -1,3 +1,5 @@
+export const apiHost = '127.0.0.1';
+
 export const addLike = () => {
   return {
     type: 'ADD_LIKE',
@@ -120,7 +122,7 @@ export const updateWinesTimestamp = (region) => {
 export function fetchLikesCount() {
   return dispatch => {
     dispatch(loading('Likes count'));
-    fetch(`http://localhost:3000/api/likes`)
+    fetch(`http://${apiHost}:3000/api/likes`)
       .then(r => r.json())
       .then(r => {
         dispatch(setLikes(r.count));
@@ -133,7 +135,7 @@ export function fetchLikesCount() {
 export function fetchCommentsCount() {
   return dispatch => {
     dispatch(loading('Comment counts'));
-    fetch(`http://localhost:3000/api/comments`)
+    fetch(`http://${apiHost}:3000/api/comments`)
       .then(r => r.json())
       .then(r => {
         dispatch(setComments(r.count));
@@ -147,7 +149,7 @@ export function fetchRegions() {
   return (dispatch, state) => {
     if (state().regions.lastUpdated + 60000 < Date.now()) { // caches data during 1mn
       dispatch(loading('Regions'));
-      fetch('http://localhost:3000/api/regions')
+      fetch(`http://${apiHost}:3000/api/regions`)
         .then(r => r.json())
         .then(data => {
           dispatch(updateRegionsTimestamp());
@@ -167,7 +169,7 @@ export function fetchWinesForRegion(regionId) {
     if (lastUpdated + 60000 < Date.now()) { // caches data during 1mn
       dispatch(setCurrentRegion(regionId));
       dispatch(loading(`Wines for region ${regionId}`));
-      fetch(`http://localhost:3000/api/wines?region=${regionId}`)
+      fetch(`http://${apiHost}:3000/api/wines?region=${regionId}`)
         .then(r => r.json())
         .then(data => {
           dispatch(updateWinesTimestamp(regionId));
@@ -184,7 +186,7 @@ export function fetchWinesForRegion(regionId) {
 export function fetchWine(wineId) {
   return dispatch => {
     dispatch(loading(`wine with id ${wineId}`));
-    return fetch(`http://localhost:3000/api/wines/${wineId}`)
+    return fetch(`http://${apiHost}:3000/api/wines/${wineId}`)
       .then(r => r.json())
       .then(data => {
         dispatch(setCurrentWine(data));
@@ -197,7 +199,7 @@ export function fetchWine(wineId) {
 export function toggleWineLiked() {
   return (dispatch, state) => {
     const currentLike = state().currentWine.liked;
-    fetch(`http://localhost:3000/api/wines/${state().currentWine.wine.id}/like`, {
+    fetch(`http://${apiHost}:3000/api/wines/${state().currentWine.wine.id}/like`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',
@@ -221,7 +223,7 @@ export function toggleWineLiked() {
 
 export function fetchWineLiked() {
   return (dispatch, state) => {
-    fetch(`http://localhost:3000/api/wines/${state().currentWine.wine.id}/like`)
+    fetch(`http://${apiHost}:3000/api/wines/${state().currentWine.wine.id}/like`)
       .then(r => r.json())
       .then(data => {
         dispatch(setCurrentLiked(data.like));
@@ -232,7 +234,7 @@ export function fetchWineLiked() {
 
 export function fetchComments(wineId) {
   return (dispatch, state) => {
-    fetch(`http://localhost:3000/api/wines/${wineId}/comments`)
+    fetch(`http://${apiHost}:3000/api/wines/${wineId}/comments`)
       .then(r => r.json())
       .then(comments => {
         dispatch(setCurrentComments(comments.sort((a, b) => new Date(b.date) - new Date(a.date))));
@@ -243,7 +245,7 @@ export function fetchComments(wineId) {
 
 export function postComment(wineId, comment) {
   return (dispatch, state) => {
-    return fetch(`http://localhost:3000/api/wines/${wineId}/comments`, {
+    return fetch(`http://${apiHost}:3000/api/wines/${wineId}/comments`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',

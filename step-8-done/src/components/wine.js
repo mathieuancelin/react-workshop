@@ -1,10 +1,11 @@
 /* eslint react/no-multi-comp: 0, react/jsx-max-props-per-line: 0 */
 
-import React, { PropTypes, StyleSheet, Image, View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import React, { PropTypes, Image, View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchWine, fetchWineLiked, setTitle, toggleWineLiked } from '../actions';
 import { styles } from './style';
 import { Comments } from './comments';
+import { apiHost } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -69,7 +70,7 @@ export const Wine = connect(mapStateToProps)(React.createClass({
     return (
       <ScrollView style={styles.scene}>
         <View style={styles.container}>
-          <Image style={styles.winePic} source={{ uri: `http://localhost:3000/api/wines/${this.props.wine.id}/image` }} />
+          <Image style={styles.winePic} source={{ uri: `http://${apiHost}:3000/api/wines/${this.props.wine.id}/image` }} />
           <View style={styles.flexColumn}>
             <View style={styles.bottomSpaced}>
               <Text style={styles.wineTitle}>{wine.name}</Text>

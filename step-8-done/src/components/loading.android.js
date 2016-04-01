@@ -1,6 +1,6 @@
 import React, {
   PropTypes,
-  ProgressBar,
+  ProgressBarAndroid,
   Text,
   View
 } from 'react-native';
@@ -17,7 +17,7 @@ export const Loading = React.createClass({
           <Text style={styles.centeredAndBig}>
             Loading {this.props.what}
           </Text>
-          <ProgressBar
+          <ProgressBarAndroid
               progress={1}
               style={styles.progress}
               styleAttr="LargeInverse" />
