@@ -79,7 +79,7 @@ export const Wine = connect(mapStateToProps)(React.createClass({
             <LabelValue>{wine.type}</LabelValue>
             <Label>Région</Label>
             <LabelValue>{wine.appellation.region}</LabelValue>
-            <Label>Appéllation</Label>
+            <Label>Appellation</Label>
             <LabelValue>{wine.appellation.name}</LabelValue>
             <Label>Cépages</Label>
             <LabelValue>{wine.grapes.join(', ')}</LabelValue>
