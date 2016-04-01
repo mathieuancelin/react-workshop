@@ -30,6 +30,16 @@ Les pré-requis techniques sont les suivants :
 * Atom
 * React Developer Tools
 
+La dernière étape de ce workshop implique l'utilisation de `react-native`.
+En plus des outils précédant vous aurez besoin de :
+
+* iOS
+  * Xcode (à télécharger sur l'App Store)
+* Android
+  * Java (JDK8)
+  * Gradle
+  * Android Studio
+
 ### Node.js
 
 Téléchargez et installez la version de Node.js correspondant à votre système d'exploitation, en suivant les indications disponibles sur le site officiel : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)  
@@ -77,6 +87,32 @@ Afin de disposer d'outils spécifiques à React dans votre navigateur web, insta
 
 * [React Developer Tools pour Google Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 * [React Developer Tools pour Mozilla Firefox](https://addons.mozilla.org/fr/firefox/addon/react-devtools/)
+
+### Xcode
+
+Xcode est installable depuis le Mac App Store présent sur votre Mac
+
+Vous pouvez l'installer directement depuis [ici](https://itunes.apple.com/fr/app/xcode/id497799835?mt=12)
+
+### Java Development Kit
+
+Si vous n'avez pas de JDK 8 installé, rendez-vous sur le [site d'Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) pour télécharger et installer la dernière version du JDK.
+
+*Attention, ce n'est pas parce que vous avez Java sur votre machine que vous avec le JDK. Testez avec la commande `javac`*
+
+### Gradle
+
+Gradle est un outil de build utilisé par les projets Android. Vous pouvez procurer la dernière version de Gradle [ici](http://gradle.org/gradle-download/)
+
+### Android Studio
+
+Android Studio est l'IDE officiel pour développer des applications Android. Vous pouvez télécharger une version du studio [ici](http://developer.android.com/sdk/index.html).
+
+Il vous faudra ensuite configurer un émulateur Android.
+
+Pour celà, vous pouvez suivre [cette documentation](https://facebook.github.io/react-native/docs/android-setup.html#content) sur le site de `react-native`.
+
+En ce qui concerne l'émulateur, si vous n'avez rien d'existant pour le moment, vous devez suivre [cette partie de la documentation](https://facebook.github.io/react-native/docs/android-setup.html#alternative-create-a-stock-google-emulator) en utilisant le nom d'émulateur `reactnative` et en utilisant `1Go` de mémoire interne et `1Go` de mémoire externe.
 
 ## Pré-installer les dépendances
 
