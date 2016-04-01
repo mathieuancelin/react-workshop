@@ -224,7 +224,7 @@ export function fetchWineLiked() {
     fetch(`http://localhost:3000/api/wines/${state().currentWine.wine.id}/like`)
       .then(r => r.json())
       .then(data => {
-        setCurrentLiked(data.like);
+        dispatch(setCurrentLiked(data.like));
       })
       .catch(error => dispatch(errorLoading(`error while toggling wine like ${state().currentWine.wine.id} : ${error.message}`)));
   };

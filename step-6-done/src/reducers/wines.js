@@ -12,7 +12,7 @@ export const wines = (state = {}, action) => {
 export const currentWine = (state = { wine: undefined, comments: [], liked: false }, action) => {
   switch (action.type) {
     case 'SET_CURRENT_WINE':
-      return Object.assign({}, state, { wine: action.wine });
+      return Object.assign({}, state, { wine: action.wine, liked: false });
     case 'SET_CURRENT_COMMENTS':
       return Object.assign({}, state, { comments: action.comments });
     case 'SET_CURRENT_LIKED':
