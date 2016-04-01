@@ -349,7 +349,7 @@ ReactDOM.render(
 
 ## A vous de jouer !
 
-Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans [l'étape suivante](../step-7) ;-)
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans la [version corrigée](../step-6-done) ;-)
 
 ## Bonus
 

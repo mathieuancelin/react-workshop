@@ -294,7 +294,7 @@ const WineApp = React.createClass({
 
 ## A vous de jouer !
 
-Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jeter un oeil au code disponible dans [l'étape suivante](../step-3) ;-)
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jeter un oeil au code disponible dans la [version corrigée](../step-2-done) ;-)
 
 Pour le style de l'application, ne vous prenez pas la tête, l'enjeu n'est pas là :-) Pour l'organisation en colonne, vous pouvez utilisez le framework CSS [avalanche](http://colourgarden.net/avalanche/). Le CSS est disponible dans le dossier `public/css/avalanche.css`.
 

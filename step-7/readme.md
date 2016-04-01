@@ -29,3 +29,7 @@ Pour lancer l'application de l'étape 6, exécutez la commande `npm start` (apr�
 ## React context
 
 [https://facebook.github.io/react/docs/context.html](https://facebook.github.io/react/docs/context.html)
+
+## Prochaine étape
+
+Une fois cette étape terminée, vous pouvez aller jusqu'à [l'étape suivante](../step-8) et vous frotter à React Native

@@ -355,7 +355,7 @@ Enfin, ajoutez un script dans le fichier `package.json` permettant d'exécuter E
 
 ## A vous de jouer !
 
-Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jeter un oeil au code disponible dans [l'étape suivante](../step-1) ;-)
+Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jeter un oeil au code disponible dans la [version corrigée](../step-0-done) ;-)
 
 ## Prochaine étape
 
