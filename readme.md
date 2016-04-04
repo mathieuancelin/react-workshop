@@ -210,4 +210,4 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
 
 ## A vous de jouer !
 
-C'est le moment de commencer, si vous souhaitez en savoir plus sur la façon de monter un projet `react`, installer le tooling, etc ... vous pouvez partir de [l'étape 0](/step-0) sinon vous pouvez directement vous rendre à [l'étape 1](/step-1). Bon courages !!!
+C'est le moment de commencer, si vous souhaitez en savoir plus sur la façon de monter un projet `react`, installer le tooling, etc ... vous pouvez partir de [l'étape 0](/step-0) sinon vous pouvez directement vous rendre à [l'étape 1](/step-1). Bon courage !!!
