@@ -198,7 +198,7 @@ app.get('/api/wines/:id/image', function (req, res) {
 });
 
 /**
- * @api {get} /wines/:id/image Liked ?
+ * @api {get} /wines/:id/like Liked ?
  * @apiName Liked ?
  * @apiGroup Wines
  *
