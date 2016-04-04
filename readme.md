@@ -2,6 +2,10 @@
 
 Ce workshop permet de découvrir [React](https://facebook.github.io/react/) et son écosystème par la pratique, étape par étape !
 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">react-workshop</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/mathieuancelin/react-workshop" property="cc:attributionName" rel="cc:attributionURL">Mathieu ANCELIN et Sébastien PRUNIER</a> est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>.
+
 ## Le sujet
 
 Lors de ce workshop, nous allons développer une application web permettant de gérer ses vins préférés* !
