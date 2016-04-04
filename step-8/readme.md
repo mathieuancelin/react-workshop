@@ -84,6 +84,8 @@ Commencez par installer le client `react-native` de manière globale (`-g`)sur v
 npm install -g react-native-cli
 ```
 
+Sous Linux et Mac OS, vous aurez surement besoin d'installer `watchman`, suivez les [instructions d'installation](https://facebook.github.io/watchman/docs/install.html).
+
 puis créer votre projet à l'endroit désiré
 
 ```
