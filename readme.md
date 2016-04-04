@@ -33,6 +33,7 @@ Les pré-requis techniques sont les suivants :
 La dernière étape de ce workshop implique l'utilisation de `react-native`.
 En plus des outils précédant vous aurez besoin de :
 
+* watchman
 * iOS
   * Xcode (à télécharger sur l'App Store)
 * Android
@@ -113,6 +114,10 @@ Il vous faudra ensuite configurer un émulateur Android.
 Pour celà, vous pouvez suivre [cette documentation](https://facebook.github.io/react-native/docs/android-setup.html#content) sur le site de `react-native`.
 
 En ce qui concerne l'émulateur, si vous n'avez rien d'existant pour le moment, vous devez suivre [cette partie de la documentation](https://facebook.github.io/react-native/docs/android-setup.html#alternative-create-a-stock-google-emulator) en utilisant le nom d'émulateur `reactnative` et en utilisant `1Go` de mémoire interne et `1Go` de mémoire externe.
+
+### watchman
+
+Sous Linux et Mac OS, vous aurez surement besoin d'installer `watchman`, suivez les [instructions d'installation](https://facebook.github.io/watchman/docs/install.html).
 
 ## Pré-installer les dépendances
 

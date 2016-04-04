@@ -14,6 +14,15 @@ Ecrire l'application de gestion de vin pour mobile en [`react-native`](https://f
 
 Pour cette partie, vous aurez besoin d'installer quelques petites choses en plus par rapport à la version web.
 
+
+Commencez par installer le client `react-native` de manière globale (`-g`)sur votre système.
+
+```
+npm install -g react-native-cli
+```
+
+Sous Linux et Mac OS, vous aurez surement besoin d'installer `watchman`, suivez les [instructions d'installation](https://facebook.github.io/watchman/docs/install.html).
+
 ### iOS
 
 Commencez par vous rendre [sur le Mac App Store](https://itunes.apple.com/fr/app/xcode/id497799835?mt=12) et installez Xcode.
@@ -78,15 +87,9 @@ Voici ce que devrait donner l'application une fois finie
 
 Cette partie décrit comment créer le projet `react-native` à titre informatif car ce dernier a déjà été créé dans l'étape 8 avec quelques additions pour pouvoir se lancer plus rapidement. Pour pouvez cependant dérouler le scénario dans un dossier à part pour maitriser le procéssus.
 
-Commencez par installer le client `react-native` de manière globale (`-g`)sur votre système.
+Commecez par installer `watchman` et `react-native-cli`
 
-```
-npm install -g react-native-cli
-```
-
-Sous Linux et Mac OS, vous aurez surement besoin d'installer `watchman`, suivez les [instructions d'installation](https://facebook.github.io/watchman/docs/install.html).
-
-puis créer votre projet à l'endroit désiré
+puis créez votre projet à l'endroit désiré
 
 ```
 react-native init wines
