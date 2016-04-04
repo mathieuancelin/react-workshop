@@ -137,7 +137,7 @@ Si les dépendances posent des problèmes, notamment au niveau des paquets natif
 
 ## API
 
-L'application web s'appuie sur une API REST disponible dans le dossier [api](/api).
+L'application de gestion des vins utilise une API REST comme source de données lui permettant d'afficher des vins par régions, avec leur détail, une photo de la bouteille, etc ... Cette api est en fait un petit serveur NodeJS/Express avec des données en mémoire disponible dans le dossier [api](/api). Pour toutes les étapes du workshop vous allez avoir besoin de cette API pour alimenter votre application. Vous pouvez donc déjà démarrer le serveur d'API dans un onglet à part de votre terminal afin qu'il soit toujours disponible.
 
 Pour démarrer le serveur exposant l'API, lancez les commandes suivantes :
 
@@ -147,8 +147,7 @@ $ npm install
 $ npm start
 ```
 
-Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation des différentes routes disponibles.
-
+Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation des différentes routes disponibles. Nous vous recommandons de passer au moins une fois sur cette documentation afin d'avoir une idée globale des données fournies par l'API pour alimenter votre application.
 
 ## Les étapes du workshop
 
@@ -187,9 +186,9 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
     * Ajouter un commentaire
 * [Etape 5](/step-5)
   * Introduction à redux
-  * Ajout d'une fonctionnalité avec redux
+    * Ajout d'une fonctionnalité avec redux
 * [Etape 6](/step-6)
-  * Refactoring de l'application avec redux
+  * Refactoring complet de l'application avec redux
 * [Etape 7](/step-7)
   * Nouveaux patterns React
     * Classes
@@ -199,3 +198,7 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
 * [Etape 8](/step-8)
   * React Native  
     * Implémentation de l'application en React Native
+
+## A vous de jouer !
+
+C'est le moment de commencer, si vous souhaitez en savoir plus sur la façon de monter un projet `react`, installer le tooling, etc ... vous pouvez partir de [l'étape 0](/step-0) sinon vous pouvez directement vous rendre à [l'étape 1](/step-1). Bon courages !!!
