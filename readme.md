@@ -1,6 +1,6 @@
 # React Workshop
 
-Ce workshop permet de découvrir [React](https://facebook.github.io/react/) et son écosystème par la pratique, étape par étape !
+Ce workshop permet de découvrir [`react`](https://facebook.github.io/react/) et son écosystème par la pratique, étape par étape !
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
@@ -90,7 +90,7 @@ Téléchargez et installez Atom, puis installez les packages suivants :
 
 ### React Developer Tools
 
-Afin de disposer d'outils spécifiques à React dans votre navigateur web, installez **React Developer Tools** :
+Afin de disposer d'outils spécifiques à `react` dans votre navigateur web, installez **React Developer Tools** :
 
 * [React Developer Tools pour Google Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 * [React Developer Tools pour Mozilla Firefox](https://addons.mozilla.org/fr/firefox/addon/react-devtools/)
@@ -166,7 +166,7 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
     * webpack-dev-server
     * babel
     * eslint
-  * Création du premier composant React
+  * Création du premier composant `react`
 * [Etape 1](/step-1)
   * Ajout de tests unitaires sur le composant créé à l'étape 0
     * react-test-utils
@@ -174,7 +174,7 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
     * chai
     * jsdom
 * [Etape 2](/step-2)
-  * Création d'une application React basique
+  * Création d'une application `react` basique
     * Découpage en composants
     * Interactions entre composants
     * Utilisation du `state`
@@ -182,12 +182,12 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
     * Liste des régions viticoles,
     * Liste des vins d'une région
     * Détail d'un vin
-  * Bonnes pratiques React
+  * Bonnes pratiques `react`
     * PropTypes
     * "Dumb components" vs "Smart components"
 * [Etape 3](/step-3)
   * Single Page Applications
-  * Introduction à react-router
+  * Introduction à `react-router`
   * Refactoring de l'étape 2 pour obtenir une SPA
 * [Etape 4](/step-4)
   * Ajout de fonctionnalités
@@ -199,14 +199,14 @@ Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation de
 * [Etape 6](/step-6)
   * Refactoring complet de l'application avec redux
 * [Etape 7](/step-7)
-  * Nouveaux patterns React
+  * Nouveaux patterns `react`
     * Classes
     * HOC
     * Stateless components
     * Contexts
 * [Etape 8](/step-8)
-  * React Native  
-    * Implémentation de l'application en React Native
+  * `react-native`  
+    * Implémentation de l'application en `react-native`
 
 ## A vous de jouer !
 

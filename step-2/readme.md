@@ -1,4 +1,4 @@
-# Etape 2 - Développer une application React
+# Etape 2 - Développer une application `react`
 
 ## Pré-requis
 
@@ -58,7 +58,7 @@ Les données gérées par l'application sont les suivantes :
 
 Il reste à savoir de quelle manière ces données doivent être gérées au niveau de chaque composant : via les `props` ou via le `state` ?
 
-Les `props` d'un composant sont immutables contrairement au `state` qui lui est mutable. Il est donc généralement conseillé de définir deux types de composants dans une application React :
+Les `props` d'un composant sont immutables contrairement au `state` qui lui est mutable. Il est donc généralement conseillé de définir deux types de composants dans une application `react` :
 
 * Les composants dédiés purement à la présentation, qui s'appuieront uniquement sur leur `props`. Nous les surnommerons `Dumb components`.
 * Les composants plutôt orientés "conteneurs", qui sont responsables du fonctionnement de l'application, qui s'appuient fortement sur leur `state`. Nous les surnommerons `Smart components`.
@@ -76,7 +76,7 @@ Les interactions entre les composants sont les suivantes :
 
 ## Par où commencer le développement ?
 
-Par expérience, une bonne façon de démarrer le développement d'une application React est la suivante :
+Par expérience, une bonne façon de démarrer le développement d'une application `react` est la suivante :
 
 * Construire une version statique de l'application en créant l'ensemble des composants définis lors des précédentes étapes de conception.
 * Définir l'état initial des composants de type conteneur et utiliser cet état dans le rendu des composants.
@@ -105,7 +105,7 @@ const Regions = React.createClass({
 export default Regions
 ```
 
-*Lors du rendu d'une liste de composants, React a besoin d'une propriété unique `key` sur chaque composant de la liste. Pour plus de détails techniques, [lisez la documentation](https://facebook.github.io/react/docs/reusable-components.html)*
+*Lors du rendu d'une liste de composants, `react` a besoin d'une propriété unique `key` sur chaque composant de la liste. Pour plus de détails techniques, [lisez la documentation](https://facebook.github.io/react/docs/reusable-components.html)*
 
 ##### PropTypes
 
@@ -208,7 +208,7 @@ const WineApp = React.createClass({
 
 Les données doivent être récupérées en Ajax au travers de l'API mise à disposition.
 
-Dans un composant React, les appels Ajax se font généralement dans la méthode `componentDidMount()` du [cycle de vie du composant](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods).
+Dans un composant `react`, les appels Ajax se font généralement dans la méthode `componentDidMount()` du [cycle de vie du composant](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods).
 
 Nous utilisons `fetch` pour effectuer les appels Ajax. Par exemple pour charger la liste des régions :
 

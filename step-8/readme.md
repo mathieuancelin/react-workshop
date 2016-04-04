@@ -1,4 +1,4 @@
-# Step 8 : React Native
+# Step 8 : `react-native`
 
 ## Pré-requis
 
@@ -89,7 +89,7 @@ Voici ce que devrait donner l'application une fois finie
 
 Cette partie décrit comment créer le projet `react-native` à titre informatif car ce dernier a déjà été créé dans l'étape 8 avec quelques additions pour pouvoir se lancer plus rapidement. Pour pouvez cependant dérouler le scénario dans un dossier à part pour maitriser le procéssus.
 
-Commecez par installer `watchman` et `react-native-cli`
+Commencez par installer `watchman` et `react-native-cli`
 
 puis créez votre projet à l'endroit désiré
 

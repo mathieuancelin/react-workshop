@@ -2,7 +2,7 @@
 
 ## Pré-requis
 
-L'étape 0 du workshop a permis de développer un composant React basique `Wine` :
+L'étape 0 du workshop a permis de développer un composant `react` basique `Wine` :
 
 ```javascript
 const Wine = React.createClass({
@@ -30,7 +30,7 @@ Les tests unitaires sont primordiaux dans le développement. Ils ne doivent en a
 
 L'objectif est de mettre en place le test unitaire du composant `Wine`. Pour cela, nous allons nous appuyer sur les librairies suivantes :
 
-* [react-addons-test-utils](https://facebook.github.io/react/docs/test-utils.html) : addon React facilitant les tests de composants React.
+* [react-addons-test-utils](https://facebook.github.io/react/docs/test-utils.html) : addon `react` facilitant les tests de composants `react`.
 * [jsdom](https://github.com/tmpvar/jsdom) : librairie implémentant les standards DOM et HTML, qui permettra de créer un document HTML dans lequel faire le rendu des componsants à tester.
 * [Chai](http://chaijs.com/) : librairie d'assertions, orientée BDD/TDD.
 * [Mocha](http://mochajs.org/) : framework Javascript de tests unitaires.

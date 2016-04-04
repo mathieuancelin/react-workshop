@@ -13,7 +13,7 @@ npm install --save react@0.14.7 react-dom@0.14.7
 
 avec cette commande, vous spécifiez à `npm` d'aller chercher la dernière version des paquets `react` et `react-dom` sur `npmjs.com`, de les installer en local dans le dossier `node_modules` local et de les déclarer comme dépendance dans le fichier `package.json` (via l'argument --save).
 
-Une autre possibilité est de créez un fichier `package.json` et de déclarer manuellement les dépendances React :
+Une autre possibilité est de créez un fichier `package.json` et de déclarer manuellement les dépendances `react` :
 
 ```json
 {
@@ -66,7 +66,7 @@ Le nom du vin est passé au composant grâce à une propriété `name`. Cette pr
 
 Un style est également appliqué au composant via l'attribut `style`.
 
-Vous pouvez également utiliser directement la fonction `createElement` de l'API `React` :
+Vous pouvez également utiliser directement la fonction `createElement` de l'API `react` :
 
 ```javascript
 render() {
@@ -114,7 +114,7 @@ ReactDOM.render(
 );
 ```
 
-Vous pouvez également utiliser directement la fonction `createElement` de l'API `React` :
+Vous pouvez également utiliser directement la fonction `createElement` de l'API `react` :
 
 ```javascript
 ReactDOM.render(
@@ -259,7 +259,7 @@ Modifiez le code du composant `Wine` et observez les modifications en live dans 
 
 [ESLint](http://eslint.org/) est un outil qui permet d'analyser votre code Javascript selon un certains nombre de règles.
 
-Dans notre cas, nous allons l'utiliser avec le plugin [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react) qui propose des règles spécifiques au développement de composants React.
+Dans notre cas, nous allons l'utiliser avec le plugin [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react) qui propose des règles spécifiques au développement de composants `react`.
 
 Pour commencer, ajoutez les dépendances nécessaires dans le fichier `package.json` :
 
@@ -333,7 +333,7 @@ Créez ensuite le fichier `.eslintrc` qui permet de configurer ESLint :
 
 * L'attribut `extends` permet d'hériter d'une configuration existante. `eslint:recommended` contient les règles recommandée par ESLint.
 * La partie `env` permet de définir quelles variables globales sont potentiellement utilisées dans le code. Ici nous ajoutons celles du navigateur et celle de node.
-* La partie `plugins` permet d'ajouter des plugins ESLint. Ici nous ajoutons le plugin React.
+* La partie `plugins` permet d'ajouter des plugins ESLint. Ici nous ajoutons le plugin `react`.
 * La partie `ecmaFeatures` permet de définir les options du langage Javascript supportées lors de l'analyse. Ici nous activons la syntaxe JSX ainsi que les modules ES6.
 * La partie `rules` permet de définir les règles à appliquer lors de l'analyse du code. Pour plus de détails sur les règles disponibles : [https://www.npmjs.com/package/eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
 

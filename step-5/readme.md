@@ -15,12 +15,12 @@ Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la
 Dans cette étape, nous allons intégrer [Redux](http://redux.js.org/index.html) a notre magnifique application.
 
 [Redux](http://redux.js.org/index.html) est un container d'état global pour des applications JavaScript.
-Redux peut être utilisé dans n'importe quel environnement et ne dépend pas de React. Redux possède quelques
+Redux peut être utilisé dans n'importe quel environnement et ne dépend pas de `react`. Redux possède quelques
 propriétés très intéressantes en matière de cohérence, de prévisibilité et d'expérience du développeur.
 
 Redux peut être vu comme une implémentation du [pattern Flux](https://facebook.github.io/flux/docs/overview.html) avec cependant quelques variations, notamment au niveau de la complexité de mise en place bien moindre que Flux. Redux s'inspire également de patterns propre au langage Elm.
 
-Redux fournit un concept de `store` de données unique pour l'application (singleton), auquel nos composants vont s'abonner. Il est ensuite possible de dispatcher des `actions` sur ce `store` qui déclencheront une mutation de l'état contenu dans le `store`. Une fois la mutation effectuée, le `store` notifiera tous ses abonnés du changement d'état. L'intérêt d'un tel pattern devient évident lorsqu'une application grossit et que plusieurs composants React ont besoin d'une même source de données. Il est alors plus simple de gérer l'état *fonctionnel* de l'application en dehors des composants et de s'y abonner.
+Redux fournit un concept de `store` de données unique pour l'application (singleton), auquel nos composants vont s'abonner. Il est ensuite possible de dispatcher des `actions` sur ce `store` qui déclencheront une mutation de l'état contenu dans le `store`. Une fois la mutation effectuée, le `store` notifiera tous ses abonnés du changement d'état. L'intérêt d'un tel pattern devient évident lorsqu'une application grossit et que plusieurs composants `react` ont besoin d'une même source de données. Il est alors plus simple de gérer l'état *fonctionnel* de l'application en dehors des composants et de s'y abonner.
 
 Pour fonctionner Redux utilise une notion de `reducer` qui fonctionne exactement de la même facon qu'une fonction de réduction sur une collection. Si on visualise l'état de l'application comme une collection de mutations, le `reducer` est simplement la fonction qui prend en paramètre l'état précédant et retourne le prochain état via un second paramètre qui dans notre cas est une `action`. Un `reducer` est donc une fonction pure avec la signature suivante `(state, action) => state` qui décrit comment une action transforme l'état courant en un nouvel état.
 

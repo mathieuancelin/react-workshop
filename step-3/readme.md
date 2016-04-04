@@ -108,7 +108,7 @@ ReactDOM.render(
 );
 ```
 
-Cependant, ce genre d'approche a l'inconvénient de perdre la navigation courante lorsque l'on recharge la page. Du coup il existe de meilleures solutions, notamment, [React Router](https://github.com/reactjs/react-router) que nous allons utiliser pour gérer la navigation de notre application.
+Cependant, ce genre d'approche a l'inconvénient de perdre la navigation courante lorsque l'on recharge la page. Du coup il existe de meilleures solutions, notamment, [`react-router](https://github.com/reactjs/react-router) que nous allons utiliser pour gérer la navigation de notre application.
 
 Commençons par ajouter une dépendance pour `react-router` dans l'application.
 
