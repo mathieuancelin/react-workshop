@@ -41,7 +41,7 @@ En plus des outils précédant vous aurez besoin de :
   * `watchman`
   * `react-native-cli`
 * iOS
-  * Xcode (à télécharger sur l'App Store)
+  * Xcode
 * Android
   * Java (JDK8)
   * Gradle
@@ -120,6 +120,7 @@ Il vous faudra ensuite configurer un émulateur Android.
 Pour celà, vous pouvez suivre [cette documentation](https://facebook.github.io/react-native/docs/android-setup.html#content) sur le site de `react-native`.
 
 En ce qui concerne l'émulateur, si vous n'avez rien d'existant pour le moment, vous devez suivre [cette partie de la documentation](https://facebook.github.io/react-native/docs/android-setup.html#alternative-create-a-stock-google-emulator) en utilisant le nom d'émulateur `reactnative` et en utilisant `1Go` de mémoire interne et `1Go` de mémoire externe et `2Go` de RAM, cf. [cette capture d'écran](./step-8/reactnative-emulator.png)
+
 
 ### watchman
 
