@@ -164,8 +164,8 @@ const store = createStore(app);
 
 il ne reste plus qu'a faire deux appels HTTP aux apis
 
-* `http://localhost:3000/api/likes`
-* `http://localhost:3000/api/comments`
+* `/api/likes`
+* `/api/comments`
 
 afin d'initialiser le store avec les bonnes valeurs.
 
@@ -177,7 +177,7 @@ import { setCounterValue } from './actions';
 
 const store = createStore(app);
 
-fetch(`http://localhost:3000/api/count`)
+fetch(`/api/count`)
   .then(r => r.json())
   .then(r => store.dispatch(setCounterValue(r.count)));
 ```
@@ -188,7 +188,7 @@ Maintenant, il ne nous reste qu'à le connecter à l'UI
 
 ## react-redux
 
-Connecter un composant react à notre store est finalement très simple. Il suffit simplement d'abonner le composant au store une fois monté dans le DOM, le désabonner lors de sa disparition du DOM et mettre a jour son état a chaque notification du store
+Connecter un composant react à notre store est finalement très simple. Il suffit simplement d'abonner le composant au store une fois monté dans le DOM, le désabonner lors de sa disparition du DOM et mettre a jour son état a chaque notification du store. Par exemple, pour un composant lambda :
 
 ```javascript
 const Component = React.createClass({
@@ -204,13 +204,17 @@ const Component = React.createClass({
     };
   },
   componentDidMount() {
+    // lorsque l'on monte le composant dans le DOM, on souscrit aux notification du store
+    // afin de savoir lorsque celui-ci est mis à jour
     this.unsubscribe = this.props.store.subscribe(this.updateViewFromRedux);
   },
   componentWillUnmount() {
+    // lorsqu'on démonte le composant du DOM, on annule la souscription aux notifications
+    // pour ne pas mettre à jour un composant qui n'existe plus
     this.unsubscribe();
   },
   updateViewFromRedux() {
-    const { counter } = this.props.store.getState();
+    const { counter } = this.props.store.getState(); // on récupère l'état complet du store
     this.setState({ counter });
   },
   render() {
@@ -226,7 +230,7 @@ const Component = React.createClass({
 Cependant tout ce boilerplate peut se réveler fastidieux et rébarbatif à écrire à la longue.
 Pour éviter tout ce code inutile, la librairie `react-redux` permet de fournir un store a un arbre de composants `react` et de connecter un composant `react` a ce store, voire même de mapper automatiquement des propriétés de l'état du `store` sur des propriétés du composant.
 
-La première chose à faire est de fournir le store a notre arbre de composants. Nous allons utiliser un composant `<Provider store={...} />` fourni par `react-redux` que nous allons placer à la racine de l'application
+La première chose à faire est de fournir le store a notre arbre de composants. Nous allons utiliser un composant `<Provider store={...} />` fourni par `react-redux` que nous allons placer à la racine de l'application dans le fichier `src/app.js`
 
 ```javascript
 import React from 'react';
@@ -270,7 +274,7 @@ Il faut maintenant être capable de récupérer le store dans un composant afin 
 * dispatcher des actions
 * récupérer l'état du store
 
-Pour celà, `redux` propose une fonction `connect` permettant de créer un composant wrapper (Higher Order Component) qui fera le lien entre le store présent dans le contexte `react` et le componsant wrappé.
+Pour celà, `redux` propose une fonction `connect` permettant de créer un composant wrapper (Higher Order Component) qui fera le lien entre le store présent dans le contexte `react` et le componsant wrappé. Par exemple, si dans un composant quelconque (le composant ci-dessous est fourni à titre d'exemple) nous voulons dispatcher une action `react` :
 
 ```javascript
 import { incrementCounter } from '../actions';
@@ -291,9 +295,9 @@ const SimpleComponent = React.createClass({
 export const ConnectedToStoreComponent = connect()(SimpleComponent);
 ```
 
-ici le fait d'appeler `connect` avec le composant original en paramètre créé une nouvelle classe de composant comportant la logique d'abonnement et mise a jour du composant nécessaire à `redux`. Lorsque `connect` est appelé sans premier argument, le composant wrappé se voit ajouter une propriété `dispatch` permettant de dispatcher une action sur le store.
+ici le fait d'appeler `connect` avec le composant original en paramètre créé une nouvelle classe de composant comportant la logique d'abonnement et mise a jour du composant nécessaire à `redux`. Lorsque `connect` est appelé sans premier argument, le composant wrappé se voit ajouter une propriété `dispatch` permettant de dispatcher une action sur le store. Dans le cas de notre application, les deux composant qui auraient besoin d'accéder seulement au `dispatch` du store sont bien évidemment, les composants `WinePage` (pour gérer le like) et `Comments` (pour gérer l'ajout de commentaires).
 
-Cependant ici, pas moyen de récupérer l'état du store. Pour ce faire, il est nécessaire de spécifier une fonction de mapping permettant d'extraire un ensemble de propriétés depuis l'état du store `redux` pour qu'elles soient ajoutées aux propriétés du composant wrappé
+Cependant ici, pas moyen de récupérer l'état du store. Pour ce faire, il est nécessaire de spécifier une fonction de mapping permettant d'extraire un ensemble de propriétés depuis l'état du store `redux` pour qu'elles soient ajoutées aux propriétés du composant wrappé.
 
 ```javascript
 import { incrementCounter } from '../actions';
@@ -326,7 +330,7 @@ const mapStateToProps = (state, ownProps) => {
 export const ConnectedToStoreComponent = connect(mapStateToProps)(SimpleComponent);
 ```
 
-Il ne nous reste donc plus qu'a émettre les différentes actions au bon moment pour muter l'état de notre `store` (ajout de commentaire, ajout de like, retrait de like) et de rajouter un composant global (dans `<WineApp>` par exemple) affichant le nombre global de likes et de commentaires dans l'application.
+Il ne nous reste donc plus qu'a émettre les différentes actions au bon moment pour muter l'état de notre `store` (ajout de commentaire, ajout de like, retrait de like) et de rajouter un composant global (`<GlobalStats>` dans `<WineApp>` par exemple) affichant le nombre global de likes et de commentaires dans l'application. C'est ce composant qui aura besoin d'une fonction type `mapStateToProps` afin de récupérer les données nécessaire depuis le `store`.
 
 ## A vous de jouer !
 
