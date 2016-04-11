@@ -101,6 +101,7 @@ app.get('/api/wines', function (req, res) {
  * @api {get} /likes All
  * @apiName All
  * @apiGroup Likes
+ *
  * @apiSampleRequest /api/likes
  *
  * @apiSuccess {Number}   count                     The number of likes across all wines
@@ -229,6 +230,8 @@ app.get('/api/wines/:id/like', function (req, res) {
  * @api {post} /wines/:id/like Like
  * @apiName Like
  * @apiGroup Wines
+
+ * @apiSampleRequest /api/wines/:id/like
  *
  * @apiParam {String} id    the id of the wine
  * @apiParam {String} like  indicates if the current user likes the wine
@@ -302,7 +305,7 @@ app.get('/api/wines/:id/comments', function (req, res) {
  * @apiName Comment
  * @apiGroup Wines
  *
- * @apiSampleRequest http://localhost:3000/api/comments
+ * @apiSampleRequest /api/wines/:id/comments
  *
  * @apiParam {String} id the id of the wine
  * @apiParam {String} title    title of the comment.
@@ -339,7 +342,7 @@ app.post('/api/wines/:id/comments', function (req, res) {
  * @apiName All
  * @apiGroup Regions
  *
- * @apiSampleRequest http://localhost:3000/api/regions
+ * @apiSampleRequest /api/regions
  *
  * @apiSuccess {String[]} regions Wine regions
  *
