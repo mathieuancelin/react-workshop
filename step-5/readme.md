@@ -332,6 +332,22 @@ export const ConnectedToStoreComponent = connect(mapStateToProps)(SimpleComponen
 
 Il ne nous reste donc plus qu'a émettre les différentes actions au bon moment pour muter l'état de notre `store` (ajout de commentaire, ajout de like, retrait de like) et de rajouter un composant global (`<GlobalStats>` dans `<WineApp>` par exemple) affichant le nombre global de likes et de commentaires dans l'application. C'est ce composant qui aura besoin d'une fonction type `mapStateToProps` afin de récupérer les données nécessaire depuis le `store`.
 
+Au final, l'arbre de composants effectifs pour ce genre d'application sera le suivant :
+
+```javascript
+const store = ...
+const mapStateToProps = (state) => ({ simpleCounter: state.counter });
+...
+<Provider store={store}>
+  <Connector mapStateToProps={mapStateToProps}> // Connector est créé via l'appel à connect()
+    <SimpleComponent
+      dispatch={Provider.store.dispatch} // dispatch est récupéré depuis le Provider
+      // simpleCounter est récupéré la fonction mapStateToProps du Connector appelé sur le store récupéré depuis le Provider
+      simpleCounter={Connector.mapStateToProps(Provider.store.getState()).simpleCounter} />
+  </Connector>
+</Provider>
+```
+
 ## A vous de jouer !
 
 Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organisateurs du workshop ou bien à jetter un oeil au code disponible dans la [version corrigée](../step-5-done) ;-)
