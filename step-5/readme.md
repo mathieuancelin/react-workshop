@@ -151,7 +151,7 @@ const reducer = combineReducers({
 export default reducer;
 ```
 
-ici la fonction `combineReducers` permet de créer un reducer global à partir de différent reducers responsables de différentes parties de l'état global, dans notre cas `comments` et `likes`.
+ici la fonction `combineReducers` permet de créer un reducer global à partir de différent reducers responsables de différentes parties de l'état global, dans notre cas `comments` et `likes`. N'oubliez pas de créer vos fichiers `src/reducers/likes` et `src/reducers/comments` contenant respectivement des `reducers` publiques (exportés) nommés `likes` et `comments`.
 
 Il ne nous reste plus qu'à créer le store de notre application, par exemple dans le fichier `src/app.js`.
 

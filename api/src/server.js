@@ -226,7 +226,7 @@ app.get('/api/wines/:id/like', function (req, res) {
 });
 
 /**
- * @api {post} /wines/:id/comments Like
+ * @api {post} /wines/:id/like Like
  * @apiName Like
  * @apiGroup Wines
  *
@@ -301,6 +301,8 @@ app.get('/api/wines/:id/comments', function (req, res) {
  * @api {post} /wines/:id/comments Comment
  * @apiName Comment
  * @apiGroup Wines
+ *
+ * @apiSampleRequest http://localhost:3000/api/comments
  *
  * @apiParam {String} id the id of the wine
  * @apiParam {String} title    title of the comment.
