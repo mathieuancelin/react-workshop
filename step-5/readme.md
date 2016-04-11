@@ -339,10 +339,12 @@ const store = ...
 const mapStateToProps = (state) => ({ simpleCounter: state.counter });
 ...
 <Provider store={store}>
-  <Connector mapStateToProps={mapStateToProps}> // Connector est créé via l'appel à connect()
+  // Connector est créé via l'appel à connect() sur le composant wrappe (SimpleComponent)
+  <Connector mapStateToProps={mapStateToProps}>
     <SimpleComponent
       dispatch={Provider.store.dispatch} // dispatch est récupéré depuis le Provider
-      // simpleCounter est récupéré la fonction mapStateToProps du Connector appelé sur le store récupéré depuis le Provider
+      // simpleCounter est récupéré la fonction mapStateToProps du Connector
+      // appelé sur le store récupéré depuis le Provider
       simpleCounter={Connector.mapStateToProps(Provider.store.getState()).simpleCounter} />
   </Connector>
 </Provider>
