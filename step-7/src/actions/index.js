@@ -197,7 +197,7 @@ export function fetchWine(wineId) {
 export function toggleWineLiked() {
   return (dispatch, state) => {
     const currentLike = state().currentWine.liked;
-    fetch(`http://localhost:3000/api/wines/${state().currentWine.wine.id}/like`, {
+    fetch(`/api/wines/${state().currentWine.wine.id}/like`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',
@@ -221,7 +221,7 @@ export function toggleWineLiked() {
 
 export function fetchWineLiked() {
   return (dispatch, state) => {
-    fetch(`http://localhost:3000/api/wines/${state().currentWine.wine.id}/like`)
+    fetch(`/api/wines/${state().currentWine.wine.id}/like`)
       .then(r => r.json())
       .then(data => {
         dispatch(setCurrentLiked(data.like));
@@ -232,7 +232,7 @@ export function fetchWineLiked() {
 
 export function fetchComments(wineId) {
   return (dispatch, state) => {
-    fetch(`http://localhost:3000/api/wines/${wineId}/comments`)
+    fetch(`/api/wines/${wineId}/comments`)
       .then(r => r.json())
       .then(comments => {
         dispatch(setCurrentComments(comments.sort((a, b) => new Date(b.date) - new Date(a.date))));
@@ -243,7 +243,7 @@ export function fetchComments(wineId) {
 
 export function postComment(wineId, comment) {
   return (dispatch, state) => {
-    fetch(`http://localhost:3000/api/wines/${wineId}/comments`, {
+    fetch(`/api/wines/${wineId}/comments`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',

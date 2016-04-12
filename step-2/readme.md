@@ -216,7 +216,7 @@ Nous utilisons `fetch` pour effectuer les appels Ajax. Par exemple pour charger 
 const WineApp = React.createClass({
   // ...
   componentDidMount() {
-      fetch('http://localhost:3000/api/regions')
+      fetch('/api/regions')
         .then(r => r.json())
         .then(data => {
           this.setState({
