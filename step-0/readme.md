@@ -255,6 +255,17 @@ Lancez enfin la commande `npm start` et ouvrez la page `http://localhost:8080`.
 
 Modifiez le code du composant `Wine` et observez les modifications en live dans votre navigateur !
 
+### Attention
+
+Si vous souhaitez travailler sur un environnement déporté, il sera nécessaire de pouvoir accéder au `webpack-dev-server` depuis l'exterieur.
+Par défaut, `webpack-dev-server` n'écoute que `localhost`. Afin d'éviter ce comportement, vous pouvez spécifier sur quel host `webpack-dev-server` doit écouter. Changez le script `start` par :
+
+```json
+"scripts": {
+    "start": "webpack-dev-server -d --colors --inline --content-base public --host 0.0.0.0"
+}
+```
+
 ## ESLint
 
 [ESLint](http://eslint.org/) est un outil qui permet d'analyser votre code Javascript selon un certains nombre de règles.
