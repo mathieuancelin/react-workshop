@@ -12,7 +12,7 @@ const Wine = React.createClass({
 
   render() {
     return (
-      <div style={WineStyle}>
+      <div className="wine" style={WineStyle}>
           {this.props.name}
       </div>
     );
@@ -146,6 +146,25 @@ Vous pouvez également préciser à ESLint qu'il doit désormais également trai
 
 ```javascript
 ReactTestUtils.Simulate.click(button);
+```
+
+Si vous voulez aller plus loin dans les tests, il pourrait être intéressant de regarder du côté [d'enzyme](https://github.com/airbnb/enzyme), un utilitaire de test pour `react` créé par Airbnb et qui permet de manipuler plus facilement votre arbre de composant pour le tester. En effet `enzyme` s'inspire de l'API de `jQuery` pour pouvoir [requêter l'arbre de composants](https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md).
+
+```javascript
+import React from 'react';
+import { expect } from 'chai';
+import { shallow } from 'enzyme';
+
+import Wine from '../../src/components/wine';
+
+describe('Wine', () => {
+  it('affiche le nom du vin', () => {
+    const wine = shallow(<Wine name="Un bon Bourgogne" />);
+    expect(wine.contains(<div>Un bon Bourgogne</div>)).to.be.true;
+    expect(wine.find('div.wine')).to.have.length(1);
+
+  });
+});
 ```
 
 ## A vous de jouer !
