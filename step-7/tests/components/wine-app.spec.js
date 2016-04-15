@@ -52,7 +52,12 @@ function promise(data) {
       }
       return promise(ret);
     },
-    catch() {}
+    catch() {
+      if (data && data.then) {
+        return data;
+      }
+      return promise(data);
+    }
   };
 }
 

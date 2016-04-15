@@ -125,7 +125,7 @@ export const WinePage = connect(mapStateToProps)(React.createClass({
 
   componentDidMount() {
     this.props.dispatch(fetchWine(this.props.params.wineId)).then(() => {
-      this.props.dispatch(setTitle(this.props.wine.name));
+      if (this.props.wine) this.props.dispatch(setTitle(this.props.wine.name));
       this.props.dispatch(fetchWineLiked(this.props.params.wineId));
     });
   },
