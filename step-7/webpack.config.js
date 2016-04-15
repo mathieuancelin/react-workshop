@@ -15,7 +15,7 @@ module.exports = {
     }
   },
   entry: {
-    app: ['./src/app.js']
+    app: ['./src/index.js']
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

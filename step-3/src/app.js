@@ -2,8 +2,7 @@
 
 import 'whatwg-fetch';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { PropTypes } from 'react';
 
 import WineApp from './components/wine-app';
 import { RegionsPage } from './components/regions';
@@ -13,14 +12,21 @@ import { NotFound } from './components/not-found';
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={WineApp}>
-      <IndexRoute component={RegionsPage} />
-      <Route path="regions/:regionId" component={WineListPage} />
-      <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>
-  , document.getElementById('main')
-);
+export const App = React.createClass({
+  propTypes: {
+    history: PropTypes.object, // eslint-disable-line
+  },
+  render() {
+    const history = this.props.history || browserHistory;
+    return (
+      <Router history={history}>
+        <Route path="/" component={WineApp}>
+          <IndexRoute component={RegionsPage} />
+          <Route path="regions/:regionId" component={WineListPage} />
+          <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
+          <Route path="*" component={NotFound} />
+        </Route>
+      </Router>
+    );
+  }
+});

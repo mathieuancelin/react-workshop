@@ -2,8 +2,7 @@
 
 import 'whatwg-fetch';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { PropTypes } from 'react';
 
 import WineApp from './components/wine-app';
 import { RegionsPage } from './components/regions';
@@ -22,24 +21,32 @@ import { setLikes, setComments } from './actions';
 
 const store = createStore(app);
 
-fetch(`/api/likes`)
-  .then(r => r.json())
-  .then(r => store.dispatch(setLikes(r.count)));
+export const App = React.createClass({
+  propTypes: {
+    history: PropTypes.object, // eslint-disable-line
+  },
+  componentDidMount() {
+    fetch(`/api/likes`)
+      .then(r => r.json())
+      .then(r => store.dispatch(setLikes(r.count)));
 
-fetch(`/api/comments`)
-  .then(r => r.json())
-  .then(r => store.dispatch(setComments(r.count)));
-
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={WineApp}>
-        <IndexRoute component={RegionsPage} />
-        <Route path="regions/:regionId" component={WineListPage} />
-        <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
-        <Route path="*" component={NotFound} />
-      </Route>
-    </Router>
-  </Provider>
-  , document.getElementById('main')
-);
+    fetch(`/api/comments`)
+      .then(r => r.json())
+      .then(r => store.dispatch(setComments(r.count)));
+  },
+  render() {
+    const history = this.props.history || browserHistory;
+    return (
+      <Provider store={store}>
+        <Router history={history}>
+          <Route path="/" component={WineApp}>
+            <IndexRoute component={RegionsPage} />
+            <Route path="regions/:regionId" component={WineListPage} />
+            <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
+            <Route path="*" component={NotFound} />
+          </Route>
+        </Router>
+      </Provider>
+    );
+  }
+});
