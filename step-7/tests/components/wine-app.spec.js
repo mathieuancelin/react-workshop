@@ -167,103 +167,115 @@ window.fetch = (url, post) => {
 global.fetch = window.fetch;
 
 describe('<App />', () => {
-  it('doit afficher des régions', () => {
-    const history = createMemoryHistory(window.location);
-    const wrapper = mount(
-      <App history={history} />
-    );
-    const foundRegions = wrapper.find('Regions').find('div').filterWhere(n => regions.indexOf(n.get(0).innerHTML) > -1);
-    expect(foundRegions.length).to.equal(2);
-  });
-
-  it('doit afficher des vins après avoir sélectionné une région', () => {
-    const history = createMemoryHistory(window.location);
-    const wrapper = mount(
-      <App history={history} />
-    );
-
-    {
+  it('doit afficher des régions', (done) => {
+    setTimeout(() => {
+      const history = createMemoryHistory(window.location);
+      const wrapper = mount(
+        <App history={history} />
+      );
       const foundRegions = wrapper.find('Regions').find('div').filterWhere(n => regions.indexOf(n.get(0).innerHTML) > -1);
       expect(foundRegions.length).to.equal(2);
-    }
-
-    const region2 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[1]);
-    region2.simulate('click');
-
-    {
-      const wineNames1 = Object.keys(wines1).map(k => wines1[k].name);
-      const foundWines1 = wrapper.find('WineList').find('div').filterWhere(n => wineNames1.indexOf(n.get(0).innerHTML) > -1);
-      expect(foundWines1.length).to.equal(0);
-
-      const wineNames2 = Object.keys(wines2).map(k => wines2[k].name);
-      const foundWines2 = wrapper.find('WineList').find('div').filterWhere(n => wineNames2.indexOf(n.get(0).innerHTML) > -1);
-      expect(foundWines2.length).to.equal(2);
-    }
-
-    history.goBack();
-
-    const region1 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[0]);
-    region1.simulate('click');
-
-    {
-      const wineNames1 = Object.keys(wines1).map(k => wines1[k].name);
-      const foundWines1 = wrapper.find('WineList').find('div').filterWhere(n => wineNames1.indexOf(n.get(0).innerHTML) > -1);
-      expect(foundWines1.length).to.equal(2);
-
-      const wineNames2 = Object.keys(wines2).map(k => wines2[k].name);
-      const foundWines2 = wrapper.find('WineList').find('div').filterWhere(n => wineNames2.indexOf(n.get(0).innerHTML) > -1);
-      expect(foundWines2.length).to.equal(0);
-    }
-
+      done();
+    });
   });
 
-  it('doit afficher un vin après avoir sélectionné un nouveau vin', () => {
-    const history = createMemoryHistory(window.location);
-    const wrapper = mount(
-      <App history={history} />
-    );
+  it('doit afficher des vins après avoir sélectionné une région', (done) => {
+    setTimeout(() => {
+      const history = createMemoryHistory(window.location);
+      const wrapper = mount(
+        <App history={history} />
+      );
 
-    const region1 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[0]);
-    region1.simulate('click');
+      {
+        const foundRegions = wrapper.find('Regions').find('div').filterWhere(n => regions.indexOf(n.get(0).innerHTML) > -1);
+        expect(foundRegions.length).to.equal(2);
+      }
 
-    const wine1 = wrapper.find('WineList').find('div').filterWhere(n => n.get(0).innerHTML === wines1[0].name);
-    wine1.simulate('click');
+      const region2 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[1]);
+      region2.simulate('click');
 
-    {
-      const firstWine = wines1[0];
-      const Wine = wrapper.find('Wine').at(0).first();
-      const foundName = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.name) > -1);
-      const foundType = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.type) > -1);
-      const foundRegion = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.region) > -1);
-      const foundAppellation = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.name) > -1);
-      const foundGrapes = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.grapes.join(', ')) > -1);
+      {
+        const wineNames1 = Object.keys(wines1).map(k => wines1[k].name);
+        const foundWines1 = wrapper.find('WineList').find('div').filterWhere(n => wineNames1.indexOf(n.get(0).innerHTML) > -1);
+        expect(foundWines1.length).to.equal(0);
 
-      expect(foundName.length).to.equal(2); // because of root div
-      expect(foundType.length).to.equal(2);
-      expect(foundAppellation.length).to.equal(2);
-      expect(foundRegion.length).to.equal(2);
-      expect(foundGrapes.length).to.equal(2);
-    }
+        const wineNames2 = Object.keys(wines2).map(k => wines2[k].name);
+        const foundWines2 = wrapper.find('WineList').find('div').filterWhere(n => wineNames2.indexOf(n.get(0).innerHTML) > -1);
+        expect(foundWines2.length).to.equal(2);
+      }
 
-    history.goBack();
+      history.goBack();
 
-    const wine2 = wrapper.find('WineList').find('div').filterWhere(n => n.get(0).innerHTML === wines1[1].name);
-    wine2.simulate('click');
+      const region1 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[0]);
+      region1.simulate('click');
 
-    {
-      const firstWine = wines1[1];
-      const Wine = wrapper.find('Wine').at(0).first();
-      const foundName = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.name) > -1);
-      const foundType = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.type) > -1);
-      const foundRegion = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.region) > -1);
-      const foundAppellation = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.name) > -1);
-      const foundGrapes = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.grapes.join(', ')) > -1);
+      {
+        const wineNames1 = Object.keys(wines1).map(k => wines1[k].name);
+        const foundWines1 = wrapper.find('WineList').find('div').filterWhere(n => wineNames1.indexOf(n.get(0).innerHTML) > -1);
+        expect(foundWines1.length).to.equal(2);
 
-      expect(foundName.length).to.equal(2); // because of root div
-      expect(foundType.length).to.equal(2);
-      expect(foundAppellation.length).to.equal(2);
-      expect(foundRegion.length).to.equal(2);
-      expect(foundGrapes.length).to.equal(2);
-    }
+        const wineNames2 = Object.keys(wines2).map(k => wines2[k].name);
+        const foundWines2 = wrapper.find('WineList').find('div').filterWhere(n => wineNames2.indexOf(n.get(0).innerHTML) > -1);
+        expect(foundWines2.length).to.equal(0);
+      }
+      history.goBack();
+      history.goBack();
+      done();
+    });
+  });
+
+  it('doit afficher un vin après avoir sélectionné un nouveau vin', (done) => {
+    setTimeout(() => {
+      const history = createMemoryHistory(window.location);
+      const wrapper = mount(
+        <App history={history} />
+      );
+
+      const region1 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[0]);
+      region1.simulate('click');
+
+      const wine1 = wrapper.find('WineList').find('div').filterWhere(n => n.get(0).innerHTML === wines1[0].name);
+      wine1.simulate('click');
+
+      {
+        const firstWine = wines1[0];
+        const Wine = wrapper.find('Wine').at(0).first();
+        const foundName = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.name) > -1);
+        const foundType = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.type) > -1);
+        const foundRegion = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.region) > -1);
+        const foundAppellation = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.name) > -1);
+        const foundGrapes = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.grapes.join(', ')) > -1);
+
+        expect(foundName.length).to.equal(2); // because of root div
+        expect(foundType.length).to.equal(2);
+        expect(foundAppellation.length).to.equal(2);
+        expect(foundRegion.length).to.equal(2);
+        expect(foundGrapes.length).to.equal(2);
+      }
+
+      history.goBack();
+
+      const wine2 = wrapper.find('WineList').find('div').filterWhere(n => n.get(0).innerHTML === wines1[1].name);
+      wine2.simulate('click');
+
+      {
+        const firstWine = wines1[1];
+        const Wine = wrapper.find('Wine').at(0).first();
+        const foundName = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.name) > -1);
+        const foundType = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.type) > -1);
+        const foundRegion = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.region) > -1);
+        const foundAppellation = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.appellation.name) > -1);
+        const foundGrapes = Wine.find('div').filterWhere(n => n.get(0).innerHTML.indexOf(firstWine.grapes.join(', ')) > -1);
+
+        expect(foundName.length).to.equal(2); // because of root div
+        expect(foundType.length).to.equal(2);
+        expect(foundAppellation.length).to.equal(2);
+        expect(foundRegion.length).to.equal(2);
+        expect(foundGrapes.length).to.equal(2);
+      }
+      history.goBack();
+      history.goBack();
+      done();
+    });
   });
 });

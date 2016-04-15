@@ -3,6 +3,12 @@ import { GlobalStats } from './stats';
 import { connect } from 'react-redux';
 import { DevTools } from './devtools';
 
+const NoDevToolsCauseInTestEnv = React.createClass({
+  render() {
+    return null;
+  }
+});
+
 const mapStateToProps = (state) => {
   return {
     title: state.title,
@@ -29,6 +35,7 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
   },
 
   render () {
+    const Tools = window.TEST ? NoDevToolsCauseInTestEnv : DevTools;
     const message = this.props.httpState === 'LOADING' ?
       'Loading ...' :
       (this.props.httpState === 'LOADED' ?
@@ -57,7 +64,7 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
               <GlobalStats />
             </div>
         </div>
-        <DevTools />
+        <Tools />
       </div>
     );
   }

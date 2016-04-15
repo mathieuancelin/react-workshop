@@ -1,7 +1,14 @@
+/* eslint react/no-multi-comp: 0 */
 import React, { PropTypes } from 'react';
 import { GlobalStats } from './stats';
 import { connect } from 'react-redux';
 import { DevTools } from './devtools';
+
+const NoDevToolsCauseInTestEnv = React.createClass({
+  render() {
+    return null;
+  }
+});
 
 export const WineApp = connect()(React.createClass({
   propTypes: {
@@ -17,6 +24,7 @@ export const WineApp = connect()(React.createClass({
   },
 
   render () {
+    const Tools = window.TEST ? NoDevToolsCauseInTestEnv : DevTools;
     return (
       <div>
         <div className="grid">
@@ -31,7 +39,7 @@ export const WineApp = connect()(React.createClass({
               <GlobalStats />
             </div>
         </div>
-        <DevTools />
+        <Tools />
       </div>
     );
   }
