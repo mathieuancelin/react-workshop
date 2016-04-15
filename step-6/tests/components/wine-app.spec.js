@@ -119,19 +119,19 @@ window.fetch = (url, post) => {
 
   // POST sur comments
   if (url.startsWith(`/api/wines/${wines1[0].id}/comments`) && post) {
-    comments[wines1[0].id].push(JSON.parse(post.body));
+    comments[wines1[0].id].push(Object.assign({}, JSON.parse(post.body), { date: 'today' } ));
     return promise({ json: () => [] });
   }
   if (url.startsWith(`/api/wines/${wines1[1].id}/comments`) && post) {
-    comments[wines1[1].id].push(JSON.parse(post.body));
+    comments[wines1[1].id].push(Object.assign({}, JSON.parse(post.body), { date: 'today' } ));
     return promise({ json: () => [] });
   }
   if (url.startsWith(`/api/wines/${wines2[0].id}/comments`) && post) {
-    comments[wines2[0].id].push(JSON.parse(post.body));
+    comments[wines2[0].id].push(Object.assign({}, JSON.parse(post.body), { date: 'today' } ));
     return promise({ json: () => [] });
   }
   if (url.startsWith(`/api/wines/${wines2[1].id}/comments`) && post) {
-    comments[wines2[1].id].push(JSON.parse(post.body));
+    comments[wines2[1].id].push(Object.assign({}, JSON.parse(post.body), { date: 'today' } ));
     return promise({ json: () => [] });
   }
   // GET sur comments
@@ -277,5 +277,57 @@ describe('<App />', () => {
       history.goBack();
       done();
     });
+  });
+
+  it('doit afficher un vin et le liker', () => {
+    const history = createMemoryHistory(window.location);
+    const wrapper = mount(
+      <App history={history} />
+    );
+
+    const region1 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[0]);
+    region1.simulate('click');
+
+    const wine1 = wrapper.find('WineList').find('div').filterWhere(n => n.get(0).innerHTML === wines1[0].name);
+    wine1.simulate('click');
+
+    const like = wrapper.find('Wine').find('span').filterWhere(n => n.get(0).innerHTML === 'like');
+    expect(like.length).to.equal(1);
+
+    like.simulate('click');
+
+    const like2 = wrapper.find('Wine').find('span').filterWhere(n => n.get(0).innerHTML === 'unlike');
+    expect(like2.length).to.equal(1);
+
+    like2.simulate('click');
+
+    const like3 = wrapper.find('Wine').find('span').filterWhere(n => n.get(0).innerHTML === 'like');
+    expect(like3.length).to.equal(1);
+  });
+
+  it('doit afficher un vin et poster un commentaire', () => {
+    const history = createMemoryHistory(window.location);
+    const wrapper = mount(
+      <App history={history} />
+    );
+
+    const region1 = wrapper.find('Regions').find('div').filterWhere(n => n.get(0).innerHTML === regions[0]);
+    region1.simulate('click');
+
+    const wine1 = wrapper.find('WineList').find('div').filterWhere(n => n.get(0).innerHTML === wines1[0].name);
+    wine1.simulate('click');
+
+    // find comemnts
+
+    let paragraphs = wrapper.find('Comments').find('p');
+    expect(paragraphs.length).to.equals(0);
+
+    wrapper.find('Comments').find('input').simulate('change', { target: { value: 'Comment 1' } });
+    wrapper.find('Comments').find('textarea').simulate('change', { target: { value: 'Comment 1 body' } });
+    wrapper.find('Comments').find('button').simulate('click');
+
+    paragraphs = wrapper.find('Comments').find('p');
+    expect(paragraphs.length).to.equals(1);
+    expect(paragraphs.at(0).html()).to.equals('<p>Comment 1 body</p>');
   });
 });
