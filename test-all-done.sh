@@ -14,3 +14,6 @@ do
     echo "nothing to do for $item"
   fi
 done
+
+cd "$APP_PATH/step-7"
+npm test
