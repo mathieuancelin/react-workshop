@@ -243,7 +243,7 @@ export function fetchComments(wineId) {
 
 export function postComment(wineId, comment) {
   return (dispatch, state) => {
-    fetch(`/api/wines/${wineId}/comments`, {
+    return fetch(`/api/wines/${wineId}/comments`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',

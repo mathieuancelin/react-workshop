@@ -308,6 +308,9 @@ describe('<App />', () => {
 
     const like3 = wrapper.find('Wine').find('span').filterWhere(n => n.get(0).innerHTML === 'like');
     expect(like3.length).to.equal(1);
+
+    history.goBack();
+    history.goBack();
   });
 
   it('doit afficher un vin et poster un commentaire', () => {
@@ -334,5 +337,8 @@ describe('<App />', () => {
     paragraphs = wrapper.find('Comments').find('p');
     expect(paragraphs.length).to.equals(1);
     expect(paragraphs.at(0).html()).to.equals('<p>Comment 1 body</p>');
+
+    history.goBack();
+    history.goBack();
   });
 });
