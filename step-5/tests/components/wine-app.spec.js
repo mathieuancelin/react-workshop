@@ -46,13 +46,37 @@ const wines2 = [
 function promise(data) {
   return {
     then(func) {
-      return promise(func(data));
+      const ret = func(data);
+      if (ret && ret.then) {
+        return ret;
+      }
+      return promise(ret);
     },
     catch() {}
   };
 }
 
-window.fetch = (url) => {
+const likes = {
+  'clarendelle':  false,
+  'les-hauts-de-tour-prignac': false,
+  'chevrol-bel-air': false,
+  'bel-air': false
+};
+
+const comments = {
+  'clarendelle':  [],
+  'les-hauts-de-tour-prignac': [],
+  'chevrol-bel-air': [],
+  'bel-air': []
+};
+
+window.fetch = (url, post) => {
+  if (url.startsWith('/api/likes')) {
+    return promise({ json: () => ({ count: Object.keys(comments).filter(k => comments[k]).length }) });
+  }
+  if (url.startsWith('/api/comments')) {
+    return promise({ json: () => ({ count: Object.keys(comments).map(k => comments[k].length).reduce((a, b) => a + b) }) });
+  }
   if (url.startsWith('/api/regions')) {
     return promise({ json: () => regions });
   }
@@ -62,6 +86,69 @@ window.fetch = (url) => {
   if (url.startsWith(`/api/wines?region=${regions[1]}`)) {
     return promise({ json: () => wines2 });
   }
+  // POST sur like
+  if (url.startsWith(`/api/wines/${wines1[0].id}/like`) && post) {
+    likes[wines1[0].id] = !likes[wines1[0].id];
+    return promise({ json: () => [] });
+  }
+  if (url.startsWith(`/api/wines/${wines1[1].id}/like`) && post) {
+    likes[wines1[1].id] = !likes[wines1[1].id];
+    return promise({ json: () => [] });
+  }
+  if (url.startsWith(`/api/wines/${wines2[0].id}/like`) && post) {
+    likes[wines2[0].id] = !likes[wines2[0].id];
+    return promise({ json: () => [] });
+  }
+  if (url.startsWith(`/api/wines/${wines2[1].id}/like`) && post) {
+    likes[wines2[1].id] = !likes[wines2[1].id];
+    return promise({ json: () => [] });
+  }
+  // GET sur like
+  if (url.startsWith(`/api/wines/${wines1[0].id}/like`)) {
+    return promise({ json: () => ({ like: likes[wines1[0].id] }) });
+  }
+  if (url.startsWith(`/api/wines/${wines1[1].id}/like`)) {
+    return promise({ json: () => ({ like: likes[wines1[1].id] }) });
+  }
+  if (url.startsWith(`/api/wines/${wines2[0].id}/like`)) {
+    return promise({ json: () => ({ like: likes[wines2[0].id] }) });
+  }
+  if (url.startsWith(`/api/wines/${wines2[1].id}/like`)) {
+    return promise({ json: () => ({ like: likes[wines2[1].id] }) });
+  }
+
+  // POST sur comments
+  if (url.startsWith(`/api/wines/${wines1[0].id}/comments`) && post) {
+    comments[wines1[0].id].push(JSON.parse(post.body));
+    return promise({ json: () => [] });
+  }
+  if (url.startsWith(`/api/wines/${wines1[1].id}/comments`) && post) {
+    comments[wines1[1].id].push(JSON.parse(post.body));
+    return promise({ json: () => [] });
+  }
+  if (url.startsWith(`/api/wines/${wines2[0].id}/comments`) && post) {
+    comments[wines2[0].id].push(JSON.parse(post.body));
+    return promise({ json: () => [] });
+  }
+  if (url.startsWith(`/api/wines/${wines2[1].id}/comments`) && post) {
+    comments[wines2[1].id].push(JSON.parse(post.body));
+    return promise({ json: () => [] });
+  }
+  // GET sur comments
+  if (url.startsWith(`/api/wines/${wines1[0].id}/comments`)) {
+    return promise({ json: () => comments[wines1[0].id] });
+  }
+  if (url.startsWith(`/api/wines/${wines1[1].id}/comments`)) {
+    return promise({ json: () => comments[wines1[1].id] });
+  }
+  if (url.startsWith(`/api/wines/${wines2[0].id}/comments`)) {
+    return promise({ json: () => comments[wines2[0].id] });
+  }
+  if (url.startsWith(`/api/wines/${wines2[1].id}/comments`)) {
+    return promise({ json: () => comments[wines2[1].id] });
+  }
+
+  // GET sur un wine
   if (url.startsWith(`/api/wines/${wines1[0].id}`)) {
     return promise({ json: () => wines1[0] });
   }
@@ -74,6 +161,7 @@ window.fetch = (url) => {
   if (url.startsWith(`/api/wines/${wines2[1].id}`)) {
     return promise({ json: () => wines2[1] });
   }
+
   throw new Error(`Unknown URL : ${url}`);
 };
 global.fetch = window.fetch;

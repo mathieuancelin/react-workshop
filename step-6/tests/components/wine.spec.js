@@ -15,10 +15,12 @@ const blackHorse = {
   "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"]
 };
 
+function nothing() {}
+
 describe('<Wine />', () => {
   it('doit afficher un bon vin, dans une boooonne aubèèèrge', () => {
     const wrapper = shallow(
-      <Wine wine={blackHorse} />
+      <Wine wine={blackHorse} liked={false} onToggleLike={nothing} />
     );
     const spans = wrapper.find('span');
     const divs = wrapper.find('div');
@@ -38,6 +40,9 @@ describe('<Wine />', () => {
           </div>
           <div {...divs.get(5).props}>
             <span {...spans.get(3).props}>Cépages</span>{blackHorse.grapes.join(', ')}
+          </div>
+          <div {...divs.get(6).props}>
+            <span {...spans.get(4).props}>like</span>
           </div>
       </div>
     )).to.equal(true);
