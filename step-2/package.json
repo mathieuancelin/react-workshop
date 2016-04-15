@@ -15,14 +15,17 @@
     "chai": "3.5.0",
     "eslint": "2.4.0",
     "eslint-plugin-react": "4.2.3",
+    "enzyme": "^2.2.0",
     "jsdom": "8.1.0",
     "mocha": "2.4.5",
     "react-addons-test-utils": "0.14.7",
+    "sinon": "^1.17.3",
     "webpack": "1.12.14",
     "webpack-dev-server": "1.14.1"
   },
   "scripts": {
     "lint": "eslint src",
+    "test": "mocha --compilers js:babel-register tests/index.js",
     "bundle": "webpack -p --colors --progress",
     "start": "webpack-dev-server -d --colors --inline --content-base public",
     "build": "npm run lint && npm run bundle"
