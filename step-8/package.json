@@ -1,0 +1,24 @@
+{
+  "name": "wines",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "install-android": "cd ./android && ./gradlew :app:installDebug",
+    "run-adv": "$ANDROID_HOME/tools/emulator -netdelay none -netspeed full -avd reactnative",
+    "start-android": "node node_modules/react-native/local-cli/cli.js run-android hot",
+    "android-log": "adb logcat *:S ReactNative:V ReactNativeJS:V"
+  },
+  "dependencies": {
+    "moment": "2.12.0",
+    "react": "0.14.8",
+    "react-native": "0.24.0-rc2",
+    "react-redux": "4.4.1",
+    "redux": "3.3.1",
+    "redux-thunk": "2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "2.4.0",
+    "eslint-plugin-react": "4.2.3"
+  }
+}

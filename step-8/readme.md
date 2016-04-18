@@ -109,7 +109,290 @@ Ouvrez le projet `wines/android` dans `Android Studio`, lancez l'émulateur (man
 
 ## Let's code !!!
 
-*TODO*
+L'application mobile proposée a pour point d'entré `index.ios.js` ou `index.android.js`, suivant la plateforme d'exécution. Ce fichier est un simple lanceur vers votre véritable application se trouvant dans `src/app.js`.
+
+Dans ce fichier vous allez pouvoir instancier votre composant WineApp tout en lui fournissant un store `redux` (via le composant `<Provider />`). On repart sur les même base que l'application Web, la partie Redux reste sensiblement la même et est donc déjà founie dans le dossier de l'étape.
+
+```javascript
+import React from 'react-native';
+
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { app } from './reducers';
+
+import { WineApp } from './components/wine-app';
+
+const store = createStore(app, applyMiddleware(thunk));
+
+export const App = React.createClass({
+  render() {
+    return (
+      <Provider store={store}>
+        <WineApp />
+      </Provider>
+    );
+  }
+});
+```
+
+N'oubliez pas pour le reste de l'application, le fichier `src/components/style.js` contient tous les styles dont vous pouvez avoir besoin pour votre application.
+
+*Attention : si vous utilisez développez une application Android, allez modifier le fichier `src/actions/index.js` et changez `export const apiHost = '127.0.0.1';` par votre adresse IP afin que l'émulateur Android puisse atteindre le serveur de l'API*
+
+### Routage
+
+Votre application mobile, à l'instar la version web, va avoir besoin de router son utilisateur à travers divers écrans, cependant ici, pas besoin de se soucier de l'URL, des boutons du navigateur, etc ...
+
+Cependant, le routage entre écran sous iOS et Android est complètement différent, nous allons donc utiliser deux API différentes suivant l'OS désiré, c'est pour celà que nous allons avoir deux fichiers `src/components/wine-app.ios.js` et `src/components/wine-app.android.js`.
+
+#### iOS
+
+`react-native` founit une API de navigation liée à iOS, qui utilise directement des APIs Objective-C. Le composant en question s'appelle [`<NavigatorIOS />`](https://facebook.github.io/react-native/docs/navigatorios.html#navigatorios) et permet de spécifier un style, ainsi qu'une route de départ, votre écran d'accueil. Chaque composant rendu par `<NavigatorIOS />` se verra assigné une propriété `navigator` possédant une méthode `push` pour naviguer vers l'écran suivant.
+
+Chaque `route` passée au `navigator` est en fait un object constitué d'un titre, d'un composant et éventuellement d'une liste de propriétés
+
+```javascript
+this.props.push({
+  title: 'Ma page 1',
+  component: Page1,
+  passProps: {
+    itemsToDisplay: [ ... ]
+  }
+});
+```
+
+Par exemple dans notre cas, l'instanciation de `<NavigatorIOS />` s'écrit de la façon suivante :
+
+```javascript
+import React, { NavigatorIOS } from 'react-native';
+import { Regions } from './regions';
+import { styles } from './style';
+
+export const WineApp = React.createClass({
+  render() {
+    return (
+      <NavigatorIOS
+          style={styles.navigatorios}
+          initialRoute={{
+              title: 'Régions viticoles',
+              component: Regions
+          }} />
+    );
+  }
+});
+```
+
+#### Android
+
+Le cas d'Android est un peu plus compliqué, puisqu'il n'y a pas d'API dédiée à la navigation. Nous allons donc nous appuyer sur une API purement Javascript [`<Navigator />`](https://facebook.github.io/react-native/docs/navigator.html#navigator) founie par `react-native`. De plus, pour ne pas à avoir trop de code spécifique à écrire, nous allons faire en sorte que l'API de navigation fournie pour chaque `page` soit la même que pour iOS, à savoir une propriété `navigator` possédant une méthode `push` pour naviguer vers l'écran suivant. Chaque `route` passée au `navigator` est en fait un object constitué d'un titre, d'un composant et éventuellement d'une liste de propriétés
+
+```javascript
+this.props.push({
+  title: 'Ma page 1',
+  component: Page1,
+  passProps: {
+    itemsToDisplay: [ ... ]
+  }
+});
+```
+
+Nous utiliserons donc l'API `<Navigator />` de la façon suivante :
+
+```javascript
+import React, { Navigator, BackAndroid, Text, View } from 'react-native';
+import { Regions } from './regions';
+import { styles } from './style';
+
+export const WineApp = React.createClass({
+  componentWillUnmount() {
+    // ici on décable le bouton back android
+    BackAndroid.removeEventListener('hardwareBackPress', this.handleBackButton);
+  },
+
+  handleBackButton() {
+    // si on ne se trouve pas sur l'écran d'accueil
+    if (!this.isOnMainScreen) {
+      // on demande au navigator de faire un retour arrière
+      this.navigator.pop();
+      return true;
+    }
+    return false;
+  },
+
+  renderScene(route, nav) {
+    if (!this.navigator) {
+      this.navigator = nav;
+      // ici on cable le bouton back android pour faire un retour arrière
+      BackAndroid.addEventListener('hardwareBackPress', this.handleBackButton);
+    }
+    // on récupère le composant sur la route
+    const Component = route.component;
+    // on récupère les propriétés sur la route
+    const props = route.passProps || {};
+    // on récupère le titre de la route
+    const title = route.title;
+    // on regarde si on est sur l'écran d'accueil
+    if (Component === Regions) {
+      this.isOnMainScreen = true;
+    } else {
+      this.isOnMainScreen = false;
+    }
+    // on retourne notre vue qui est composée d'un titre et du composant avec les propriétés
+    // le title et l'API de navigation
+    return (
+      <View>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
+              <Text style={{ flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '500' }}>{title}</Text>
+          </View>
+          <Component {...props}
+              navigator={nav}
+              title={title} />
+      </View>
+    );
+  },
+
+  // configuration de la scène d'un point de vue animation
+  // ici chaque nouvel écran arrivera par le bas
+  configureScene(route) {
+    if (route.sceneConfig) {
+      return route.sceneConfig;
+    }
+    return Navigator.SceneConfigs.FloatFromBottom;
+  },
+
+  // ici instanciation du navigateur avec son style, sa configuration de scene et
+  // sa route initiale
+  render() {
+    return (
+        <Navigator
+            style={styles.navigatorandroid}
+            initialRoute={{ title: 'Régions viticoles', component: Regions }}
+            renderScene={this.renderScene}
+            configureScene={this.configureScene} />
+    );
+  }
+});
+```
+
+### Listes
+
+Maintenant, vous allez avoir a créer deux listes permettant d'afficher les régions et les vins pour chaque région. Pour celà nous allons utiliser l'API [`<ListView />`](https://facebook.github.io/react-native/docs/listview.html#listview) de `react-native`.
+
+Cette API fournie un modèle de programmation pour afficher des listes cliquables. Pour implémenter une liste d'item, nous aurons besoin de deux composants, la liste et les cellules à afficher par la liste. Une cellule est une composant très simple comme par exemple :
+
+```javascript
+import React, { PropTypes, Text, TouchableHighlight, View } from 'react-native';
+import { styles } from './style';
+
+export const ItemCell = React.createClass({
+  propTypes: {
+    onSelect: PropTypes.func,
+    item: PropTypes.object,
+  },
+  render() {
+    return (
+      <TouchableHighlight onPress={this.props.onSelect}>
+        <View style={styles.container}>
+          <Text style={styles.cellTitle}>
+            {this.props.item.name}
+          </Text>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+});
+```
+
+La liste quand a elle doit utiliser notre `store` `redux` et peut se coder de la façon suivante. Vous noterez l'utilisation de `componentDidUpdate` pour détecter les changements de valeur du store et mettre à jour la liste.
+
+```javascript
+import React, { PropTypes, ListView } from 'react-native';
+
+import { connect } from 'react-redux';
+import { fetchItems } from '../actions';
+import { ItemCell } from './region-cell';
+import { MyComponent } from './wine-list';
+import { styles } from './style';
+
+const mapStateToProps = (state) => {
+  return {
+    items: state.items
+  };
+}
+
+export const ItemList = connect(mapStateToProps)(React.createClass({
+
+  propTypes: {
+    dispatch: PropTypes.func.isRequired,
+    navigator: PropTypes.object,
+    items: PropTypes.arrayOf(PropTypes.object)
+  },
+
+  getInitialState() {
+    return {
+      // ici on utilise une datasource spécifique pour la ListView.
+      dataSource: new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 })
+    };
+  },
+
+  // ici on lance l'appel HTTP pour récupérer les données à afficher
+  componentDidMount() {
+    this.props.dispatch(fetchItems());
+  },
+
+  // logique permettant de détecter les changements de valeurs de items au niveau
+  // du store redux et de mettre à jour la datasource le cas échéant.
+  componentDidUpdate(prevProps) {
+    if (prevProps.items !== this.props.items) {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(this.props.items)
+      });
+    }
+  },
+
+  // cette fonction gère les évènement de type `selection` sur une cellule de
+  // la liste et déclenche la navigation vers la prochaine vue.
+  selectItem(item) {
+    this.props.navigator.push({
+      title: `Showing ${item.name}`,
+      component: MyComponent,
+      passProps: {
+        item
+      }
+    });
+  },
+
+  // cette fonction retourne une vue pour chaque cellule de la list
+  renderItem(item) {
+    return(
+      <ItemCell onSelect={() => this.selectItem(item)} item={item} />
+    );
+  },
+
+  // ici on rend une ListView avec une source de données et une fonction pour
+  // rendrer chaque cellule de la liste
+  render() {
+    return (
+      <ListView style={styles.listView}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderItem} />
+    );
+  }
+}));
+```
+
+Dans notre application nous avons donc besoin de deux listes. Il serait bien que chaque liste affiche une page de chargement durant l'appel HTTP (voir le composant `<Loading />`).
+
+La liste de sélection des vins pourrait également afficher une miniature de la photo de la bouteille de vin en plus du nom du vin.
+
+### Fiche de détail d'un vin
+
+// TODO
+
+### Commentaires
+
+// TODO
 
 ## A vous de jouer !
 
