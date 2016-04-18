@@ -10,6 +10,8 @@ Pour lancer l'application de l'étape 2, exécutez la commande `npm start` (apr�
 
 Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la commande `npm start` dans le dossier `api`. La documentation de l'API est disponible à l'adresse http://localhost:3000
 
+Vous avez également la possibilité de lancer les tests de cette étape (que nous avons rédigé pour vous) en utilisant la commande `npm test` afin de voir quelles parties de l'étape fonctionnent et quelles parties ne fonctionnent pas du tout. N'hésitez pas à lire le code des tests afin d'avoir quelques indications en plus sur la façon d'écrire votre application.
+
 ## Objectif
 
 Maintenant que notre application possède les fonctionnalités de base, nous allons commencer a nous attaquer à la navigation.
@@ -128,7 +130,9 @@ vous pouvez évidemment l'ajouter via la ligne de commande :
 npm install --save react-router@2.0.1
 ```
 
-Maintenant nous pouvons commencer l'intégration du router (l'intégration de base est présente dans le projet mais vous pouvez tout de même lire les paragraphes suivant). Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `app.js`
+Maintenant nous pouvons commencer l'intégration du router (l'intégration de base est présente dans le projet mais vous pouvez tout de même lire les paragraphes suivant).
+
+Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `src/app.js`. Pour des raisons de testabilité, nous allons faire en sorte d'encapsuler toute l'application et son système de routage dans un composant dédié dans `src/app.js` et faire en sorte que ce composant puisse recevoir une API `history` dédiée (différente en environnement de test). La montage de ce composant dans le DOM sera effectué dans le fichier `src/indexj.js`
 
 ```javascript
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
@@ -140,22 +144,30 @@ l'initialisation du routeur se fera de la façon suivante :
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import NotFound from './components/not-found';
 
-ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={???}>
-      <IndexRoute component={???} />
-      ...
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>,
-  document.getElementById('main')
-);
+export const App = React.createClass({
+  propTypes: {
+    history: PropTypes.object,
+  },
+  render() {
+    const history = this.props.history || browserHistory;
+    return (
+      <Router history={history}>
+        <Route path="/" component={???}>
+          <IndexRoute component={???} />
+          ...
+          <Route path="*" component={NotFound} />
+        </Route>
+      </Router>,
+    );
+  }
+});
 ```
 
 Ici nous configurons le routeur pour utiliser l'API `history`, tirée de HTML5, du navigateur comme URL de routage côté client. Cette API permet de faire varier l'URL du navigateur sans pour autant déclencher un rechargement de la page.
 
 ```javascript
-<Router history={browserHistory}> ... </Router>
+const history = this.props.history || browserHistory;
+<Router history={history}> ... </Router>
 ```
 
 puis nous spécifions un container qui aura le role d'afficher la vue courante du router et qui sera le point d'entrée de l'application.
@@ -167,7 +179,7 @@ puis nous spécifions un container qui aura le role d'afficher la vue courante d
 D'après le tutorial de `react-router`, ce genre de composant peut s'écrire de la façon suivante :
 
 ```javascript
-const App = React.createClass({
+const MyApp = React.createClass({
   render() {
     return (
       <div>

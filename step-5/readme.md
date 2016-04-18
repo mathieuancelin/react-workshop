@@ -10,6 +10,8 @@ Pour lancer l'application de l'étape 4, exécutez la commande `npm start` (apr�
 
 Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la commande `npm start` dans le dossier `api`. La documentation de l'API est disponible à l'adresse http://localhost:3000
 
+Vous avez également la possibilité de lancer les tests de cette étape (que nous avons rédigé pour vous) en utilisant la commande `npm test` afin de voir quelles parties de l'étape fonctionnent et quelles parties ne fonctionnent pas du tout. N'hésitez pas à lire le code des tests afin d'avoir quelques indications en plus sur la façon d'écrire votre application.
+
 ## Objectif
 
 Dans cette étape, nous allons intégrer [Redux](http://redux.js.org/index.html) a notre magnifique application.
@@ -242,7 +244,7 @@ import { WineListPage } from './components/wine-list';
 import { WinePage } from './components/wine';
 import { NotFound } from './components/not-found';
 
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -252,19 +254,26 @@ const store = createStore(app);
 
 ...
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path="/" component={WineApp}>
-        <IndexRoute component={RegionsPage} />
-        <Route path="regions/:regionId" component={WineListPage} />
-        <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
-        <Route path="*" component={NotFound} />
-      </Route>
-    </Router>
-  </Provider>
-  , document.getElementById('main')
-);
+export const App = React.createClass({
+  propTypes: {
+    history: PropTypes.object
+  },
+  render() {
+    const history = this.props.history || browserHistory;
+    return (
+      <Provider store={store}>
+        <Router history={history}>
+          <Route path="/" component={WineApp}>
+            <IndexRoute component={RegionsPage} />
+            <Route path="regions/:regionId" component={WineListPage} />
+            <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
+            <Route path="*" component={NotFound} />
+          </Route>
+        </Router>
+      </Provider>
+    );
+  }
+});
 ```
 
 Provider va simplement alimenter le context `react` avec un champ `store`. (pour plus de détails sur le contexte `react`, voir [https://facebook.github.io/react/docs/context.html](https://facebook.github.io/react/docs/context.html))

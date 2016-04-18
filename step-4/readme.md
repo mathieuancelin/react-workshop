@@ -10,6 +10,8 @@ Pour lancer l'application de l'étape 3, exécutez la commande `npm start` (apr�
 
 Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la commande `npm start` dans le dossier `api`. La documentation de l'API est disponible à l'adresse http://localhost:3000
 
+Vous avez également la possibilité de lancer les tests de cette étape (que nous avons rédigé pour vous) en utilisant la commande `npm test` afin de voir quelles parties de l'étape fonctionnent et quelles parties ne fonctionnent pas du tout. N'hésitez pas à lire le code des tests afin d'avoir quelques indications en plus sur la façon d'écrire votre application.
+
 ## Objectif
 
 L'objectif de cette étape est d'ajouter des fonctionnalités sur la fiche de description d'un vin, à savoir :

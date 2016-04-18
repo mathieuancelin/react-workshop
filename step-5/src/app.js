@@ -20,7 +20,7 @@ const store = createStore(app);
 
 export const App = React.createClass({
   propTypes: {
-    history: PropTypes.object, // eslint-disable-line
+    history: PropTypes.object // eslint-disable-line
   },
   render() {
     const history = this.props.history || browserHistory;

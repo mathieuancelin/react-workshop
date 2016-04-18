@@ -158,6 +158,10 @@ $ npm start
 
 Rendez-vous ensuite sur http://localhost:3000 pour parcourir la documentation des différentes routes disponibles. Nous vous recommandons de passer au moins une fois sur cette documentation afin d'avoir une idée globale des données fournies par l'API pour alimenter votre application.
 
+## Tests
+
+De manière générale, chaque étape du workshop (hormis les premières) possède des tests pour valider le fonctionnement de l'application. Ces tests vont vous permettre de savoir ou vous en êtes dans l'étape courante. N'hésitez pas à lire les tests pour voir de quelle façon l'application doit se comporter, ainsi qu'à lancer la commande magique (`npm test`) à tout moment.
+
 ## Les étapes du workshop
 
 * [Etape 0](/step-0)

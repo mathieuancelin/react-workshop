@@ -2,9 +2,15 @@
 
 ## Pré-requis
 
+Vous devez maîtriser les étapes 0, 1, 2, 3, 4 et 5 du workshop afin de pouvoir réaliser l'étape 6.
+
 Le code disponible dans cette étape correspond au résultat attendu des étapes 0, 1, 2, 3, 4, et 5.
 
-Pour lancer l'application de l'étape 5, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur. Vous avez également besoin de l'API (lancez la commande `npm start` dans le dossier `api`).
+Pour lancer l'application de l'étape 5, exécutez la commande `npm start` (après avoir fait un `npm install`). Ouvrez ensuite l'URL http://localhost:8080 dans votre navigateur.
+
+Dans cette étape, vous allez avoir besoin de l'API. Pour l'exécuter, lancez la commande `npm start` dans le dossier `api`. La documentation de l'API est disponible à l'adresse http://localhost:3000.
+
+Vous avez également la possibilité de lancer les tests de cette étape (que nous avons rédigé pour vous) en utilisant la commande `npm test` afin de voir quelles parties de l'étape fonctionnent et quelles parties ne fonctionnent pas du tout. N'hésitez pas à lire le code des tests afin d'avoir quelques indications en plus sur la façon d'écrire votre application.
 
 ## Objectif
 
@@ -220,13 +226,19 @@ export const DevTools = createDevTools(
 
 Ce composant va être responsable de l'affichage des devtools dans l'application (Attention ce genre d'outil ne doit être utilisé que dans un environnement de développement).
 
-Une fois le composant fini, il va falloir l'inclure dans l'application (`wine-app.js`)
+Une fois le composant fini, il va falloir l'inclure dans l'application (`wine-app.js`). Cependant, comme notre application peut-être lancée dans un environnement de test, nous aimerions que les Devtools ne soient pas utilisés lors des phases de test. En effets, leur utilisation dans l'environnement de test ralentit énormément ces dernier. Nous allons donc tester si nous sommes en environnement de test et si c'est le cas, rendre un composant `null`.
 
 ```javascript
 import React, { PropTypes } from 'react';
 import { GlobalStats } from './stats';
 import { connect } from 'react-redux';
 import { DevTools } from './devtools';
+
+const NoDevToolsCauseInTestEnv = React.createClass({
+  render() {
+    return null;
+  }
+});
 
 const mapStateToProps = (state) => {
   return {
@@ -244,12 +256,13 @@ export const WineApp = connect(mapStateToProps)(React.createClass({
   },
 
   render () {
+    const Tools = window.TEST ? NoDevToolsCauseInTestEnv : DevTools;
     return (
       <div>
         <div className="grid">
             ...
         </div>
-        <DevTools />
+        <Tools />
       </div>
     );
   }
@@ -322,7 +335,7 @@ Editez votre fichier `src/app.js` comme suivant
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -332,19 +345,34 @@ import { app } from './reducers';
 import { DevTools } from './components/devtools';
 
 const store = compose(applyMiddleware(thunk), DevTools.instrument())(createStore)(app);
-// ici on synchronise le routeur avec le store
-const history = syncHistoryWithStore(hashHistory, store);
 
 ...
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history}> // et on utilise notre historique synchronisé
-      ...
-    </Router>
-  </Provider>
-  , document.getElementById('main')
-);
+export const App = React.createClass({
+  propTypes: {
+    history: PropTypes.object
+  },
+  componentDidMount() {
+    store.dispatch(fetchLikesCount());
+    store.dispatch(fetchCommentsCount());
+  },
+  render() {
+    // ici on synchronise le routeur avec le store
+    const history = syncHistoryWithStore(this.props.history || browserHistory, store);
+    return (
+      <Provider store={store}>
+        <Router history={history}> // et on utilise notre historique synchronisé
+          <Route path="/" component={WineApp}>
+            <IndexRoute component={RegionsPage} />
+            <Route path="regions/:regionId" component={WineListPage} />
+            <Route path="regions/:regionId/wines/:wineId" component={WinePage} />
+            <Route path="*" component={NotFound} />
+          </Route>
+        </Router>
+      </Provider>
+    );
+  }
+});
 ```
 
 ## A vous de jouer !
