@@ -388,11 +388,85 @@ La liste de sélection des vins pourrait également afficher une miniature de la
 
 ### Fiche de détail d'un vin
 
-// TODO
+La fiche de détail d'un vin est laissée à votre imagination, n'hésitez pas a consulter [la documentation `react-native`](https://facebook.github.io/react-native/docs/getting-started.html) pour voir les possibilités offertes par le framework.
+
+ La structure technique du composant `src/components/wine.js` est cependant la suivante :
+
+```javascript
+import React, { PropTypes, Image, View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { connect } from 'react-redux';
+import { fetchWine, fetchWineLiked, setTitle, toggleWineLiked } from '../actions';
+import { styles } from './style';
+import { apiHost } from '../actions';
+
+const mapStateToProps = (state) => {
+  return {
+    currentWine: state.currentWine.wine,
+    liked: state.currentWine.liked
+  };
+}
+
+export const Wine = connect(mapStateToProps)(React.createClass({
+  componentDidMount() {
+    this.props.dispatch(fetchWine(this.props.wine.id)).then(() => {
+      this.props.dispatch(fetchWineLiked(this.props.wine.id));
+    });
+  },
+
+  handleToggleLike() {
+    this.props.dispatch(toggleWineLiked(this.props.wine.id));
+  },
+
+  render() {
+    const { wine, liked } = this.props;
+    return (
+      ...
+    );
+  }
+}));
+```
 
 ### Commentaires
 
-// TODO
+Le composant de commentaire est extrêment similaire à la version web, vous avez à votre disposition le composant `<TexInput />` offert par `react-native` et un composant `<Button />` dans le dossier `src/components`
+
+```javascript
+import React, { PropTypes, View, Text, TextInput } from 'react-native';
+import moment from 'moment';
+import { connect } from 'react-redux';
+import { addComment, fetchComments, postComment } from '../actions';
+import { styles } from './style';
+import { Button } from './button';
+
+const mapStateToProps = (state) => {
+  return {
+    comments: state.currentWine.comments
+  };
+}
+
+export const Comments = connect(mapStateToProps)(React.createClass({
+  getInitialState() {
+    return {
+      commentTitle: '',
+      commentBody: ''
+    };
+  },
+
+  handlePostComment() {
+    const payload = { title: this.state.commentTitle, content: this.state.commentBody };
+    this.props.dispatch(postComment(this.props.wineId, payload)).then(() => {
+      ...
+      this.setState({ commentTitle: '', commentBody: '' });
+    });
+  },
+
+  render() {
+    return (
+      ...
+    );
+  }
+}));
+```
 
 ## A vous de jouer !
 

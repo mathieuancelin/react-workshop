@@ -14,13 +14,6 @@ const mapStateToProps = (state) => {
 }
 
 export const Comments = connect(mapStateToProps)(React.createClass({
-
-  propTypes: {
-    comments: PropTypes.array,
-    dispatch: PropTypes.func.isRequired,
-    wineId: PropTypes.string.isRequired
-  },
-
   getInitialState() {
     return {
       commentTitle: '',
@@ -28,60 +21,16 @@ export const Comments = connect(mapStateToProps)(React.createClass({
     };
   },
 
-  componentDidMount() {
-    this.updateComments();
-  },
-
-  updateComments() {
-    this.props.dispatch(fetchComments(this.props.wineId));
-  },
-
-  handleCommentTitleChange(commentTitle) {
-    this.setState({ commentTitle });
-  },
-
-  handleCommentBodyChange(commentBody) {
-    this.setState({ commentBody });
-  },
-
   handlePostComment() {
     const payload = { title: this.state.commentTitle, content: this.state.commentBody };
     this.props.dispatch(postComment(this.props.wineId, payload)).then(() => {
-      this.updateComments();
-      this.props.dispatch(addComment());
       this.setState({ commentTitle: '', commentBody: '' });
     });
   },
 
   render() {
     return (
-      <View>
-        <Text style={styles.commentsTitle}>Comments</Text>
-        {
-          this.props.comments.map(comment =>
-            <View key={comment.date.toString()} style={styles.comment}>
-              <Text style={styles.commentTitle}>{comment.title} (le {moment(comment.date).format('DD/MM/YYYY à HH:mm:ss')})</Text>
-              <Text>{comment.content}</Text>
-            </View>
-          )
-        }
-        <View style={styles.commentForm}>
-          <TextInput
-              style={styles.inputText}
-              onChangeText={this.handleCommentTitleChange}
-              placeholder="Titre du commentaire"
-              value={this.state.commentTitle} />
-          <TextInput
-              style={styles.inputText}
-              onChangeText={this.handleCommentBodyChange}
-              placeholder="Commentaire"
-              multiline={true}
-              value={this.state.commentBody} />
-          <Button
-              action={this.handlePostComment}
-              style={styles.commentButton}>Commenter</Button>
-        </View>
-      </View>
+      <Text>comments</Text>
     );
   }
 }));
