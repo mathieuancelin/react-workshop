@@ -138,9 +138,16 @@ Pour pré-installer les dépendances NPM à l'avance, vous pouvez lancer le scri
 
 Nous vous recommandons également de télécharger un exemplaire des dépendances pour éviter les problèmes de réseau potentiels
 
-* [node_modules pour Mac OS](https://drive.google.com/file/d/0B-_N2ZIolzedRm52S1dXT2pvTFk/view?usp=sharing)
-* [node_modules pour Linux](https://drive.google.com/file/d/0B-_N2ZIolzedd0JBUVYxamZhU0k/view?usp=sharing)
-* [node_modules pour Windows](https://drive.google.com/file/d/0B-_N2ZIolzedcWwzdWN6R2FhTHc/view?usp=sharing)
+* [node_modules pour Mac OS](https://drive.google.com/file/d/0B-_N2ZIolzedZ0FIT0RnNV9BdWc/view?usp=sharing)
+* [node_modules pour Linux](https://drive.google.com/file/d/0B-_N2ZIolzedOGpwdThybHV5ZDA/view?usp=sharing)
+* [node_modules pour Windows](https://drive.google.com/file/d/0B-_N2ZIolzedVXFFcEI5eThYMjA/view?usp=sharing)
+
+Pour la partie `react-native`
+
+* [node_modules pour Mac OS](https://drive.google.com/file/d/0B-_N2ZIolzedend1cGx2a1ZDYmc/view?usp=sharing)
+* [node_modules pour Linux](https://drive.google.com/file/d/0B-_N2ZIolzeddXdEN3I1X0VfMm8/view?usp=sharing)
+* [node_modules pour Windows](https://drive.google.com/file/d/0B-_N2ZIolzedLVBrTUZOOWRoS1U/view?usp=sharing)
+
 
 Si les dépendances posent des problèmes, notamment au niveau des paquets natifs, n'hésitez pas a lancer un `npm rebuild` pour recompiler ces paquets sur votre machine.
 
