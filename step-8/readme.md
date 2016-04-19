@@ -279,7 +279,7 @@ export const WineApp = React.createClass({
 
 Maintenant, vous allez avoir a créer deux listes permettant d'afficher les régions et les vins pour chaque région. Pour celà nous allons utiliser l'API [`<ListView />`](https://facebook.github.io/react-native/docs/listview.html#listview) de `react-native`.
 
-Cette API fournie un modèle de programmation pour afficher des listes cliquables. Pour implémenter une liste d'item, nous aurons besoin de deux composants, la liste et les cellules à afficher par la liste. Une cellule est une composant très simple comme par exemple :
+Cette API fournie un modèle de programmation pour afficher des listes cliquables. Pour implémenter une liste d'items, nous aurons besoin de deux composants, la liste et les cellules à afficher par la liste. Une cellule est un composant très simple comme par exemple :
 
 ```javascript
 import React, { PropTypes, Text, TouchableHighlight, View } from 'react-native';
@@ -304,7 +304,7 @@ export const ItemCell = React.createClass({
 });
 ```
 
-La liste quand a elle doit utiliser notre `store` `redux` et peut se coder de la façon suivante. Vous noterez l'utilisation de `componentDidUpdate` pour détecter les changements de valeur du store et mettre à jour la liste.
+La liste quant à elle doit utiliser notre `store` `redux` et peut se coder de la façon suivante. Vous noterez l'utilisation de `componentDidUpdate` pour détecter les changements de valeur du store et mettre à jour la liste.
 
 ```javascript
 import React, { PropTypes, ListView } from 'react-native';
@@ -388,7 +388,7 @@ La liste de sélection des vins pourrait également afficher une miniature de la
 
 ### Fiche de détail d'un vin
 
-La fiche de détail d'un vin est laissée à votre imagination, n'hésitez pas a consulter [la documentation `react-native`](https://facebook.github.io/react-native/docs/getting-started.html) pour voir les possibilités offertes par le framework.
+La fiche de détail d'un vin est laissée à votre imagination, n'hésitez pas à consulter [la documentation `react-native`](https://facebook.github.io/react-native/docs/getting-started.html) pour voir les possibilités offertes par le framework.
 
  La structure technique du composant `src/components/wine.js` est cependant la suivante :
 
@@ -474,7 +474,7 @@ Surtout ne restez pas bloqués ! N'hésitez pas à demander de l'aide aux organi
 
 ## Bonus
 
-Vous pouvez rajouter le compteur de stats globales présent dans la version web (qui a volontairement été oublié) à la version mobile. A vous de fouiller [la documentation `react-native`](https://facebook.github.io/react-native/docs/getting-started.html) afin de trouver un belle façon d'intégrer cette nouvelle fonctionnalité.
+Vous pouvez rajouter le compteur de stats globales présent dans la version web (qui a volontairement été oublié) à la version mobile. A vous de fouiller [la documentation `react-native`](https://facebook.github.io/react-native/docs/getting-started.html) afin de trouver une belle façon d'intégrer cette nouvelle fonctionnalité.
 
 
 ## Prochaine étape
