@@ -2,18 +2,19 @@
 
 APP_PATH=`pwd`
 
-STEPS=`find $APP_PATH -type d -name "step-*-done"`
-
-for item in ${STEPS}
-do
-  if [ -f "$item/package.json" ];
-  then
-    cd "$item"
-    npm test
-  else
-    echo "nothing to do for $item"
-  fi
-done
-
+cd "$APP_PATH/step-1-done"
+npm test
+cd "$APP_PATH/step-2-done"
+npm test
+cd "$APP_PATH/step-3-done"
+npm test
+cd "$APP_PATH/step-4-done"
+npm test
+cd "$APP_PATH/step-5-done"
+npm test
+cd "$APP_PATH/step-6-done"
+npm test
 cd "$APP_PATH/step-7"
 npm test
+
+cd "$APP_PATH"

@@ -7,6 +7,10 @@ import { createMemoryHistory } from 'react-router';
 
 import { App } from '../../src/app';
 
+String.prototype.contains = function(what) {
+  return this.indexOf(what) > -1;
+};
+
 const regions = ['Bordeaux', 'Bourgogne'];
 
 const wines1 = [
@@ -282,20 +286,20 @@ describe('<App />', () => {
     const like = wrapper.find('Wine').find('span').filterWhere(n => n.get(0).innerHTML === 'like');
     expect(like.length).to.equal(1);
 
-    expect(wrapper.find('Stats').contains(<div><span>likes : </span><span>0</span></div>));
+    expect(wrapper.find('Stats').html().contains('<div><span>likes : </span><span>0</span></div>')).to.equals(true);
 
     like.simulate('click');
 
     const like2 = wrapper.find('Wine').find('span').filterWhere(n => n.get(0).innerHTML === 'unlike');
     expect(like2.length).to.equal(1);
 
-    expect(wrapper.find('Stats').contains(<div><span>likes : </span><span>1</span></div>));
+    expect(wrapper.find('Stats').html().contains('<div><span>likes : </span><span>1</span></div>')).to.equals(true);
 
     like2.simulate('click');
 
     const like3 = wrapper.find('Wine').find('span').filterWhere(n => n.get(0).innerHTML === 'like');
     expect(like3.length).to.equal(1);
-    expect(wrapper.find('Stats').contains(<div><span>likes : </span><span>0</span></div>));
+    expect(wrapper.find('Stats').html().contains('<div><span>likes : </span><span>0</span></div>')).to.equals(true);
   });
 
   it('doit afficher un vin et poster un commentaire tout en incrémentant les stats globales', () => {
@@ -315,7 +319,7 @@ describe('<App />', () => {
     let paragraphs = wrapper.find('Comments').find('p');
     expect(paragraphs.length).to.equals(0);
 
-    expect(wrapper.find('Stats').contains(<div><span>comments : </span><span>0</span></div>));
+    expect(wrapper.find('Stats').html().contains('<div><span>comments : </span><span>0</span></div>')).to.equals(true);
 
     wrapper.find('Comments').find('input').simulate('change', { target: { value: 'Comment 1' } });
     wrapper.find('Comments').find('textarea').simulate('change', { target: { value: 'Comment 1 body' } });
@@ -324,6 +328,6 @@ describe('<App />', () => {
     paragraphs = wrapper.find('Comments').find('p');
     expect(paragraphs.length).to.equals(1);
     expect(paragraphs.at(0).html()).to.equals('<p>Comment 1 body</p>');
-    expect(wrapper.find('Stats').contains(<div><span>comments : </span><span>1</span></div>));
+    expect(wrapper.find('Stats').html().contains('<div><span>comments : </span><span>1</span></div>')).to.equals(true);
   });
 });
