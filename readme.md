@@ -67,9 +67,9 @@ Si npm n'est pas en version 3.x, vous pouvez effectuer la mise à jour grâce à
 
 ### Git
 
-Téléchargez et installez la version de Git correspondant à votre système d'exploitation, en suivant les indications disponibles sur le site officiel : [https://git-scm.com/downloads](https://git-scm.com/downloads)  
+Téléchargez et installez la version de Git correspondante à votre système d'exploitation, en suivant les indications disponibles sur le site officiel : [https://git-scm.com/downloads](https://git-scm.com/downloads)  
 
-Vérifiez l'installation en lançant la commande suivantes dans un terminal :
+Vérifiez l'installation en lançant la commande suivante dans un terminal :
 
 ```
 $ git --version
