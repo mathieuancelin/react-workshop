@@ -132,7 +132,7 @@ npm install --save react-router@2.0.1
 
 Maintenant nous pouvons commencer l'intégration du router (l'intégration de base est présente dans le projet mais vous pouvez tout de même lire les paragraphes suivant).
 
-Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `src/app.js`. Pour des raisons de testabilité, nous allons faire en sorte d'encapsuler toute l'application et son système de routage dans un composant dédié dans `src/app.js` et faire en sorte que ce composant puisse recevoir une API `history` dédiée (différente en environnement de test). La montage de ce composant dans le DOM sera effectué dans le fichier `src/indexj.js`
+Pour ce faire, commençons par lire [l'introduction](https://github.com/reactjs/react-router/blob/master/docs/Introduction.md) à `react-router` puis importons les APIs dans `src/app.js`. Pour des raisons de testabilité, nous allons faire en sorte d'encapsuler toute l'application et son système de routage dans un composant dédié dans `src/app.js` et faire en sorte que ce composant puisse recevoir une API `history` dédiée (différente en environnement de test). La montage de ce composant dans le DOM sera effectué dans le fichier `src/index.js`
 
 ```javascript
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
