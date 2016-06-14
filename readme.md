@@ -33,6 +33,7 @@ Les pré-requis techniques sont les suivants :
 * Git
 * Atom
 * React Developer Tools
+* VirtualBox (au cas où)
 
 La dernière étape de ce workshop implique l'utilisation de `react-native`.
 En plus des outils précédant vous aurez besoin de :
@@ -94,6 +95,12 @@ Afin de disposer d'outils spécifiques à `react` dans votre navigateur web, ins
 
 * [React Developer Tools pour Google Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 * [React Developer Tools pour Mozilla Firefox](https://addons.mozilla.org/fr/firefox/addon/react-devtools/)
+
+### VirtualBox
+
+En cas de problème réseau, des machines virtuelles seront disponibles pour VirtualBox
+
+[Télécharger VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 ### Xcode
 
