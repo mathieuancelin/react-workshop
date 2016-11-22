@@ -18,3 +18,5 @@ cd "$APP_PATH/step-7"
 npm test
 
 cd "$APP_PATH"
+
+echo "Done"
