@@ -255,7 +255,11 @@ const Regions = React.createClass({
   handleRegionClick(event) {
     this.props.onRegionChange(event.target.textContent);
   },
-
+  propTypes: {
+    onRegionChange: PropTypes.func,
+    regions: PropTypes.arrayOf(PropTypes.string),
+    selected: PropTypes.string
+  },
   render () {
     return (
       <div>
